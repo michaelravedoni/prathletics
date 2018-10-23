@@ -1,0 +1,44 @@
+{% for type in session.block.all() %}
+	
+{% if type.type == 'free' %}
+<div class="pr-block">
+	{% for row in type.informations.all() %}
+	<div class="pr-block-informations">
+		<span class="pr-block-heading">{{ row.heading }}</span>
+		{% if row.time %}<span class="pr-block-time">{{ row.time }}'</span>{% endif %}
+		{% if row.rest %}<span class="pr-block-rest">[{{ row.rest }}']</span>{% endif %}
+	</div>
+	{% endfor %}
+	<div>{{ type.text|md }}</div>
+</div>
+{% endif %}
+	
+{% if type.type == 'block' %}
+<div class="pr-block">
+	{% for row in type.informations.all() %}
+	<div class="pr-block-informations">
+		<span class="pr-block-heading">{{ row.heading }}</span>
+		{% if row.note %}<span class="pr-block-note">{{ row.note }}</span>{% endif %}
+		{% if row.time %}<span class="pr-block-time">{{ row.time }}'</span>{% endif %}
+		{% if row.rest %}<span class="pr-block-rest">[{{ row.rest }}']</span>{% endif %}
+	</div>
+	{% endfor %}
+	<div class="pr-block-exercices">
+		{% for row in type.exercices.all() %}
+		<div class="pr-block-exercice">
+			{% if row.exerciceRelation.one() %}
+			<span class="pr-block-exercice-link"><a class="uk-text-meta uk-text-small" href="{{ row.exerciceRelation.one().url }}" target="_blank"><i class="far fa-question-circle"></i></a></span>
+			<span class="pr-block-exercice-heading">{{ row.exerciceRelation.one().title }}</span>
+			{% endif %}
+			{% if row.exercice %}
+			<span class="pr-block-exercice-link"></span>
+			<span class="pr-block-exercice-heading">{{ row.exercice }}</span>
+			{% endif %}
+			<span class="pr-block-exercice-duration">{% if row.series %}{{ row.series }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series and row.repetitions %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</span>
+			<span class="pr-block-exercice-note">{% if row.note %}{{ row.note }}{% endif %}</span>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}
+{% endfor %}
