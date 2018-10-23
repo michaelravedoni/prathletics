@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Prathletics</title><!--[if IE]><link rel="icon" href="/test/prathletics/app/images/icons/favicon.ico"><![endif]--><link rel="shortcut icon" href=/test/prathletics/app/images/icons/favicon.ico><link rel=apple-touch-icon sizes=180x180 href=/test/prathletics/app/images/icons/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/test/prathletics/app/images/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/test/prathletics/app/images/icons/favicon-16x16.png><!--[if IE]><link rel="shortcut icon" href="/test/prathletics/app//images/favicons/favicon.ico"><![endif]--><link rel=manifest href=/test/prathletics/app/manifest.json><meta name=application-name content=Prathletics><meta name=theme-color content=#0A56C7><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content=Prathletics><link rel=apple-touch-icon href=/test/prathletics/app/images/favicons/icon-152x152.png><link rel=mask-icon href=/test/prathletics/app/images/icons/safari-pinned-tab.svg color=#0a56c7><meta name=msapplication-TileImage content=/test/prathletics/app/images/favicons/icon-144x144.png><meta name=msapplication-TileColor content=#2b5797><meta name=msapplication-config content=/test/prathletics/app/images/icons/browserconfig.xml><link rel=stylesheet type=text/css href=/test/prathletics/app/assets/css/theme-white-darkblue.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Varela+Round"><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.4.1/css/all.css integrity=sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js></script><script>(function () {
+		'use strict';
+
+		//After DOM Loaded
+		document.addEventListener('DOMContentLoaded', function(event) {
+			//On initial load to check connectivity
+			if (!navigator.onLine) {
+				updateNetworkStatus();
+			}
+
+			window.addEventListener('online', updateNetworkStatus, false);
+			window.addEventListener('offline', updateNetworkStatus, false);
+		});
+
+		//To update network status
+		function updateNetworkStatus() {
+			if (navigator.onLine) {
+			}
+			else {
+				UIkit.notification({message: '&star; Offline mode', pos: 'bottom-center', timeout: '3000', status:"warning"});
+			}
+		}
+		})();</script><link href=/test/prathletics/app/js/about.9391d640.js rel=prefetch><link href=/test/prathletics/app/css/app.3cae7a08.css rel=preload as=style><link href=/test/prathletics/app/js/app.5043f4ed.js rel=preload as=script><link href=/test/prathletics/app/js/chunk-vendors.1ebe5991.js rel=preload as=script><link href=/test/prathletics/app/css/app.3cae7a08.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=/test/prathletics/app/images/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/test/prathletics/app/images/icons/favicon-16x16.png><link rel=manifest href=/test/prathletics/app/manifest.json><meta name=theme-color content=#0A56C7><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=Prathletics><link rel=apple-touch-icon href=/test/prathletics/app/images/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=/test/prathletics/app/images/icons/safari-pinned-tab.svg color=#0A56C7><meta name=msapplication-TileImage content=/test/prathletics/app/images/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#ffffff></head><body><noscript><strong>We're sorry but app-2 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/test/prathletics/app/js/chunk-vendors.1ebe5991.js></script><script src=/test/prathletics/app/js/app.5043f4ed.js></script></body></html>

@@ -1,0 +1,263 @@
+{#
+# Layout template
+# ---------------
+#
+# This template defines your site’s global layout. It can be
+# “extended” by other templates to fill in the gaps.
+#
+# See Twig’s Template Inheritance documentation for more details:
+# http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+#}
+
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="referrer" content="origin-when-cross-origin" />
+	<meta name='CC.license' content='http://creativecommons.org/licenses/by/4.0/' />
+	<title>{% if entry is defined %}{{entry.title}} | {% endif %}{{siteName}}</title>
+
+	<link rel="icon" type="image/png" href="{{siteUrl}}images/icons/icon-72x72.png">
+	<link rel="manifest" href="{{siteUrl}}/manifest.json">
+	<meta name="theme-color" content="#0A56C7"/>
+
+	<!-- CSS -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/css/uikit.min.css"/> -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://demo.yootheme.com/themes/joomla/2018/flow/templates/yootheme/css/theme-white-darkblue.css"/> -->
+	<link rel="stylesheet" type="text/css" href="{{siteUrl}}assets/css/theme-white-darkblue.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+	<!-- Font-awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+	<!-- Javascript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
+	<!-- <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script> -->
+
+
+	<script>
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', function() {
+			navigator.serviceWorker.register('{{siteUrl}}sw-ny.js', {
+				scope: "{{siteUrl}}"
+			}).then(function(registration) {
+				// Registration was successful
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				// Trim the caches on load
+				navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage({
+					command: "trimCaches"
+				});
+			}).catch(function(err) {
+				// registration failed :(
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+
+	/*if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('{{siteUrl}}sw.js');
+		});
+	}*/
+
+	(function () {
+		'use strict';
+
+		//After DOM Loaded
+		document.addEventListener('DOMContentLoaded', function(event) {
+			//On initial load to check connectivity
+			if (!navigator.onLine) {
+				updateNetworkStatus();
+			}
+
+			window.addEventListener('online', updateNetworkStatus, false);
+			window.addEventListener('offline', updateNetworkStatus, false);
+		});
+
+		//To update network status
+		function updateNetworkStatus() {
+			if (navigator.onLine) {
+			}
+			else {
+				UIkit.notification({message: '&star; Offline mode', pos: 'bottom-center', timeout: '3000', status:"warning"});
+			}
+		}
+		})();
+	</script>
+
+</head>
+
+<body>
+	<div class="uk-offcanvas-content"><!-- Off-canvas-wrapper -->
+	<header>
+		<!-- Navigation -->
+		<nav class="uk-navbar-container">
+            <div class="uk-container">
+                <div class="uk-navbar">
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo" href="{{ siteUrl }}">{{siteName}}</a>
+                    </div>
+                    <div class="uk-navbar-center">
+						<div class="uk-navbar-nav">
+
+						</div>
+					</div>
+                    <div class="uk-navbar-right">
+						<ul class="uk-navbar-nav uk-visible@m">
+                            <li {% if craft.app.request.segments|first == 'sessions' %}class="uk-active"{% endif %}><a href="{{ url('sessions') }}">Entraînements</a></li>
+                            <li {% if craft.app.request.segments|first == 'groups' %}class="uk-active"{% endif %}><a href="{{ url('groups') }}">Groupes</a></li>
+							<li {% if craft.app.request.segments|first == 'exercices' %}class="uk-active"{% endif %}><a href="{{ url('exercices') }}">Exercices</a></li>
+							<li {% if craft.app.request.segments|first == 'drills' %}class="uk-active"{% endif %}><a href="{{ url('drills') }}">Pr. & Drills</a></li>
+						</ul>
+						<a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon uk-toggle href="#off-menu"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+		<!-- Menu off-canvas -->
+        <div id="off-menu" uk-offcanvas="mode: push; overlay: true">
+            <div class="uk-offcanvas-bar uk-nav-center uk-flex uk-flex-column">
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+				<ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical uk-nav-parent-icon">
+					<li {% if craft.app.request.segments|first == 'sessions' %}class="uk-active"{% endif %}><a href="{{ url('sessions') }}">Sessions</a></li>
+					<li {% if craft.app.request.segments|first == 'groups' %}class="uk-active"{% endif %}><a href="{{ url('groups') }}">Groupes</a></li>
+					<li {% if craft.app.request.segments|first == 'exercices' %}class="uk-active"{% endif %}><a href="{{ url('exercices') }}">Exercices</a></li>
+					<li {% if craft.app.request.segments|first == 'drills' %}class="uk-active"{% endif %}><a href="{{ url('drills') }}">Drills</a></li>
+					<li {% if craft.app.request.segments|first == 'documents' %}class="uk-active"{% endif %}><a href="{{ url('documents') }}">Documents</a></li>
+				</ul>
+				<div>
+					<div class="uk-grid-small uk-child-width-auto uk-flex-inline uk-grid">
+						*
+					</div>
+				</div>
+            </div>
+        </div>
+
+
+	</header>
+
+	<main class="pr-content">
+		{% block content %}
+		<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+		<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+		{% endblock %}
+	</main>
+
+	<!-- Footer -->
+	<footer class="pr-footer uk-background-muted uk-section uk-section-xsmall">
+		<div class="pr-footer-above">
+			<div class="uk-container">
+
+			</div>
+		</div>
+		<div class="pr-footer-below">
+			<div class="uk-container uk-text-center">
+				<p><a href="https://creativecommons.org/licenses/by/4.0/" style="color:#000000;"><i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i></a> {{site.siteTrainer}}<br />Frameworked by <a href="https://github.com/michaelravedoni/prathletics">{{ siteName }}</a> (2018-{{ now|date('Y') }})</p>
+			</div>
+		</div>
+	</footer>
+</div><!-- End: Off-canvas-wrapper -->
+
+
+<style>
+	.pr-block {
+		margin-bottom: 1em;
+	}
+	.pr-block-informations {
+		border-bottom: 1px solid #999;
+		display: flex;
+		flex-direction: row;
+	}
+	.pr-block-note {
+		font-size: 85%;
+	}
+	.pr-block-heading {
+		font-weight: bold;
+		flex-grow: 1;
+	}
+	.pr-block-time {
+		font-weight: normal;
+	}
+	.pr-block-rest {
+		font-weight: normal;
+	}
+	.pr-block-exercices {
+		width: 100%;
+	}
+	.pr-block-exercice {
+		display: flex;
+		flex-wrap: wrap;
+		border-bottom: 1px solid #eee;
+		border-collapse: collapse;
+	}
+	.pr-block-exercice-link {
+		flex: 0 1 auto;
+		width: 20px;
+	}
+	.pr-block-exercice-heading {
+		flex: 3 1 0;
+	}
+	.pr-block-exercice-duration {
+		flex: 1 1 0;
+		margin-left: 1em;
+	}
+	.pr-block-exercice-note {
+		font-size: 85%;
+		flex: 1 1 0;
+	}
+
+	@media screen and (max-width: 640px) {
+		.pr-block-exercices {
+			display: block;
+		}
+		.pr-block-exercice {
+			display: block;
+		}
+		.pr-block-exercice-link {
+			display: unset;
+		}
+		.pr-block-exercice-heading {
+			display: unset;
+		}
+		.pr-block-exercice-duration {
+			font-size: 85%;
+			font-weight: bold;
+			display: flex;
+			flex-flow: row-reverse;
+		}
+		.pr-block-exercice-note {
+			display: flex;
+			flex-flow: row-reverse;
+		}
+	}
+
+	@media print {
+		.pr-no-print,
+		header,
+		footer {
+			display: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		.pr-crumbs br {
+			display: none;
+		}
+		.pr-crumbs br:after {
+			content: "- ";
+		}
+		.pr-session-header {
+			padding-bottom: 0;
+			font-size: 75%;
+		}
+	}
+	@media screen {
+		.pr-meta {
+			display: none;
+		}
+	}
+</style>
+
+</body>
+</html>

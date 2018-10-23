@@ -1,0 +1,48 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="pr-drills">
+	
+	<header class="uk-section uk-section-xsmall uk-container uk-container-small">
+			
+		<span class="pr-no-print" onclick="window.print()"><i class="fas fa-print"></i></span>
+		
+	</header><!-- end header -->
+	
+	
+	{% if entry.type == 'drills' %}
+	<section class="uk-section uk-section-xsmall uk-container uk-container-small">
+		<div class="pr-meta">{{ now|date('Y') }} — {{site.siteTrainer}}</div>
+		<h1 class="uk-h2 uk-margin-remove-top">{{ entry.title }}</h1>
+		<div class="">{{ entry.description|md }}</div>
+	</section><!-- end informations -->
+	
+	<section class="uk-section uk-section-xsmall uk-container uk-container-small pr-session">
+		{% if entry.volume|length %}
+		<div class="uk-text-meta uk-text-small uk-margin-bottom">
+			{% set vol = entry.volume.value %}
+			{% set volT = 4-vol %}
+			{% set int = entry.volume.value %}
+			{% set intT = 4-int %}
+			Volume: {% for i in range(1, vol) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, volT) %}<i class="far fa-star"></i>{% endfor %}<br />
+			Intensité: {% for i in range(1, int) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, intT) %}<i class="far fa-star"></i>{% endfor %}
+		</div>
+		{% endif %}
+	
+		{% set session = entry %}
+		{% include 'sessions/session-block.html' %}
+	
+	</section><!-- end session -->
+	{% endif %}
+
+	<style>
+	@media print {
+		.pr-drills {
+			font-size: 85%;
+		}
+	}
+	</style>
+
+{% endblock %}
