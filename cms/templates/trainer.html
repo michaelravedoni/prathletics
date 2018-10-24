@@ -1,0 +1,30 @@
+{% extends "_layout" %}
+
+{% block content %}
+<section class="uk-section uk-container">
+	<div class="uk-grid-match uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+		<div>
+			<div class="uk-background-primary uk-padding uk-light">
+				<a href="{{ url('exercices') }}">Exercices</a>
+			</div>
+		</div>
+		<div>
+			<div class="uk-background-primary uk-padding uk-light">
+				<div class=""><a href="{{ url('groups') }}">Groupes</a></div>
+			</div>
+		</div>
+		<div>
+			<div class="uk-background-secondary uk-padding uk-light">
+				<a href="{{ url('sessions') }}">Entraînements</a>
+			</div>
+		</div>
+		<div>
+			<div class="uk-background-secondary uk-padding uk-light">
+				<div class=""><a href="{{ url('drills') }}">Drills</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="uk-tile uk-tile-small uk-tile-muted uk-text-center uk-margin"><a href="{{ cpUrl('') }}">Admin</a></div>
+</section>
+
+{% endblock %}

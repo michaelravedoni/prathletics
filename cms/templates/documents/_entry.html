@@ -1,0 +1,43 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge">
+	
+	<section class="uk-section uk-section-small">
+		<h1 class="uk-h2">{{ entry.title }}</h1>
+		
+		{% set document = entry.document.one() %}
+		{% if document %}
+		<i class="far fa-file"></i> <a href="{{document.url}}">{{document.title}}</a>
+		{% endif %}
+		
+		<dl class="uk-tile uk-tile-small uk-tile-muted">
+			<dt>Note</dt>
+			<dd>{{ entry.note }}</dd>
+		</dl>
+	</section>
+	
+</section>
+
+<style>
+dl {}
+dt {
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+}
+dt::after {
+    content: ":";
+}
+dd {
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
+}
+
+</style>
+
+{% endblock %}
