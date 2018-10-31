@@ -1,0 +1,10 @@
+.DS_Store
+deploy.js
+.env
+web.config
+/storage/*
+/web/imager/*
+/web/cache
+/web/cpressources/*
+rsync-ignore.txt
+.user.ini

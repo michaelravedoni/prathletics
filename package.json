@@ -1,0 +1,24 @@
+{
+  "name": "Prathletics",
+  "version": "1.2.0",
+  "description": "Prathletics project",
+  "devDependencies": {
+    "run-run": "^1.1.0"
+  },
+  "scripts": {
+    "stage": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp app/dist/ {FTP_HOST_STAGING} --delete'",
+    "stage-dry": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp app/dist/ {FTP_HOST_STAGING} --dry-run --delete'",
+    "deploy": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp app/dist/ {FTP_HOST} --delete'",
+    "deploy-dry": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp app/dist/ {FTP_HOST} --dry-run --delete'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelravedoni/prathletics.git"
+  },
+  "author": "Michael Ravedoni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelravedoni/prathletics/issues"
+  },
+  "homepage": "https://ravedoni.com/prathletics"
+}

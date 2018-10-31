@@ -1,0 +1,19 @@
+{
+  "name": "prathletics",
+  "version": "1.0.0",
+  "description": "prathletics",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelravedoni/michael.ravedoni.com.git"
+  },
+  "author": "Michael Ravedoni",
+  "license": "MIT",
+  "main": "/web",
+  "scripts": {
+    "stage": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp ./ {FTP_HOST_STAGING} --exclude-from 'rsync-ignore.txt' --delete'",
+    "stage-dry": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp ./ {FTP_HOST_STAGING} --exclude-from 'rsync-ignore.txt' --dry-run --delete'"
+  },
+  "devDependencies": {
+    "run-run": "^1.1.0"
+  }
+}

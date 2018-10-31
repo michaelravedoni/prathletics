@@ -1,0 +1,26 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-container uk-container-small uk-width-xlarge">
+	
+	<h1>Programmes et drills</h1>
+	{% set drills = craft.entries.section('drills').all() %}
+	<nav class="">
+		{% for cat, entries in drills|group('category.one()') %}
+		<h2 class="uk-h3">{{cat}}</h2>
+		<ul>
+			{% for drill in entries %}
+            <li>
+                <a href="{{ drill.url }}">{{drill.title}}</a>
+                
+            </li>
+			{% endfor %}
+		</ul>
+		{% endfor %}
+	</nav>
+	
+</section>
+
+{% endblock %}

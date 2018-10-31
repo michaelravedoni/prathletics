@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Prathletics</title>
+
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>Prathletics</title>
+
+  <!-- Favicons -->
+  <link href="<%= BASE_URL %>images/icons/favicon.ico" rel="icon" >
+  <link href="<%= BASE_URL %>images/icons/favicon.ico" rel="shortcut icon">
+  <link href="<%= BASE_URL %>images/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link href="<%= BASE_URL %>images/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+
+  <!-- Add to home screen for Android and modern mobile browsers -->
+  <link href="<%= BASE_URL %>manifest.json" rel="manifest">
+  <meta content="Prathletics" name="application-name">
+  <meta content="#0A56C7" name="theme-color">
+
+  <!-- Add to home screen for Safari on iOS -->
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="Prathletics" name="apple-mobile-web-app-title">
+  <link href="<%= BASE_URL %>images/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="<%= BASE_URL %>images/favicons/icon-152x152.png" rel="apple-touch-icon">
+  <link color="#0a56c7" href="<%= BASE_URL %>images/icons/safari-pinned-tab.svg" rel="mask-icon">
+
+  <!-- Add to home screen for Windows -->
+  <meta content="<%= BASE_URL %>images/favicons/icon-144x144.png" name="msapplication-TileImage">
+  <meta content="#2b5797" name="msapplication-TileColor">
+  <meta content="<%= BASE_URL %>images/icons/browserconfig.xml" name="msapplication-config">
+
+  <!-- Stylesheet -->
+  <link href="<%= BASE_URL %>assets/css/theme-white-darkblue.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+  <!-- Fontawesome -->
+  <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+
+  <!-- Javascript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+    //After DOM Loaded
+    document.addEventListener('DOMContentLoaded', function(event) {
+      //On initial load to check connectivity
+      if (!navigator.onLine) {
+        updateNetworkStatus();
+      }
+
+      window.addEventListener('online', updateNetworkStatus, false);
+      window.addEventListener('offline', updateNetworkStatus, false);
+    });
+
+    //To update network status
+    function updateNetworkStatus() {
+      if (navigator.onLine) {
+        console.log('App is online');
+      }
+      else {
+        UIkit.notification({message: '&star; Offline mode', pos: 'top-center', timeout: '3000', status:"danger"});
+        console.log('App is offline');
+      }
+    }
+  })();
+  </script>
+  <!-- Matomo -->
+  <script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+	  var u="//ravedoni.com/matomo/";
+	  _paq.push(['setTrackerUrl', u+'piwik.php']);
+	  _paq.push(['setSiteId', '3']);
+	  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+  </script>
+  <!-- End Matomo Code -->
+
+</head>
+<body>
+  <noscript>
+    <strong>We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+</html>

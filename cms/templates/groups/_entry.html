@@ -1,0 +1,76 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge">
+	
+	<section class="uk-section uk-section-xsmall">
+		<h1 class="uk-h2">{{ entry.title }}</h1>
+		<p>{{ entry.groupDescription }}</p>
+	</section>
+	
+	<section class="uk-section uk-section-xsmall">
+		{% set nextSession = craft.entries.section('sessions').relatedTo(entry).type('session').orderBy('schedule asc').schedule('>= '~ now|atom).one() %}
+		<h2 class="uk-h2">Prochaine session</h2>
+		{% if nextSession %}
+		<div class="uk-card uk-card-body uk-card-small uk-card-primary"><a href="{{ nextSession.url }}">{{nextSession.schedule|date('LLLL')|ucfirst}} à {{nextSession.schedule|time('short')}}</a></div>
+		{% else %}
+		<p>Pas de sessions programmées pour le moment</p>
+		{% endif %}
+		
+		<h2 class="uk-h2">Prochaines sessions</h2>
+		{% set relatedSessions = craft.entries.section('sessions').relatedTo(entry).type('session').orderBy('schedule asc').schedule('<= '~ now|atom).all() %}
+		{% for session in relatedSessions %}
+		<li><a href="{{ session.url }}">{{session.schedule|date('l')|ucfirst}}-{{session.schedule|time('short')}}</a></li>
+		{% else %}
+		<p>Pas de sessions programmées pour le moment</p>
+		{% endfor %}
+		
+		<h2>Situation</h2>
+		{% set parents = nextSession.getAncestors() %}
+		{% set parents = parents|merge(nextSession.getSiblings()) %}
+		<nav class="">
+			<ul>
+				{% nav page in parents %}
+				<li>
+					<a href="{{ page.url }}" uk-tooltip="{% if page.type == 'session' %}Session{% else %}{{ page.typeCadre|capitalize }}{% endif %}">
+						{% if page.typeCadre == 'season' %}{{page.season.one().titleLong}}
+						{% elseif page.typeCadre == 'period' %}{{page.period.one().titleLong}}
+						{% else %}{{ page.label|ucfirst|replace('-', ' ') }}{% endif %}
+						{% if page.type == 'session' %}{{page.schedule|date('l')|ucfirst}}-{{page.schedule|time('short')}}{% endif %}
+					</a>
+                
+					{% ifchildren %}
+					<ul>
+						{% children %}
+					</ul>
+					{% endifchildren %}
+				</li>
+				{% endnav %}
+			</ul>
+		</nav>
+	</section>
+	
+</section>
+
+<style>
+dl {}
+dt {
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+}
+dt::after {
+    content: ":";
+}
+dd {
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
+}
+
+</style>
+
+{% endblock %}

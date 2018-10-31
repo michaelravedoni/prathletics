@@ -1,0 +1,40 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-container">
+	
+	<h1>Exercices</h1>
+	{% set exercices = craft.entries.section('exercices').orderBy('title').all() %}
+	<ul uk-accordion="multiple: true">
+	{% for type, entries in exercices|group('exerciceType.one()') %}
+	<li class="">
+		<a class="uk-accordion-title" href="#">{{type}}</a>
+		<div class="uk-accordion-content">
+			<table class="uk-table uk-table-justify uk-table-divider">
+				<thead>
+					<tr>
+						<th class="">Exercice</th>
+						<th>Types</th>
+						<th class="uk-width-large">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for e in entries %}
+					<tr>
+						<td><a href="{{e.url}}">{{e.title}}</a></td>
+						<td>{% for t in e.exerciceType %}<span class="uk-text-meta">{{t.title}}</span>{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>
+						<td>{{e.exerciceDescription}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</li>
+	{% endfor %}
+	</ul>
+	
+</section>
+
+{% endblock %}

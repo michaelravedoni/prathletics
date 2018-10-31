@@ -1,0 +1,79 @@
+<div class="session-blocks-horizontal" uk-grid>
+{% for type in session.block.all() %}
+{% if type.type == 'free' %}
+<div class="pr-block uk-width-1-4@s">
+	{% for row in type.informations.all() %}
+	<div class="pr-block-informations">
+		<span class="pr-block-heading">{{ row.heading }}</span>
+		{% if row.time %}<span class="pr-block-time">{{ row.time }}'</span>{% endif %}
+		{% if row.rest %}<span class="pr-block-rest">[{{ row.rest }}']</span>{% endif %}
+	</div>
+	{% endfor %}
+	<div>{{ type.text|md }}</div>
+</div>
+{% endif %}
+	
+{% if type.type == 'block' %}
+<div class="pr-block uk-width-1-4@s">
+	{% for row in type.informations.all() %}
+	<div class="pr-block-informations">
+		<span class="pr-block-heading">{{ row.heading }}</span>
+		{% if row.time %}<span class="pr-block-time">{{ row.time }}'</span>{% endif %}
+		{% if row.rest %}<span class="pr-block-rest">[{{ row.rest }}']</span>{% endif %}
+	</div>
+	{% endfor %}
+	<div class="pr-block-exercices">
+		{% for row in type.exercices.all() %}
+		<div class="pr-block-exercice">
+			{% if row.exerciceRelation.one() %}
+			<span class="pr-block-exercice-heading">{{ row.exerciceRelation.one().title }} <a href="{{ row.exerciceRelation.one().url }}" target="_blank"><i class="far fa-question-circle"></i></a></span>
+			{% endif %}
+			{% if row.exercice %}
+			<span class="pr-block-exercice-heading">{{ row.exercice }}</span>
+			{% endif %}
+			<span class="pr-block-exercice-duration">{% if row.series %}{{ row.series }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</span>
+			<span class="pr-block-exercice-note">{% if row.note %}{{ row.note }}{% endif %}</span>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+<style>
+@media print {
+	
+    @page {
+		size: A4 landscape;
+		margin: 0.5cm;
+	}
+	.session-blocks-horizontal {
+		font-size: 65%;
+	}
+	.pr-block {
+		page-break-inside: avoid;
+	}
+	.pr-cadre-session-heading {
+		margin-top: 0;
+		margin-bottom: .2em;
+		font-size: medium;
+		background-color: lightgray !important;
+	}
+	.pr-cadre-session-group {
+		font-size: small;
+	}
+	.pr-cadre-header {
+		width:100%;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.pr-cadre-header .uk-h2 {
+		margin-bottom: 0;
+	}
+	.pr-cadre-sessions {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+</style>

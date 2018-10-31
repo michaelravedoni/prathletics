@@ -1,0 +1,18 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-container uk-container-small uk-width-xlarge">
+	
+	<h1>Groupes</h1>
+	{% set groups = craft.entries.section('groups').all() %}
+	<ul>
+		{% for group in groups %}
+		<li><a href="{{ group.url }}">{{ group.title }}</a></li>
+		{% endfor %}
+	</ul>
+	
+</section>
+
+{% endblock %}

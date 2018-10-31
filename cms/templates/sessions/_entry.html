@@ -1,0 +1,130 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="">
+	
+	<section class="uk-section uk-section-small uk-container uk-container-small uk-width-xlarge pr-session-header">
+			
+		<span class="pr-no-print" onclick="window.print()"><i class="fas fa-print"></i></span>
+		
+		<div class="pr-meta">
+			<span class="pr-meta-copyright"><i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> {{site.siteTrainer}}</span>
+			<span class="pr-meta-title">{{entry.label|ucfirst|replace('-', ' ')}}</span>
+			<span class="pr-meta-printed uk-float-right">Imprimé le {{ now|date('d.m.Y') }}</span>
+		</div>
+		{% if entry.level > 1 %}
+		<div class="pr-crumbs">
+			{% for crumb in entry.getAncestors() %}
+			{% if crumb.season|length %}<a href="{{crumb.url}}">{{crumb.season.one().titleLong}}</a><span class="pr-crumbs-space"></span>{% endif %}
+			{% if crumb.period|length %}<a href="{{crumb.url}}">{{crumb.period.one().titleLong}} ({{crumb.period.one().slug |upper}}{{ crumb.label|ucfirst|replace('-', ' ') }})</a><span class="pr-crumbs-space"></span>{% endif %}
+			{% if crumb.typeCadre == 'mesocycle' or crumb.typeCadre == 'macrocycle' %}<a href="{{crumb.url}}">{{ crumb.label|ucfirst|replace('-', ' ') }}</a>{% endif %}
+			{% endfor %}
+		</div>
+		{% endif %}
+	</section><!-- end header -->
+	
+	
+	{% if entry.type == 'session' %}
+	<section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session">
+		
+		<div class="uk-h4 uk-margin-remove pr-session-group"><a href="{{entry.group.one().url}}">{{entry.group.one().title}}</a></div>
+		<h1 class="uk-h2 uk-margin-remove pr-session-title">{{entry.schedule|date('l, d F Y') |ucfirst }} – {{entry.schedule|time('short') }}</h1>
+	
+		{% set session = entry %}
+		{% include 'sessions/session-block.html' %}
+		
+		{% set parent = craft.entries.ancestorOf(entry).order('lft desc').first() %}
+		{% if parent.volume|length %}
+		<div class="uk-text-meta uk-text-small uk-margin-bottom pr-session-metrics">
+			{% set vol = parent.volume.value %}
+			{% set volT = 4-vol %}
+			{% set int = parent.volume.value %}
+			{% set intT = 4-int %}
+			<div class="pr-session-volume">Volume: {% for i in range(1, vol) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, volT) %}<i class="far fa-star"></i>{% endfor %}</div>
+			<div class="pr-session-intensity">Intensité: {% for i in range(1, int) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, intT) %}<i class="far fa-star"></i>{% endfor %}</div>
+		</div>
+		{% endif %}
+	
+	</section><!-- end session -->
+	{% endif %}
+	
+	{% if entry.type == 'cadre' %}
+	<section class="pr-cadre">
+		<section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-cadre-header">
+			
+			<h1 class="uk-h2">
+				<span class="pr-cadre-title">
+				{% if entry.season|length %}{{entry.season.one().titleLong}} {{ entry.label|ucfirst|replace('-', ' ') }}<br />{% endif %}
+				{% if entry.period|length %}{{entry.period.one().titleLong}} ({{entry.period.one().slug |upper}}{{ entry.label|ucfirst|replace('-', ' ') }})<br />{% endif %}
+				{% if entry.typeCadre == 'mesocycle' or entry.typeCadre == 'macrocycle' %}{{ entry.label|ucfirst|replace('-', ' ') }}{% endif %}
+				</span>
+				
+				{% if entry.typeCadre == 'mesocycle' or entry.typeCadre == 'macrocycle' %}
+				<span class="uk-text-meta uk-text-small uk-margin-bottom uk-float-right pr-cadre-metrics">
+					{% set vol = entry.volume.value %}
+					{% set volT = 4-vol %}
+					{% set int = entry.volume.value %}
+					{% set intT = 4-int %}
+				<div class="pr-cadre-volume">Volume: {% for i in range(1, vol) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, volT) %}<i class="far fa-star"></i>{% endfor %}</div>
+				<div class="pr-cadre-intensity">Intensité: {% for i in range(1, int) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, intT) %}<i class="far fa-star"></i>{% endfor %}</div>
+				</span>
+				{% endif %}
+			</h1>
+			<div class="" uk-grid>
+				<div class="uk-width-2-3">
+					<ul class="pr-no-print">
+						{% nav page in entry.getDescendants() %}
+						<li>
+							<a href="{{ page.url }}" uk-tooltip="{% if page.type == 'session' %}Session{% else %}{{ page.typeCadre|capitalize }}{% endif %}">
+								{% if page.group|length %}{{page.group.one().title}}{% endif %}
+								{% if page.typeCadre == 'season' %}{{page.season.one().titleLong}}
+								{% elseif page.typeCadre == 'period' %}{{page.period.one().titleLong}}
+								{% else %}{{ page.label|ucfirst|replace('-', ' ') }}{% endif %}
+								{% if page.type == 'session' %}{{page.schedule|date('l')|ucfirst}}-{{page.schedule|time('short')}}{% endif %}
+							</a>
+                
+							{% ifchildren %}
+							<ul>
+								{% children %}
+							</ul>
+							{% endifchildren %}
+						</li>
+						{% endnav %}
+					</ul>
+				</div>
+				<div class="uk-width-1-3">
+					
+				</div>
+			</div>
+		</section>
+		
+		{% if entry.typeCadre == 'mesocycle' or entry.typeCadre == 'macrocycle' %}
+		<section class="uk-section uk-section-small uk-container uk-container-expand pr-cadre-sessions">
+			{% for session in entry.getDescendants().orderBy('schedule asc') %}
+			<h2 class="uk-h3 uk-margin-remove pr-cadre-session-group">{{session.group.one().title}}</h2>
+				<h3 class="uk-h4 uk-margin-remove pr-cadre-session-heading">{{session.schedule|date('l') |ucfirst }} – {{session.schedule|time('short') }}</h3>
+				{% include 'sessions/session-block-horizontal.html' %}
+			{% endfor %}
+		</section><!-- end cycle -->
+		{% endif %}
+			
+	</section><!-- end session -->
+	{% endif %}
+
+	<section class="uk-section uk-section-small uk-container uk-container-small uk-width-xlarge pr-no-print">
+		<a class="uk-button uk-button-link" href="{{siteUrl}}/admin/entries/sessions/new" target="_blank">New</a>
+	</section>
+</section>
+
+	<style>
+	@media print {
+		.pr-session {
+			font-size: 85%;
+		}
+	}
+
+	</style>
+
+{% endblock %}
