@@ -1,0 +1,18 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-container uk-container-small uk-width-xlarge">
+
+	<h1>Athlètes</h1>
+	{% set athletes = craft.entries.section('athletes').all() %}
+	<ul>
+		{% for athlete in athletes %}
+		<li><a href="{{ athlete.url }}">{{ athlete.title }}</a></li>
+		{% endfor %}
+	</ul>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,1675 @@
+categoryGroups:
+  cc846254-6504-4de7-9e13-7bd2d2367deb:
+    handle: category
+    name: Catégorie
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: '1'
+        template: categorie/_category
+        uriFormat: 'categorie/{slug}'
+    structure:
+      maxLevels: null
+      uid: f7b0f93d-c820-4611-a196-a1c48d89e207
+  ec4288e2-4500-4d5d-8e3b-c5315c73a9e5:
+    fieldLayouts:
+      007cc4ed-a79a-4c35-9a53-619bd6e4fc3b:
+        tabs:
+          -
+            fields:
+              c3b8b4fa-a835-44c6-88e0-fb5c59dea236:
+                required: '0'
+                sortOrder: '1'
+            name: Contenu
+            sortOrder: '1'
+    handle: periods
+    name: Périodes
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: '1'
+        template: periods/_category
+        uriFormat: 'periods/{slug}'
+    structure:
+      maxLevels: null
+      uid: b79f4772-f4b7-43cb-81d4-27a220c4f463
+  f7e5aebd-f410-49b8-a35f-c64225d8330e:
+    fieldLayouts:
+      58a1d084-03b4-4f84-b21b-0756b3607d18:
+        tabs:
+          -
+            fields:
+              c3b8b4fa-a835-44c6-88e0-fb5c59dea236:
+                required: '0'
+                sortOrder: '1'
+            name: Contenu
+            sortOrder: '1'
+    handle: seasons
+    name: Saisons
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: '1'
+        template: seasons/_category
+        uriFormat: 'seasons/{slug}'
+    structure:
+      maxLevels: null
+      uid: 7a672688-a6db-46f3-b00d-96f409fc9e5d
+dateModified: 1548398983
+email:
+  fromEmail: ravemiki@gmail.com
+  fromName: Program
+  transportType: craft\mail\transportadapters\Sendmail
+fieldGroups:
+  10acb5a7-545e-4f3c-8a31-5ac44a10b756:
+    name: Globals
+  3ced2627-78ff-43fa-ade2-0a0cb7c21fab:
+    name: Sessions
+  526ec529-5380-43b1-8247-f48ef2841268:
+    name: Exercices
+  7bb5923c-0d0c-48f4-ab74-b473994097ef:
+    name: Documents
+  884240e2-c116-4a96-8393-6a882081b090:
+    name: Feedback
+  ca69e2b7-71de-4db4-b851-c8ee908cd95a:
+    name: Athletes
+  d0230d9f-115e-4ddd-b98c-9d29252c44aa:
+    name: Programmes
+  e730fb1f-6842-4f95-affd-e3753369561a:
+    name: Groups
+  ef418ff1-1cf3-4111-98d7-6f8417671431:
+    name: Common
+fields:
+  0c7cac97-f7d1-488e-bf1b-4c0458fa05d7:
+    contentColumnType: string
+    fieldGroup: e730fb1f-6842-4f95-affd-e3753369561a
+    handle: athletes
+    instructions: ''
+    name: Athletes
+    searchable: true
+    settings:
+      limit: ''
+      localizeRelations: false
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:164708d5-007a-4f8b-afdc-fb6439769d4c'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  2f2023b7-c437-4775-b5f1-0ee0a488f885:
+    contentColumnType: text
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: repetitionsMaximum
+    instructions: 'Nombre maximum de répétitions'
+    name: 'Répétitions maximum'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  30cc9531-2560-471c-8f84-d286665296bc:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: period
+    instructions: 'Si le type sélectionné est une période, sélectionner une période. Sinon laisser vide.'
+    name: Période
+    searchable: '1'
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: false
+      selectionLabel: 'Sélectionner une période'
+      source: 'group:ec4288e2-4500-4d5d-8e3b-c5315c73a9e5'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
+  34e8ad2d-141a-4dd2-adeb-d93ac731526b:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: volume
+    instructions: 'Si le type sélectionné est un cycle, préciser le volume général du cycle. Sinon laisser vide.'
+    name: Volume
+    searchable: '1'
+    settings:
+      options:
+        -
+          default: ''
+          label: ''
+          value: ''
+        -
+          default: ''
+          label: '1'
+          value: BAS
+        -
+          default: ''
+          label: '2'
+          value: MOYEN
+        -
+          default: ''
+          label: '3'
+          value: HAUT
+        -
+          default: ''
+          label: '4'
+          value: TRESHAUT
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  534e8a35-cbdc-4383-a56e-be3d431b8279:
+    contentColumnType: smallint(2)
+    fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
+    handle: feelGlobal
+    instructions: 'Entre 1 et 10, ressenti global du jour (fatigue, douleur, humeur…)'
+    name: feelGlobal
+    searchable: '1'
+    settings:
+      decimals: 0
+      defaultValue: null
+      max: '10'
+      min: '0'
+      size: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  5df3778b-04f3-4ae6-b43e-aa0e340da018:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciceIntensite
+    instructions: 'Intensité de l''exercice'
+    name: Intensité
+    searchable: '1'
+    settings:
+      options:
+        -
+          default: '1'
+          label: ''
+          value: ''
+        -
+          default: ''
+          label: '1'
+          value: BASSE
+        -
+          default: ''
+          label: '2'
+          value: MOYENNE
+        -
+          default: ''
+          label: '3'
+          value: HAUTE
+        -
+          default: ''
+          label: '4'
+          value: TRESHAUTE
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  76df3cb9-3c9d-4dcd-aca5-6394967e5e68:
+    contentColumnType: smallint(2)
+    fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
+    handle: feelSpecificStatic
+    instructions: 'Entre 1 et 10, ressenti de la douleur de la zone blessée au repos (marche, debout, assis, dans le lit)'
+    name: feelSpecificStatic
+    searchable: '1'
+    settings:
+      decimals: 0
+      defaultValue: null
+      max: '10'
+      min: '0'
+      size: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  9362358b-02c2-48e4-a234-4e6792238502:
+    contentColumnType: text
+    fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
+    handle: feedbackComment
+    instructions: ''
+    name: feedbackComment
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  98ed190e-a2dc-4a0f-b982-3629b211081e:
+    contentColumnType: string
+    fieldGroup: ca69e2b7-71de-4db4-b851-c8ee908cd95a
+    handle: program
+    instructions: ''
+    name: Program
+    searchable: '1'
+    settings:
+      limit: ''
+      localizeRelations: false
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:5ccfe3de-4791-4b33-845e-6e114fe82084'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  a13ee685-7a24-41b4-ab58-90b66fa74f30:
+    contentColumnType: text
+    fieldGroup: 10acb5a7-545e-4f3c-8a31-5ac44a10b756
+    handle: siteTrainer
+    instructions: ''
+    name: Entraîneur
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  a8612d26-0a54-4d84-b23a-e82e96d1e3a8:
+    contentColumnType: string
+    fieldGroup: d0230d9f-115e-4ddd-b98c-9d29252c44aa
+    handle: programCategory
+    instructions: ''
+    name: 'Program category'
+    searchable: true
+    settings:
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      source: 'taggroup:775cb83f-1c2f-4c3a-8066-20147433e0cb'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Tags
+  a8ecdf16-a091-472a-9db5-fca1fd1508fe:
+    contentColumnType: string
+    fieldGroup: 7bb5923c-0d0c-48f4-ab74-b473994097ef
+    handle: document
+    instructions: ''
+    name: Document
+    searchable: '1'
+    settings:
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:2dd93a18-f5e8-4ef3-aca5-942393f5b0e3'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: false
+      restrictFiles: ''
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:3c9b8217-f52a-4a04-8007-23f979d5dc65'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources:
+        - 'volume:2dd93a18-f5e8-4ef3-aca5-942393f5b0e3'
+      targetSiteId: null
+      useSingleFolder: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  b61f3891-a0f6-4236-9f92-3b82b68b0e7f:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: season
+    instructions: 'Si le type sélectionné est une saison, sélectionner une saison. Sinon laisser vide.'
+    name: Saison
+    searchable: '1'
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: false
+      selectionLabel: Saison
+      source: 'group:f7e5aebd-f410-49b8-a35f-c64225d8330e'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
+  b908d230-d0d8-4e7a-bc66-1fe9db45fb80:
+    contentColumnType: string
+    fieldGroup: d0230d9f-115e-4ddd-b98c-9d29252c44aa
+    handle: athlete
+    instructions: ''
+    name: Athlete
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:164708d5-007a-4f8b-afdc-fb6439769d4c'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  bc5e7114-d4ae-4ed3-bd59-d98de61ad98c:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: group
+    instructions: ''
+    name: Groupe
+    searchable: '1'
+    settings:
+      limit: ''
+      localizeRelations: false
+      selectionLabel: 'Ajouter un groupe'
+      source: null
+      sources:
+        - 'section:fdf3d7ef-5a17-44e1-8509-8e65f8a4469f'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  c006ee1a-5196-434f-b072-f424df5f8dac:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: block
+    instructions: ''
+    name: Block
+    searchable: true
+    settings:
+      contentTable: '{{%matrixcontent_block}}'
+      localizeBlocks: false
+      maxBlocks: ''
+      minBlocks: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  c3b8b4fa-a835-44c6-88e0-fb5c59dea236:
+    contentColumnType: text
+    fieldGroup: ef418ff1-1cf3-4111-98d7-6f8417671431
+    handle: titleLong
+    instructions: ''
+    name: 'Titre long'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  c4762b05-814b-4de5-a578-dcc351308119:
+    contentColumnType: datetime
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: schedule
+    instructions: ''
+    name: Schedule
+    searchable: '1'
+    settings:
+      minuteIncrement: '30'
+      showDate: true
+      showTime: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Date
+  d36a4987-7777-474e-81c3-72d7fb679d50:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: difficulty
+    instructions: ''
+    name: Difficulté
+    searchable: '1'
+    settings:
+      options:
+        -
+          default: '1'
+          label: ''
+          value: ''
+        -
+          default: ''
+          label: '1'
+          value: EASY
+        -
+          default: ''
+          label: '2'
+          value: MEDIUM
+        -
+          default: ''
+          label: '3'
+          value: DIFFICULT
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  d93ac312-40b1-4e6e-8b55-39836d01b82b:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: intensite
+    instructions: 'Si le type sélectionné est un cycle, préciser l''intensité générale du cycle. Sinon laisser vide.'
+    name: Intensité
+    searchable: '1'
+    settings:
+      options:
+        -
+          default: ''
+          label: ''
+          value: ''
+        -
+          default: ''
+          label: '1'
+          value: BASSE
+        -
+          default: ''
+          label: '2'
+          value: MOYENNE
+        -
+          default: ''
+          label: '3'
+          value: HAUTE
+        -
+          default: ''
+          label: '4'
+          value: TRESHAUTE
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  dd6b78be-6cd9-4445-a22a-3dfa97e4ce31:
+    contentColumnType: text
+    fieldGroup: ef418ff1-1cf3-4111-98d7-6f8417671431
+    handle: groupDescription
+    instructions: ''
+    name: Description
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '2'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  e1b477e2-9d51-4603-a667-1ccee17a558e:
+    contentColumnType: text
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciceDescription
+    instructions: ''
+    name: Description
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  e4727068-eadc-49a3-b3ad-8805e260c87b:
+    contentColumnType: smallint(2)
+    fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
+    handle: feelSpecificDynamic
+    instructions: 'Entre 1 et 10, ressenti de la douleur de la zone blessée en mouvement spécifique (exercices, mouvements spécifiques, marche/course, etc.)'
+    name: feelSpecificDynamic
+    searchable: '1'
+    settings:
+      decimals: 0
+      defaultValue: null
+      max: '10'
+      min: '0'
+      size: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  e8842511-fe46-46da-8f8b-1677b704c27b:
+    contentColumnType: text
+    fieldGroup: ca69e2b7-71de-4db4-b851-c8ee908cd95a
+    handle: athleteBio
+    instructions: ''
+    name: 'Athlete biography'
+    searchable: '1'
+    settings:
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\ckeditor\Field
+  e950b49f-9028-49df-8245-1d57a8ca0134:
+    contentColumnType: text
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: label
+    instructions: 'Préciser la position ou l''appellation dans le cycle ou la période'
+    name: Label
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  e98eb415-814f-47c8-ad05-0b2ffdafc220:
+    contentColumnType: text
+    fieldGroup: ef418ff1-1cf3-4111-98d7-6f8417671431
+    handle: description
+    instructions: ''
+    name: Description
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  edda9181-7bea-4a15-b3a8-fc1e19b8224e:
+    contentColumnType: string
+    fieldGroup: ef418ff1-1cf3-4111-98d7-6f8417671431
+    handle: illustration
+    instructions: ''
+    name: Illustration
+    searchable: '1'
+    settings:
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:3c9b8217-f52a-4a04-8007-23f979d5dc65'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: false
+      restrictFiles: ''
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:3c9b8217-f52a-4a04-8007-23f979d5dc65'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources:
+        - 'volume:3c9b8217-f52a-4a04-8007-23f979d5dc65'
+      targetSiteId: null
+      useSingleFolder: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  ee08c5e6-a524-446b-8ee1-7132e4e34738:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciceType
+    instructions: ''
+    name: 'Type d''exercice'
+    searchable: '1'
+    settings:
+      limit: null
+      localizeRelations: false
+      selectionLabel: 'Ajouter un type'
+      source: 'taggroup:7471bba6-2c27-46d5-8177-5c1a1efd9191'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Tags
+  ee924309-4095-4333-93e2-97c77da9c73d:
+    contentColumnType: text
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: note
+    instructions: ''
+    name: Note
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  ef5f6e4a-345a-44c8-bbfd-d383f989ab09:
+    contentColumnType: string
+    fieldGroup: ef418ff1-1cf3-4111-98d7-6f8417671431
+    handle: category
+    instructions: ''
+    name: Catégorie
+    searchable: '1'
+    settings:
+      branchLimit: ''
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      source: 'group:cc846254-6504-4de7-9e13-7bd2d2367deb'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
+  f079d2a5-ca95-4845-ada0-aa44ddcad249:
+    contentColumnType: text
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: repetitionsMinimum
+    instructions: 'Nombre minimum de répétitions'
+    name: 'Répétitions minimum'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  f541e4e4-3a06-4f46-add4-7e2015561996:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: typeCadre
+    instructions: 'Type du cadre'
+    name: Type
+    searchable: '1'
+    settings:
+      options:
+        -
+          default: ''
+          label: ''
+          value: ''
+        -
+          default: ''
+          label: Mésocycle
+          value: mesocycle
+        -
+          default: ''
+          label: Macrocycle
+          value: macrocycle
+        -
+          default: ''
+          label: Période
+          value: period
+        -
+          default: ''
+          label: Saison
+          value: season
+        -
+          default: ''
+          label: Camp
+          value: camp
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+globalSets:
+  594801e1-731f-45d0-a3b2-cb44ed9f94fd:
+    fieldLayouts:
+      f1f286d6-7cd9-4cfa-983b-bc83a41b040d:
+        tabs:
+          -
+            fields:
+              a13ee685-7a24-41b4-ab58-90b66fa74f30:
+                required: '0'
+                sortOrder: '2'
+              e98eb415-814f-47c8-ad05-0b2ffdafc220:
+                required: '0'
+                sortOrder: '1'
+            name: Contenu
+            sortOrder: '1'
+    handle: site
+    name: Site
+matrixBlockTypes:
+  0262fd69-3be1-4b59-96f4-cf52a1dde7f3:
+    field: c006ee1a-5196-434f-b072-f424df5f8dac
+    fieldLayouts:
+      cec0799a-67f9-4139-95e7-74abc6c4fde4:
+        tabs:
+          -
+            fields:
+              201f34fa-c8db-4417-bf13-b3ee07e962bc:
+                required: false
+                sortOrder: 1
+              53b2f866-9ccb-479c-9da7-30e2b9ce5f52:
+                required: false
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
+    fields:
+      201f34fa-c8db-4417-bf13-b3ee07e962bc:
+        contentColumnType: string
+        fieldGroup: null
+        handle: informations
+        instructions: ''
+        name: Informations
+        searchable: true
+        settings:
+          columns:
+            19:
+              width: ''
+            20:
+              width: 20%
+            21:
+              width: 20%
+          contentTable: '{{%stc_1_informations}}'
+          fieldLayout: table
+          localizeBlocks: false
+          maxRows: ''
+          minRows: ''
+          selectionLabel: ''
+          staticField: '1'
+        translationKeyFormat: null
+        translationMethod: site
+        type: verbb\supertable\fields\SuperTableField
+      53b2f866-9ccb-479c-9da7-30e2b9ce5f52:
+        contentColumnType: text
+        fieldGroup: null
+        handle: text
+        instructions: ''
+        name: Contenu
+        searchable: true
+        settings:
+          charLimit: '500'
+          code: ''
+          columnType: text
+          initialRows: '2'
+          multiline: '1'
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+    handle: free
+    name: 'Block libre'
+    sortOrder: 2
+  adda2526-2991-452e-a305-32fb10279611:
+    field: c006ee1a-5196-434f-b072-f424df5f8dac
+    fieldLayouts:
+      8da7f552-db83-408f-8625-548315e4168a:
+        tabs:
+          -
+            fields:
+              2c889e37-0288-437c-826c-9aac44e30715:
+                required: false
+                sortOrder: 2
+              c8082218-ff2b-4612-897e-ef3b97883521:
+                required: false
+                sortOrder: 1
+            name: Content
+            sortOrder: 1
+    fields:
+      2c889e37-0288-437c-826c-9aac44e30715:
+        contentColumnType: string
+        fieldGroup: null
+        handle: exercices
+        instructions: ''
+        name: Exercices
+        searchable: true
+        settings:
+          columns:
+            6:
+              width: 12%
+            7:
+              width: 8%
+            8:
+              width: 8%
+            9:
+              width: 8%
+            10:
+              width: ''
+            22:
+              width: ''
+          contentTable: '{{%stc_2_exercices}}'
+          fieldLayout: table
+          localizeBlocks: false
+          maxRows: ''
+          minRows: ''
+          selectionLabel: ''
+          staticField: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: verbb\supertable\fields\SuperTableField
+      c8082218-ff2b-4612-897e-ef3b97883521:
+        contentColumnType: string
+        fieldGroup: null
+        handle: informations
+        instructions: ''
+        name: Informations
+        searchable: true
+        settings:
+          columns:
+            16:
+              width: ''
+            17:
+              width: 10%
+            18:
+              width: 10%
+            41:
+              width: 20%
+          contentTable: '{{%stc_2_informations}}'
+          fieldLayout: table
+          localizeBlocks: false
+          maxRows: ''
+          minRows: ''
+          selectionLabel: ''
+          staticField: '1'
+        translationKeyFormat: null
+        translationMethod: site
+        type: verbb\supertable\fields\SuperTableField
+    handle: block
+    name: Block
+    sortOrder: 1
+  dc7c9ac7-f4e2-4394-aa9e-42f56a37828b:
+    field: c006ee1a-5196-434f-b072-f424df5f8dac
+    fieldLayouts:
+      02e0fe60-95cb-4377-baec-36563ca48a6f:
+        tabs:
+          -
+            fields:
+              32602418-0f48-4eea-a88e-ecc23721d769:
+                required: false
+                sortOrder: 1
+              9fd198ca-c208-49ec-8435-6bb38f91a59b:
+                required: false
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
+    fields:
+      32602418-0f48-4eea-a88e-ecc23721d769:
+        contentColumnType: string
+        fieldGroup: null
+        handle: blockType
+        instructions: ''
+        name: 'Block type'
+        searchable: true
+        settings:
+          limit: '1'
+          localizeRelations: false
+          selectionLabel: ''
+          source: null
+          sources:
+            - 'section:c177c53b-3fe4-4647-9118-c2910caf5cda'
+            - 'section:dd43b99d-4c6f-43c4-a045-44e80ef9a01c'
+            - 'section:5ccfe3de-4791-4b33-845e-6e114fe82084'
+          targetSiteId: null
+          viewMode: null
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Entries
+      9fd198ca-c208-49ec-8435-6bb38f91a59b:
+        contentColumnType: integer(10)
+        fieldGroup: null
+        handle: coefficient
+        instructions: 'Series coefficient (not repetitions)'
+        name: Coefficient
+        searchable: true
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: null
+          min: '0'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+    handle: blockType
+    name: 'Block type'
+    sortOrder: 3
+plugins:
+  ckeditor:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  cp-field-inspect:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  dumper:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  element-api:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  feed-me:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.1
+    settings: null
+  matrixtoolbar:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.4
+    settings: null
+  route-map:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  super-table:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 2.0.7
+    settings: null
+  tag-manager:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  venveo-bulk-edit:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.1
+    settings: null
+sections:
+  164708d5-007a-4f8b-afdc-fb6439769d4c:
+    enableVersioning: '1'
+    entryTypes:
+      f5f4ce0a-1f6f-4724-9063-4305ae949e82:
+        fieldLayouts:
+          7f9be592-a269-4288-923e-22a296915491:
+            tabs:
+              -
+                fields:
+                  e8842511-fe46-46da-8f8b-1677b704c27b:
+                    required: false
+                    sortOrder: 1
+                name: Athletes
+                sortOrder: 1
+        handle: athletes
+        hasTitleField: true
+        name: Athletes
+        sortOrder: 1
+        titleFormat: ''
+        titleLabel: Titre
+    handle: athletes
+    name: Athletes
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: athletes/_entry
+        uriFormat: 'athletes/{slug}'
+    type: channel
+  28e5a8b7-46cc-4cec-b3b4-c6e8b4bf7753:
+    enableVersioning: '1'
+    entryTypes:
+      14ca5d87-a20b-4c05-8f4e-659be352f249:
+        handle: feedback
+        hasTitleField: '1'
+        name: Feedback
+        sortOrder: '1'
+        titleFormat: null
+        titleLabel: Titre
+    handle: feedback
+    name: Feedback
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: feedback/_entry
+        uriFormat: 'feedback/{slug}'
+    type: channel
+  5ccfe3de-4791-4b33-845e-6e114fe82084:
+    enableVersioning: true
+    entryTypes:
+      45050106-0a86-4a84-87b5-f830b790fa26:
+        fieldLayouts:
+          a61b7ab5-e11e-4ac0-8f70-9b05263c81ab:
+            tabs:
+              -
+                fields:
+                  a8612d26-0a54-4d84-b23a-e82e96d1e3a8:
+                    required: false
+                    sortOrder: 2
+                  b908d230-d0d8-4e7a-bc66-1fe9db45fb80:
+                    required: false
+                    sortOrder: 1
+                  c006ee1a-5196-434f-b072-f424df5f8dac:
+                    required: false
+                    sortOrder: 4
+                  e98eb415-814f-47c8-ad05-0b2ffdafc220:
+                    required: false
+                    sortOrder: 3
+                name: Contenu
+                sortOrder: 1
+        handle: programmes
+        hasTitleField: false
+        name: Programmes
+        sortOrder: 1
+        titleFormat: '{% if athlete|length %}{athlete.one().slug}-{% endif %}{% if programCategory|length %}{programCategory.one().slug}{% endif %}'
+        titleLabel: ''
+    handle: programs
+    name: Programs
+    propagateEntries: true
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: true
+        hasUrls: true
+        template: programs/_entry
+        uriFormat: 'programs/{slug}'
+    type: channel
+  85ec63bb-c558-477d-80d4-44715736a3ad:
+    enableVersioning: '1'
+    entryTypes:
+      eb83ef1f-1687-41f7-a975-19cd5d3198c9:
+        fieldLayouts:
+          a9794b4e-9b8a-4bd2-b5d5-028e931ff27d:
+            tabs:
+              -
+                fields:
+                  2f2023b7-c437-4775-b5f1-0ee0a488f885:
+                    required: '0'
+                    sortOrder: '8'
+                  5df3778b-04f3-4ae6-b43e-aa0e340da018:
+                    required: '0'
+                    sortOrder: '6'
+                  d36a4987-7777-474e-81c3-72d7fb679d50:
+                    required: '0'
+                    sortOrder: '5'
+                  e1b477e2-9d51-4603-a667-1ccee17a558e:
+                    required: '0'
+                    sortOrder: '1'
+                  edda9181-7bea-4a15-b3a8-fc1e19b8224e:
+                    required: '0'
+                    sortOrder: '3'
+                  ee08c5e6-a524-446b-8ee1-7132e4e34738:
+                    required: '0'
+                    sortOrder: '4'
+                  ee924309-4095-4333-93e2-97c77da9c73d:
+                    required: '0'
+                    sortOrder: '2'
+                  f079d2a5-ca95-4845-ada0-aa44ddcad249:
+                    required: '0'
+                    sortOrder: '7'
+                name: Contenu
+                sortOrder: '1'
+        handle: exercices
+        hasTitleField: '1'
+        name: Exercices
+        sortOrder: '1'
+        titleFormat: null
+        titleLabel: Titre
+    handle: exercices
+    name: Exercices
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: exercices/_entry
+        uriFormat: 'exercices/{slug}'
+    type: channel
+  a02b1764-9552-4b36-9a02-d282fecd5c26:
+    enableVersioning: '1'
+    entryTypes:
+      f766208d-8004-4675-ab8a-d1f49d5b1508:
+        fieldLayouts:
+          23cba243-9584-47fb-8ab6-d7e5e49b41f9:
+            tabs:
+              -
+                fields:
+                  a8ecdf16-a091-472a-9db5-fca1fd1508fe:
+                    required: '0'
+                    sortOrder: '1'
+                name: Documents
+                sortOrder: '1'
+        handle: documents
+        hasTitleField: '1'
+        name: Documents
+        sortOrder: '1'
+        titleFormat: null
+        titleLabel: Titre
+    handle: documents
+    name: Documents
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: documents/_entry
+        uriFormat: 'documents/{slug}'
+    type: channel
+  c177c53b-3fe4-4647-9118-c2910caf5cda:
+    enableVersioning: '1'
+    entryTypes:
+      8d2bbcbd-e853-4f07-99c4-306b290f0967:
+        fieldLayouts:
+          17c4134b-b69c-49d5-88d0-1f647572fd32:
+            tabs:
+              -
+                fields:
+                  c006ee1a-5196-434f-b072-f424df5f8dac:
+                    required: '0'
+                    sortOrder: '1'
+                name: Contenu
+                sortOrder: '1'
+        handle: block
+        hasTitleField: '1'
+        name: Block
+        sortOrder: '1'
+        titleFormat: null
+        titleLabel: Titre
+    handle: block
+    name: Block
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: block/_entry
+        uriFormat: 'block/{slug}'
+    type: channel
+  dd43b99d-4c6f-43c4-a045-44e80ef9a01c:
+    enableVersioning: '1'
+    entryTypes:
+      454d787f-48c0-4db0-bdcc-82a01073fcc7:
+        fieldLayouts:
+          0931f31e-fa11-415a-9499-9fc11467c03c:
+            tabs:
+              -
+                fields:
+                  5df3778b-04f3-4ae6-b43e-aa0e340da018:
+                    required: '0'
+                    sortOrder: '4'
+                  c006ee1a-5196-434f-b072-f424df5f8dac:
+                    required: '0'
+                    sortOrder: '5'
+                  d36a4987-7777-474e-81c3-72d7fb679d50:
+                    required: '0'
+                    sortOrder: '3'
+                  e98eb415-814f-47c8-ad05-0b2ffdafc220:
+                    required: '0'
+                    sortOrder: '1'
+                  ef5f6e4a-345a-44c8-bbfd-d383f989ab09:
+                    required: '0'
+                    sortOrder: '2'
+                name: Contenu
+                sortOrder: '1'
+        handle: drills
+        hasTitleField: '1'
+        name: Drills
+        sortOrder: '1'
+        titleFormat: null
+        titleLabel: Titre
+    handle: drills
+    name: Drills
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: drills/_entry
+        uriFormat: 'drills/{slug}'
+    structure:
+      maxLevels: null
+      uid: 464101ed-80dd-4e38-85df-ce3d7256efce
+    type: structure
+  ddbfa1ed-e85e-4d08-a969-6c4064ccb3b1:
+    enableVersioning: '1'
+    entryTypes:
+      00a76084-c996-403b-a0e4-cd540f33478e:
+        fieldLayouts:
+          c1d7516a-9a5c-4c29-8641-8720896b895b:
+            tabs:
+              -
+                fields:
+                  30cc9531-2560-471c-8f84-d286665296bc:
+                    required: '0'
+                    sortOrder: '3'
+                  34e8ad2d-141a-4dd2-adeb-d93ac731526b:
+                    required: '0'
+                    sortOrder: '5'
+                  b61f3891-a0f6-4236-9f92-3b82b68b0e7f:
+                    required: '0'
+                    sortOrder: '2'
+                  d93ac312-40b1-4e6e-8b55-39836d01b82b:
+                    required: '0'
+                    sortOrder: '6'
+                  e950b49f-9028-49df-8245-1d57a8ca0134:
+                    required: '0'
+                    sortOrder: '4'
+                  f541e4e4-3a06-4f46-add4-7e2015561996:
+                    required: '0'
+                    sortOrder: '1'
+                name: Paramètres
+                sortOrder: '1'
+        handle: cadre
+        hasTitleField: '0'
+        name: Cadre
+        sortOrder: '2'
+        titleFormat: '{% if object.parent %}{object.parent.slug}-{% endif %}{% if season|length %}{season.one().slug}-{% endif %}{% if period|length %}{period.one().slug}-{% endif %}{label}'
+        titleLabel: null
+      8800c5e1-5868-4faa-8677-5a749fc588af:
+        fieldLayouts:
+          35d1417f-2a26-431a-b714-d7f08bc6ec6b:
+            tabs:
+              -
+                fields:
+                  bc5e7114-d4ae-4ed3-bd59-d98de61ad98c:
+                    required: '0'
+                    sortOrder: '1'
+                  c006ee1a-5196-434f-b072-f424df5f8dac:
+                    required: '0'
+                    sortOrder: '3'
+                  c4762b05-814b-4de5-a578-dcc351308119:
+                    required: '1'
+                    sortOrder: '2'
+                name: Sessions
+                sortOrder: '1'
+        handle: session
+        hasTitleField: '0'
+        name: Session
+        sortOrder: '1'
+        titleFormat: '{% if group|length %}{group.one().slug}-{% endif %}{% if object.parent %}{object.parent.slug}-{% endif %}{schedule|date(''l'')}-{schedule|time(''short'')}'
+        titleLabel: null
+    handle: sessions
+    name: Sessions
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: sessions/_entry
+        uriFormat: 'sessions/{slug}'
+    structure:
+      maxLevels: null
+      uid: 7f94ee63-c5fb-47ec-a181-3efe0db4cec9
+    type: structure
+  fdf3d7ef-5a17-44e1-8509-8e65f8a4469f:
+    enableVersioning: '1'
+    entryTypes:
+      a9759bbe-41ee-4055-aab6-7c994629ecc4:
+        fieldLayouts:
+          e786c3c1-e93d-4dc0-b31e-0cf1a6150d78:
+            tabs:
+              -
+                fields:
+                  0c7cac97-f7d1-488e-bf1b-4c0458fa05d7:
+                    required: false
+                    sortOrder: 2
+                  dd6b78be-6cd9-4445-a22a-3dfa97e4ce31:
+                    required: false
+                    sortOrder: 1
+                name: Contenu
+                sortOrder: 1
+        handle: groups
+        hasTitleField: true
+        name: Groups
+        sortOrder: 1
+        titleFormat: ''
+        titleLabel: Titre
+    handle: groups
+    name: Groups
+    propagateEntries: '1'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: '1'
+        hasUrls: '1'
+        template: groups/_entry
+        uriFormat: 'groups/{slug}'
+    structure:
+      maxLevels: null
+      uid: dc71325e-de64-43ae-9bf9-c851182e5ace
+    type: structure
+siteGroups:
+  a9f93c5e-d5a7-42d9-9262-d19fdf450700:
+    name: Program
+sites:
+  4e96ab5d-0392-4e75-8653-3c34b085005b:
+    baseUrl: '@web'
+    handle: default
+    hasUrls: '1'
+    language: fr
+    name: Prathletics
+    primary: '1'
+    siteGroup: a9f93c5e-d5a7-42d9-9262-d19fdf450700
+    sortOrder: '1'
+superTableBlockTypes:
+  5be5dd65-77fe-44ed-aef0-cfa535ca3e8d:
+    field: 201f34fa-c8db-4417-bf13-b3ee07e962bc
+    fieldLayouts:
+      20700458-6c41-4cc2-a1d0-88de22610ade:
+        tabs:
+          -
+            fields:
+              248a9221-a4a7-4ee9-9106-d72c4c4a7512:
+                required: false
+                sortOrder: 3
+              b1e9d059-66c3-472a-96b7-192f90fcf864:
+                required: false
+                sortOrder: 1
+              d8b6d7d4-d422-4410-95ca-0402aadfb8a4:
+                required: false
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
+    fields:
+      248a9221-a4a7-4ee9-9106-d72c4c4a7512:
+        contentColumnType: integer(10)
+        fieldGroup: null
+        handle: rest
+        instructions: ''
+        name: Pause
+        searchable: true
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: null
+          min: '0'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+      b1e9d059-66c3-472a-96b7-192f90fcf864:
+        contentColumnType: text
+        fieldGroup: null
+        handle: heading
+        instructions: ''
+        name: Titre
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      d8b6d7d4-d422-4410-95ca-0402aadfb8a4:
+        contentColumnType: integer(10)
+        fieldGroup: null
+        handle: time
+        instructions: ''
+        name: Temps
+        searchable: true
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: null
+          min: '0'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+  a9d294ff-3413-44d5-a13c-a3fd8e0508f8:
+    field: c8082218-ff2b-4612-897e-ef3b97883521
+    fieldLayouts:
+      f9e58be1-7506-426b-abd9-35ff2da464ef:
+        tabs:
+          -
+            fields:
+              18bff533-16d5-440d-b3cb-99fa1a0659aa:
+                required: false
+                sortOrder: 4
+              79036709-5663-49bd-bbe2-4f8341bac542:
+                required: false
+                sortOrder: 2
+              87116fa0-f548-43c0-88f9-42cf24a1599b:
+                required: false
+                sortOrder: 3
+              c8f9ba2b-8783-4a82-b48e-49fe725d9189:
+                required: false
+                sortOrder: 1
+            name: Content
+            sortOrder: 1
+    fields:
+      18bff533-16d5-440d-b3cb-99fa1a0659aa:
+        contentColumnType: text
+        fieldGroup: null
+        handle: note
+        instructions: ''
+        name: Note
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      79036709-5663-49bd-bbe2-4f8341bac542:
+        contentColumnType: integer(10)
+        fieldGroup: null
+        handle: time
+        instructions: ''
+        name: Temps
+        searchable: true
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: null
+          min: '0'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+      87116fa0-f548-43c0-88f9-42cf24a1599b:
+        contentColumnType: integer(10)
+        fieldGroup: null
+        handle: rest
+        instructions: ''
+        name: Pause
+        searchable: true
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: null
+          min: '0'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+      c8f9ba2b-8783-4a82-b48e-49fe725d9189:
+        contentColumnType: text
+        fieldGroup: null
+        handle: heading
+        instructions: ''
+        name: Titre
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+  f2d57595-1186-4c7c-9267-1f6ccc781ae1:
+    field: 2c889e37-0288-437c-826c-9aac44e30715
+    fieldLayouts:
+      944bed2d-f413-4b59-84bc-39610a8d497c:
+        tabs:
+          -
+            fields:
+              0bdca590-ded5-4b6b-bd3c-fdc15febc58f:
+                required: false
+                sortOrder: 5
+              17c2e0a0-7e3e-4d7d-a22f-f05880e4dd72:
+                required: false
+                sortOrder: 6
+              835c8d29-9b87-4ecc-82ff-714ffb3f26c4:
+                required: false
+                sortOrder: 2
+              8df9f9f4-d101-4a53-9d0d-b6bb38070fe9:
+                required: false
+                sortOrder: 3
+              f7cb8863-1c72-41be-a9ca-12e7525b47a5:
+                required: false
+                sortOrder: 1
+              fa22b9c0-7858-4dcf-91a1-ced858e036ad:
+                required: false
+                sortOrder: 4
+            name: Content
+            sortOrder: 1
+    fields:
+      0bdca590-ded5-4b6b-bd3c-fdc15febc58f:
+        contentColumnType: text
+        fieldGroup: null
+        handle: rest
+        instructions: ''
+        name: Pause
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      17c2e0a0-7e3e-4d7d-a22f-f05880e4dd72:
+        contentColumnType: text
+        fieldGroup: null
+        handle: note
+        instructions: ''
+        name: Note
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      835c8d29-9b87-4ecc-82ff-714ffb3f26c4:
+        contentColumnType: text
+        fieldGroup: null
+        handle: exercice
+        instructions: ''
+        name: Exercice
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      8df9f9f4-d101-4a53-9d0d-b6bb38070fe9:
+        contentColumnType: integer(10)
+        fieldGroup: null
+        handle: series
+        instructions: ''
+        name: Séries
+        searchable: true
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: null
+          min: '0'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+      f7cb8863-1c72-41be-a9ca-12e7525b47a5:
+        contentColumnType: string
+        fieldGroup: null
+        handle: exerciceRelation
+        instructions: ''
+        name: Exercice
+        searchable: true
+        settings:
+          limit: ''
+          localizeRelations: false
+          selectionLabel: Ajouter
+          source: null
+          sources:
+            - 'section:85ec63bb-c558-477d-80d4-44715736a3ad'
+          targetSiteId: null
+          viewMode: null
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Entries
+      fa22b9c0-7858-4dcf-91a1-ced858e036ad:
+        contentColumnType: integer(10)
+        fieldGroup: null
+        handle: repetitions
+        instructions: ''
+        name: Répétitions
+        searchable: true
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: null
+          min: '0'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+system:
+  edition: solo
+  live: true
+  name: Prathletics
+  schemaVersion: 3.1.22
+  timeZone: Europe/Rome
+tagGroups:
+  7471bba6-2c27-46d5-8177-5c1a1efd9191:
+    handle: exercices
+    name: Exercices
+  775cb83f-1c2f-4c3a-8066-20147433e0cb:
+    handle: injuries
+    name: Injuries
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: ''
+  photoVolumeUid: null
+  requireEmailVerification: true
+volumes:
+  2dd93a18-f5e8-4ef3-aca5-942393f5b0e3:
+    handle: documents
+    hasUrls: '1'
+    name: Documents
+    settings:
+      path: '@contenuBasePath/doc/'
+    sortOrder: '2'
+    type: craft\volumes\Local
+    url: '@web/contenu/doc/'
+  3c9b8217-f52a-4a04-8007-23f979d5dc65:
+    handle: exercices
+    hasUrls: '1'
+    name: Exercices
+    settings:
+      path: '@contenuBasePath/exercices/'
+    sortOrder: '1'
+    type: craft\volumes\Local
+    url: '@web/contenu/exercices/'

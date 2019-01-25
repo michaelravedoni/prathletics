@@ -1,11 +1,11 @@
 <template>
-  <div class="pr-drills">
+  <div class="pr-programs">
     <section class="uk-section uk-container uk-container-small uk-width-xlarge">
-      <h1>Programmes et drills</h1>
-      <div v-for="category in drills">
+      <h1>Programes personnalisés</h1>
+      <div v-for="category in programs">
         <h2>{{category.title}}</h2>
         <ul>
-          <li v-for="a in category.drills"><router-link :to="'/drills/'+a.id">{{ a.title|capitalize }}</router-link></li>
+          <li v-for="a in category.programs"><router-link :to="'/programs/'+a.id">{{ a.title|capitalize }}</router-link></li>
         </ul>
       </div>
     </section>
@@ -17,11 +17,11 @@
 // import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
-  name: 'drills',
+  name: 'programs',
   components: {},
   data() {
     return {
-      drills: [],
+      programs: [],
       apiUrl: process.env.VUE_APP_CRAFT_API_URL,
       backendUrl: process.env.VUE_APP_CRAFT_BACKEND_URL,
       trainerName: process.env.VUE_APP_TRAINER_NAME,
@@ -36,28 +36,28 @@ export default {
     getData() {
       // When online, fetch data from api
       if (navigator.onLine) {
-        this.drills = JSON.parse(localStorage.getItem('drills'));
-        console.log('drills fetched from localStorage (online)');
+        this.programs = JSON.parse(localStorage.getItem('programs'));
+        console.log('programs fetched from localStorage (online)');
         this.fetchData();
       } else {
         // When offline, fetch data from cache
-        this.drills = JSON.parse(localStorage.getItem('drills'));
-        console.log('drills fetched from localStorage (offline)');
+        this.programs = JSON.parse(localStorage.getItem('programs'));
+        console.log('programs fetched from localStorage (offline)');
         this.$Progress.finish();
       }
     },
     fetchData() {
-      this.$http.get(`${this.apiUrl}drills.json`)
+      this.$http.get(`${this.apiUrl}programs.json`)
         .then((response) => {
-          const groupedDrills = _.chain(response.body.data).groupBy('category.title').toPairs().map(currentData => _.zipObject(['title', 'drills'], currentData))
+          const groupedprograms = _.chain(response.body.data).groupBy('category[0].title').toPairs().map(currentData => _.zipObject(['title', 'programs'], currentData))
             .value();
-          this.drills = groupedDrills;
-          console.log('drills fetched from API');
-          localStorage.setItem('drills', JSON.stringify(groupedDrills));
+          this.programs = groupedprograms;
+          console.log('programs fetched from API');
+          localStorage.setItem('programs', JSON.stringify(groupedprograms));
           this.$Progress.finish();
-          console.log('drills sended to localStorage');
+          console.log('programs sended to localStorage');
         }, (response) => {
-          console.log('Error while fetching drills from api');
+          console.log('Error while fetching programs from api');
           this.$Progress.fail();
         });
     },

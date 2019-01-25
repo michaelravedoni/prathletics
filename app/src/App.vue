@@ -15,6 +15,7 @@
 						<div class="uk-navbar-right">
 							<ul class="uk-navbar-nav uk-visible@m">
 								<li><router-link to="/groups">Groupes</router-link></li>
+								<li><router-link to="/athletes">Athlètes</router-link></li>
 								<li><router-link to="/drills">P. &amp; drills</router-link></li>
 							</ul>
 							<a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon uk-toggle href="#off-menu"></a>
@@ -29,6 +30,7 @@
 					<button class="uk-offcanvas-close" type="button" uk-close></button>
 					<ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical uk-nav-parent-icon" onclick="UIkit.offcanvas('#off-menu').hide();">
 						<li><router-link to="/groups">Groupes</router-link></li>
+						<li><router-link to="/athletes">Athlètes</router-link></li>
 						<li><router-link to="/drills">P. &amp; drills</router-link></li>
 						<!--<li><router-link to="/sessions">Sessions</router-link></li>
 						<li><router-link to="/documents">Documents</router-link></li>-->

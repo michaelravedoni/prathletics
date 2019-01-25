@@ -19,9 +19,10 @@
 
     <section v-if="session.type == 'session'" class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session-blocks">
 
-      <div v-for="b in session.blocks" class="pr-block">
+      <div v-for="(b, index) in session.blocks" class="pr-block">
         <div class="pr-block-informations">
-          <span class="pr-block-heading">{{b.heading}}</span><span v-if="b.time" class="pr-block-time">{{b.time}}'</span>&nbsp;<span v-if="b.rest" class="pr-block-rest">[{{b.rest}}']<span v-if="b.note" class="pr-block-note">{{b.note}}</span></span>
+          <span class="pr-block-heading">{{b.heading}} <router-link  :to="'/live?section=sessions&pageId='+session.id+'&blockIndex='+index"><i class="far fa-play-circle"></i></router-link ></span>
+            <span v-if="b.time" class="pr-block-time">{{b.time}}'</span>&nbsp;<span v-if="b.rest" class="pr-block-rest">[{{b.rest}}']<span v-if="b.note" class="pr-block-note">{{b.note}}</span></span>
         </div>
         <div v-if="b.text"><vue-markdown>{{b.text}}</vue-markdown></div>
         <div v-if="b.exercices" class="pr-block-exercices"></div>
@@ -108,16 +109,16 @@ export default {
     },
     fetchData() {
       this.$http.get(`${this.apiUrl}sessions/${this.id}.json`)
-      .then((response) => {
-        this.session = response.body;
-        console.log('session fetched from API');
-        localStorage.setItem(`session-${this.id}`, JSON.stringify(response.body));
-        this.$Progress.finish();
-        console.log('session sended to localStorage');
-      }, (response) => {
-        console.log('Error while fetching session from api');
-        this.$Progress.fail();
-      });
+        .then((response) => {
+          this.session = response.body;
+          console.log('session fetched from API');
+          localStorage.setItem(`session-${this.id}`, JSON.stringify(response.body));
+          this.$Progress.finish();
+          console.log('session sended to localStorage');
+        }, (response) => {
+          console.log('Error while fetching session from api');
+          this.$Progress.fail();
+        });
     },
     print(url) {
       window.print();

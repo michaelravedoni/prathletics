@@ -1,25 +1,25 @@
 <template>
-  <section class="pr-drills">
+  <section class="pr-programs">
 
-    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-meta">
+    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-programs-meta">
       <span class="pr-no-screen pr-meta-copyright"><i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> {{trainerName}}</span>
       <span class="pr-no-screen pr-meta-printed uk-float-right">Imprimé le {{ new Date()|moment().format('D.M.Y') }}</span>
-    </section><!-- end pr-drills-meta -->
+    </section><!-- end pr-programs-meta -->
 
-    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-header">
+    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-programs-header">
       <span class="pr-no-screen pr-header-qr uk-float-right" style="width:80px;"><qr-code :text="currentUrl"error-level="H"></qr-code></span>
-      <h1 class="uk-h2 pr-drills-header-heading">{{ drill.title }}</h1>
-      <vue-markdown>{{ drill.description }}</vue-markdown>
-    </section><!-- end pr-drills-header -->
+      <h1 class="uk-h2 pr-programs-header-heading">{{ program.title }}</h1>
+      <vue-markdown>{{ program.description }}</vue-markdown>
+    </section><!-- end pr-programs-header -->
 
-    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-blocks">
+    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-programs-blocks">
       <section class="">
 
-        <div v-for="(b, index) in drill.blocks" class="pr-block">
+        <div v-for="(b, index) in program.blocks" class="pr-block">
           <div class="pr-block-informations">
-            <span class="pr-block-heading">{{b.heading}} <router-link  :to="'/live?section=drills&pageId='+drill.id+'&blockIndex='+index"><i class="far fa-play-circle"></i></router-link ></span>
-              <span v-if="b.time" class="pr-block-time">{{b.time}}'</span>
-              <span v-if="b.rest" class="pr-block-rest">[{{b.rest}}]<span v-if="b.note" class="pr-block-note">{{b.note}}</span></span>
+            <span class="pr-block-heading">{{b.heading}} <router-link  :to="'/live?section=programs&pageId='+program.id+'&blockIndex='+index"><i class="far fa-play-circle"></i></router-link ></span>
+            <span v-if="b.time" class="pr-block-time">{{b.time}}'</span>
+            <span v-if="b.rest" class="pr-block-rest">[{{b.rest}}]<span v-if="b.note" class="pr-block-note">{{b.note}}</span></span>
           </div>
           <div v-if="b.text"><vue-markdown>{{b.text}}</vue-markdown></div>
           <div v-if="b.exercices" class="pr-block-exercices"></div>
@@ -38,11 +38,11 @@
           </div>
         </div>
       </section>
-    </section><!-- end pr-drills-blocks -->
+    </section><!-- end pr-programs-blocks -->
 
-    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-footer">
+    <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-programs-footer">
       <div class="uk-button-group">
-        <a class="uk-button uk-button-default uk-button-small" :href="drill.url" target="_blank">Backend</a>
+        <a class="uk-button uk-button-default uk-button-small" :href="program.url" target="_blank">Backend</a>
         <a class="uk-button uk-button-default uk-button-small" v-on:click="print(currentUrl)" target="_blank">Imprimer</a>
         <button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #qr-modal" type="button">Code Qr</button>
       </div>
@@ -50,12 +50,12 @@
       <div id="qr-modal" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
           <button class="uk-modal-close-default" type="button" uk-close></button>
-          <h2 class="uk-modal-title uk-text-center uk-text-break">Share your programm</h2>
+          <h2 class="uk-modal-title uk-text-center uk-text-break">Share your program</h2>
           <p class="uk-text-center uk-text-break">{{currentUrl}}</p>
           <div style="text-align: -webkit-center;"><qr-code :text="currentUrl"error-level="H"></qr-code></div>
         </div>
       </div>
-    </section><!-- end pr-drills-footer -->
+    </section><!-- end pr-programs-footer -->
   </section>
 </template>
 
@@ -65,11 +65,11 @@
 import VueMarkdown from 'vue-markdown';
 
 export default {
-  name: 'drill',
+  name: 'program',
   components: { VueMarkdown },
   data() {
     return {
-      drill: {},
+      program: {},
       apiUrl: process.env.VUE_APP_CRAFT_API_URL,
       trainerName: process.env.VUE_APP_TRAINER_NAME,
       currentUrl: window.location.href,
@@ -89,28 +89,28 @@ export default {
     getData() {
       // When online, fetch data from api
       if (navigator.onLine) {
-        if (localStorage.getItem(`drill-${this.id}`) !== null) {
-          this.drill = JSON.parse(localStorage.getItem(`drill-${this.id}`));
-          console.log('drill fetched from localStorage (online)');
+        if (localStorage.getItem(`program-${this.id}`) !== null) {
+          this.program = JSON.parse(localStorage.getItem(`program-${this.id}`));
+          console.log('program fetched from localStorage (online)');
         }
         this.fetchData();
       } else {
         // When offline, fetch data from cache
-        this.drill = JSON.parse(localStorage.getItem(`drill-${this.id}`));
-        console.log('drill fetched from localStorage (offline)');
+        this.program = JSON.parse(localStorage.getItem(`program-${this.id}`));
+        console.log('program fetched from localStorage (offline)');
         this.$Progress.finish();
       }
     },
     fetchData() {
-      this.$http.get(`${this.apiUrl}drills/${this.id}.json`)
+      this.$http.get(`${this.apiUrl}programs/${this.id}.json`)
         .then((response) => {
-          this.drill = response.body;
-          console.log('drill fetched from API');
-          localStorage.setItem(`drill-${this.id}`, JSON.stringify(response.body));
+          this.program = response.body;
+          console.log('program fetched from API');
+          localStorage.setItem(`program-${this.id}`, JSON.stringify(response.body));
           this.$Progress.finish();
-          console.log('drill sended to localStorage');
+          console.log('program sended to localStorage');
         }, (response) => {
-          console.log('Error while fetching drill from api');
+          console.log('Error while fetching program from api');
           this.$Progress.fail();
         });
     },
@@ -130,7 +130,7 @@ export default {
     text-shadow: unset!important;
   }
   .pr-no-print,
-  .pr-drills-footer,
+  .pr-programs-footer,
   header,
   footer {
     display: none;
@@ -138,22 +138,22 @@ export default {
   a {
     text-decoration: none;
   }
-  .pr-drills-blocks {
+  .pr-programs-blocks {
     font-size: 80%;
     padding-top: 0;
   }
-  .pr-drills-header, .pr-drills-meta {
+  .pr-programs-header, .pr-programs-meta {
     padding-top: .4em;
     padding-bottom: .2em;
     font-size: 75%;
     width: auto;
   }
-  .pr-drills-header-heading {
+  .pr-programs-header-heading {
     margin-top: 0;
     margin-bottom: 0;
   }
   .pr-meta,
-  .pr-drills-meta {
+  .pr-programs-meta {
     border-bottom: 1px solid;
   }
   .pr-meta-title {

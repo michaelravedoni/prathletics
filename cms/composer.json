@@ -1,17 +1,18 @@
 {
   "require": {
-    "craftcms/cms": "^3.0.0",
+    "craftcms/cms": "3.1.4",
     "vlucas/phpdotenv": "^2.4.0",
     "monachilada/craft-matrixtoolbar": "1.0.6",
-    "verbb/super-table": "2.0.10",
+    "verbb/super-table": "2.1.5.3",
     "studioespresso/craft-dumper": "1.3.1",
-    "verbb/feed-me": "3.0.0-beta.22",
+    "verbb/feed-me": "3.1.0",
     "mmikkel/cp-field-inspect": "1.0.5",
-    "venveo/craft-bulkedit": "v1.0.2",
+    "venveo/craft-bulkedit": "1.0.3",
     "craftcms/element-api": "2.5.4",
     "ether/tags": "v1.0.1",
     "markhuot/craftql": "^1.0.0",
-    "nystudio107/craft-routemap": "1.1.4"
+    "nystudio107/craft-routemap": "1.1.5",
+    "craftcms/ckeditor": "1.0.0-beta.2"
   },
   "autoload": {
     "psr-4": {

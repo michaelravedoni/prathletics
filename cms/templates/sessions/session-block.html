@@ -1,5 +1,6 @@
-{% for type in session.block.all() %}
-	
+{% for key, type in session.block.all() %}
+{% if coefficient is defined %}{% set coefficient = coefficient %}{% else %}{% set coefficient = 1 %}{% endif %}
+
 {% if type.type == 'free' %}
 <div class="pr-block">
 	{% for row in type.informations.all() %}
@@ -12,12 +13,12 @@
 	<div>{{ type.text|md }}</div>
 </div>
 {% endif %}
-	
+
 {% if type.type == 'block' %}
 <div class="pr-block">
 	{% for row in type.informations.all() %}
 	<div class="pr-block-informations">
-		<span class="pr-block-heading">{{ row.heading }}</span>
+		<span class="pr-block-heading">{{ row.heading }} <a href="{{ url('live') }}?pageSlug={{entry.slug}}&blockIndex={{key}}"><i class="far fa-play-circle"></i></a></span>
 		{% if row.note %}<span class="pr-block-note">{{ row.note }}</span>{% endif %}
 		{% if row.time %}<span class="pr-block-time">{{ row.time }}'</span>{% endif %}
 		{% if row.rest %}<span class="pr-block-rest">[{{ row.rest }}']</span>{% endif %}
@@ -34,11 +35,19 @@
 			<span class="pr-block-exercice-link"></span>
 			<span class="pr-block-exercice-heading">{{ row.exercice }}</span>
 			{% endif %}
-			<span class="pr-block-exercice-duration">{% if row.series %}{{ row.series }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series and row.repetitions %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</span>
+			<span class="pr-block-exercice-duration">{% if row.series %}{{ row.series * coefficient }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series and row.repetitions %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</span>
 			<span class="pr-block-exercice-note">{% if row.note %}{{ row.note }}{% endif %}</span>
 		</div>
 		{% endfor %}
 	</div>
 </div>
 {% endif %}
+
+{% if type.type == 'blockType' %}
+	{% set b = type.blockType.one() %}
+	{% set session = b %}
+	{% set coefficient = type.coefficient %}
+	{% include 'sessions/session-block.html' %}
+{% endif %}
+
 {% endfor %}

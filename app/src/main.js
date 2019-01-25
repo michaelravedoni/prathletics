@@ -9,6 +9,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
+import vbclass from 'vue-body-class';
 
 Vue.config.productionTip = false;
 
@@ -16,7 +17,8 @@ Vue.use(VueResource);
 Vue.use(VueMomentLib);
 Vue.use(Vue2Filters);
 Vue.use(VueLodash);
-Vue.use(VueProgressBar, { thickness: '5px',transition: {speed: '0.2s', opacity: '0.6s', termination: 300}, });
+Vue.use( vbclass, router );
+Vue.use(VueProgressBar, { thickness: '5px', transition: { speed: '0.2s', opacity: '0.6s', termination: 300 } });
 Vue.component('qr-code', VueQRCodeComponent);
 
 new Vue({

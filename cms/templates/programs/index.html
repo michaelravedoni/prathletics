@@ -1,0 +1,26 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-container uk-container-small uk-width-xlarge">
+
+	<h1>Programmes personnalisés</h1>
+	{% set programs = craft.entries.section('programs').all() %}
+	<nav class="">
+		{% for cat, entries in programs|group('programCategory.one()') %}
+		<h2 class="uk-h3">{{cat}}</h2>
+		<ul>
+			{% for program in entries %}
+            <li>
+                <a href="{{ program.url }}">{{program.title}}</a>
+
+            </li>
+			{% endfor %}
+		</ul>
+		{% endfor %}
+	</nav>
+
+</section>
+
+{% endblock %}

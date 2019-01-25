@@ -1,0 +1,30 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="pr-drills">
+
+	<section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-meta">
+		<span class="pr-no-print" onclick="window.print()"><i class="fas fa-print"></i></span>
+		<span class="pr-no-screen pr-meta-copyright"><i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> {{site.siteTrainer}}</span>
+		<span class="pr-no-screen pr-meta-printed uk-float-right">Imprimé le {{ now|date('d.m.Y') }}</span>
+	</section><!-- end pr-drills-meta -->
+
+	<section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-header">
+		<h1 class="uk-h2 pr-drills-header-heading">{{ entry.title }}</h1>
+		<div class="">{{ entry.description|md }}</div>
+	</section><!-- end pr-drills-header -->
+
+	<section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-blocks">
+
+		{% set session = entry %}
+		{% include 'sessions/session-block.html' %}
+
+	</section><!-- end session -->¨
+
+	<section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-footer">
+	</section><!-- end pr-drills-footer -->
+</section><!-- end pr-drills -->
+
+{% endblock %}

@@ -34,6 +34,7 @@ return [
           '@assetBaseUrl' => getenv('SITE_URL') . getenv('ASSET_BASE_URL'),
           '@contenuBasePath' => getenv('CONTENU_BASE_PATH'),
 		],
+		'useProjectConfigFile' => true,
     ],
 
     // Dev environment settings
@@ -46,10 +47,12 @@ return [
     // Staging environment settings
     'staging' => [
 		'devMode' => true,
+		'allowAdminChanges' => false,
     ],
 
     // Production environment settings
     'production' => [
         'devMode' => false,
+		'allowAdminChanges' => false,
     ],
 ];

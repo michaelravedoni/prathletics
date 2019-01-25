@@ -1,0 +1,104 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+{% set pageSlug = craft.app.request.getParam('pageSlug') %}
+{% set blockIndex = craft.app.request.getParam('blockIndex') %}
+
+{% if pageSlug %}
+{% set page = craft.entries().slug(pageSlug|literal).one() %}
+{% set block = page.block.all()[blockIndex] %}
+
+<script src="https://unpkg.com/@ionic/core@latest/dist/ionic.js"></script>
+
+<!--<a href="{{page.url}}" class="uk-button uk-button-default">Retour</a>-->
+<a href="{{page.url}}">
+	<ion-fab vertical="top" horizontal="start" slot="fixed">
+		<ion-fab-button>
+			<ion-icon name="arrow-back"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+</a>
+
+{% if coefficient is defined %}{% set coefficient = coefficient %}{% else %}{% set coefficient = 1 %}{% endif %}
+
+{% if block.type == 'block' %}
+<div class="live-block">
+	{% for row in block.informations.all() %}
+	<div class="live-block-informations uk-text-center">
+		<span class="live-block-heading">{{ row.heading }}</span>
+		{% if row.note %}<span class="live-block-note">{{ row.note }}</span>{% endif %}
+		{% if row.time %}<span class="live-block-time">{{ row.time }}'</span>{% endif %}
+		{% if row.rest %}<span class="live-block-rest">[{{ row.rest }}']</span>{% endif %}
+	</div>
+	{% endfor %}
+		<ion-slides class="live-block-exercices">
+		{% for row in block.exercices.all() %}
+		<ion-slide style="height:auto;">
+			<ion-card class="live-block-exercice">
+				{% set exerciceRelation = row.exerciceRelation.one() %}
+				{% if exerciceRelation|length %}
+					{% set image = exerciceRelation.illustration.one() %}
+					{% if image %}
+				<img src="{{ image.getUrl }}" alt="{{ image.title }}" class="live-block-exercice-image" style="width:250px;">
+					{% endif %}
+					{% endif %}
+				<ion-card-header>
+					<ion-card-subtitle class="live-block-exercice-duration">{% if row.series %}{{ row.series * coefficient }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series and row.repetitions %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</ion-card-subtitle>
+					<span class="live-block-exercice-note">{% if row.note %}{{ row.note }}{% endif %}</span>
+					<ion-card-title>{% if exerciceRelation|length %}{{ exerciceRelation.title }}{% endif %}{{ row.exercice }}</ion-card-title>
+				</ion-card-header>
+				<ion-card-content>
+					{% if exerciceRelation|length %}
+					{{ exerciceRelation.exerciceDescription|md|parseRefs|raw }}
+					<a class="uk-text-meta uk-text-small" href="{{ exerciceRelation.url }}" target="_blank"><i class="far fa-question-circle"></i></a>
+					{% endif %}
+				</ion-card-content>
+			</ion-card>
+		</ion-slide>
+		{% endfor %}
+		</ion-slides>
+</div>
+{% endif %}
+
+{% if block.type == 'blockType' %}
+	{% set b = block.blockType.one() %}
+	{% set session = b %}
+	{% set coefficient = block.coefficient %}
+Affichage live non disponible: blocktype
+	{# include 'sessions/session-live.html' #}
+{% endif %}
+
+{% else %}
+Affichage live non disponible: No parameters
+{% endif %}
+
+<script type="text/javascript">
+	var slides = document.querySelector('ion-slides');
+	slides.options = {
+		effect: 'flip',
+		grabCursor: true,
+		simulateTouch: true,
+		watchSlidesProgress: true,
+	}
+</script>
+
+<style media="screen">
+	.live-block-exercices {
+		min-height: 400px;
+		max-height: 90vh;
+		padding-top: 1em;
+		padding-bottom: 1em;
+	}
+	.live-block-exercice {
+		height: 100%;
+		width: 800px;
+		max-width: 800px;
+	}
+	.live-block-exercice-image {
+		width:250px;
+		margin: auto;
+	}
+</style>
+
+{% endblock %}

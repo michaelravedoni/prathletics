@@ -29,16 +29,14 @@ export default {
       trainerName: process.env.VUE_APP_TRAINER_NAME,
     };
   },
-	computed: {
+  computed: {
     // un accesseur (getter) calculé
-    qrUrl: function () {
+    qrUrl() {
       if (process.env.VUE_APP_URL) {
         return process.env.VUE_APP_URL;
       }
-      else {
-        return window.location.href.replace('/'+window.location.hash, '');
-      }
-    }
-  }
+      return window.location.href.replace(`/${window.location.hash}`, '');
+    },
+  },
 };
 </script>
