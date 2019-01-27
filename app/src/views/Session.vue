@@ -46,10 +46,10 @@
     </section><!-- end pr-session-blocks (type:session) -->
 
     <section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session-footer">
-      <div class="uk-button-group">
-        <a class="uk-button uk-button-default uk-button-small" :href="session.url" target="_blank">Backend</a>
-        <a class="uk-button uk-button-default uk-button-small" v-on:click="print(currentUrl)" target="_blank">Imprimer</a>
-        <button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #qr-modal" type="button">Code Qr</button>
+      <div class="uk-button-group pr-session-footer-buttons">
+        <a class="uk-button uk-button-default uk-button-small" :href="session.url" target="_blank"><i class="fas fa-cube"></i></a>
+        <a class="uk-button uk-button-default uk-button-small" v-on:click="print(currentUrl)" target="_blank"><i class="fas fa-print"></i></a>
+        <button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #qr-modal" type="button"><i class="fas fa-qrcode"></i></button>
       </div>
 
       <div id="qr-modal" uk-modal>
@@ -185,6 +185,13 @@ export default {
 }
 .pr-session-header-heading-group {
   margin-top: 1em;
+  margin-bottom: 0;
+}
+.pr-session-footer-buttons {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 0;
 }
 @media screen and (max-width: 640px) {

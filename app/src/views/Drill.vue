@@ -41,10 +41,10 @@
     </section><!-- end pr-drills-blocks -->
 
     <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-drills-footer">
-      <div class="uk-button-group">
-        <a class="uk-button uk-button-default uk-button-small" :href="drill.url" target="_blank">Backend</a>
-        <a class="uk-button uk-button-default uk-button-small" v-on:click="print(currentUrl)" target="_blank">Imprimer</a>
-        <button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #qr-modal" type="button">Code Qr</button>
+      <div class="uk-button-group pr-session-footer-buttons">
+        <a class="uk-button uk-button-default uk-button-small" :href="drill.url" target="_blank"><i class="fas fa-cube"></i></a>
+        <a class="uk-button uk-button-default uk-button-small" v-on:click="print(currentUrl)" target="_blank"><i class="fas fa-print"></i></a>
+        <button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #qr-modal" type="button"><i class="fas fa-qrcode"></i></button>
       </div>
 
       <div id="qr-modal" uk-modal>
