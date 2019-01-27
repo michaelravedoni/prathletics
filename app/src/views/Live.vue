@@ -16,6 +16,22 @@
           <template slot-scope="props">Pause: {{ props.minutes }}:{{ props.seconds }}</template>
         </countdown>
       </div>
+      <div class="stopwatch-icon" @click="showStopWatch"><i class="fas fa-stopwatch"></i></div>
+      <div class="stopwatch">
+        <div class="stopwatch-time uk-width-1-2" @click="stopTimer">{{ minutes | zeroPad }}:{{ seconds | zeroPad }}:{{ milliSeconds | zeroPad(3) }}</div>
+        <div class="stopwatch-controls uk-width-1-2">
+          <span class="uk-icon uk-margin-large-right stopwatch-button" @click="startTimer" v-show="!isRunning"><i class="fas fa-play"></i></span>
+          <span class="uk-icon uk-margin-large-right stopwatch-button" @click="stopTimer" v-show="isRunning"><i class="fas fa-pause"></i></span>
+          <span class="uk-icon stopwatch-button" @click="pushTime" v-show="isRunning"><i class="fas fa-list-ol"></i></span>
+          <span class="uk-icon stopwatch-button" @click="clearAll" v-show="!isRunning"><i class="far fa-trash-alt"></i></span>
+          <span class="uk-icon stopwatch-button uk-margin-large-left" @click="showStopWatch"><i class="far fa-eye-slash"></i></span>
+        </div>
+        <ul class="uk-width-1-1" v-if="times.length">
+          <li class="item" v-for="item in times">
+            {{ item.minutes | zeroPad }}:{{ item.seconds | zeroPad }}:{{ item.milliSeconds | zeroPad(3) }}
+          </li>
+        </ul>
+      </div>
       <hooper class="live-block-exercices" uk-height-viewport="expand: true">
         <slide v-for="e in liveBlock.exercices" class="live-block-exercice">
           <div class="uk-card uk-card-default uk-width-large">
@@ -43,6 +59,7 @@
 </template>
 
 <script>
+/* Stopwatch from https://github.com/nagasawaaaa/vue-simple-stopwatch */
 import VueMarkdown from 'vue-markdown';
 import {
   Hooper,
@@ -67,6 +84,12 @@ export default {
       live: {},
       apiUrl: process.env.VUE_APP_CRAFT_API_URL,
       currentUrl: window.location.href,
+      times: [],
+      animateFrame: 0,
+      nowTime: 0,
+      diffTime: 0,
+      startTime: 0,
+      isRunning: false,
     };
   },
   computed: {
@@ -85,6 +108,24 @@ export default {
     liveBlock() {
       return this.live.blocks[this.blockIndex];
     },
+    hours: function () {
+      return Math.floor(this.diffTime / 1000 / 60 / 60);
+    },
+    minutes: function () {
+      return Math.floor(this.diffTime / 1000 / 60) % 60;
+    },
+    seconds: function () {
+      return Math.floor(this.diffTime / 1000) % 60;
+    },
+    milliSeconds: function () {
+      return Math.floor(this.diffTime % 1000);
+    },
+  },
+  filters: {
+    zeroPad: function(value, num){
+      var num = typeof num !== 'undefined' ? num : 2;
+      return value.toString().padStart(num,"0");
+    }
   },
   created() {
     // Call method getData when created
@@ -143,6 +184,54 @@ export default {
         countdownBlockTimeE.style.display = 'inline';
       }
     },
+    /* StopWatch */
+    showStopWatch: function ()  {
+      var stopWatchContainer = document.querySelector('.stopwatch');
+      var stopWatchIcon = document.querySelector('.stopwatch-icon');
+      if (stopWatchContainer.style.display !== 'none') {
+        stopWatchContainer.style.display = 'none';
+        stopWatchIcon.style.display = 'block';
+      }
+      else {
+        stopWatchContainer.style.display = 'block';
+        stopWatchIcon.style.display = 'none';
+      }
+    },
+    setSubtractStartTime: function (time) {
+      var time = typeof time !== 'undefined' ? time : 0;
+      this.startTime = Math.floor(performance.now() - time);
+    },
+    startTimer: function () {
+      var vm = this;
+      vm.setSubtractStartTime(vm.diffTime);
+      (function loop(){
+        vm.nowTime = Math.floor(performance.now());
+        vm.diffTime = vm.nowTime - vm.startTime;
+        vm.animateFrame = requestAnimationFrame(loop);
+      }());
+      vm.isRunning = true;
+
+    },
+    stopTimer: function () {
+      this.isRunning = false;
+      cancelAnimationFrame(this.animateFrame);
+    },
+    pushTime: function () {
+      this.times.push({
+        hours: this.hours,
+        minutes: this.minutes,
+        seconds: this.seconds,
+        milliSeconds: this.milliSeconds
+      });
+    },
+    clearAll: function () {
+      this.startTime = 0;
+      this.nowTime = 0;
+      this.diffTime = 0;
+      this.times = [];
+      this.stopTimer();
+      this.animateFrame = 0;
+    },
   },
 };
 </script>
@@ -191,7 +280,34 @@ export default {
   position: relative;
   margin-left: 1rem;
 }
-
+.stopwatch,
+.stopwatch-icon {
+  position: fixed;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  max-width: 400px;
+  width: 100%;
+  z-index: 10;
+  color: white;
+  font-size: 1.2rem;
+}
+.stopwatch {
+  display: none;
+}
+.stopwatch-time {
+  display: inline-block;
+}
+.stopwatch-controls {
+  display: inline-block;
+}
+.stopwatch-button {
+  min-width: 1rem;
+}
+.stopwatch ul {
+  list-style: none;
+  margin: 0;
+  font-size: .8rem;
+}
 .hooper {
   position: relative;
   overflow: hidden;
