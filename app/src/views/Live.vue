@@ -283,8 +283,7 @@ export default {
 .stopwatch,
 .stopwatch-icon {
   position: fixed;
-  padding-top: 1rem;
-  padding-left: 1rem;
+  padding: .4rem;
   max-width: 400px;
   width: 100%;
   z-index: 10;
@@ -293,6 +292,7 @@ export default {
 }
 .stopwatch {
   display: none;
+  background-color: darkcyan;
 }
 .stopwatch-time {
   display: inline-block;
