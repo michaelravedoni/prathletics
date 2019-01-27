@@ -11,17 +11,17 @@
         <span v-for="a in session.ancestors">{{a.typeCadreLabel.titleLong}} {{a.cadreLabel.replace(/-/g, ' ')|capitalize}}</span>
       </div>
       <span class="pr-no-screen pr-header-qr uk-float-right" style="width:50px;"><qr-code :text="currentUrl"error-level="H"></qr-code></span>
-      <div class="uk-h4 pr-session-header-heading-group">
-        <router-link :to="'/groups/'+session.group.id">{{session.group.title}}</router-link>
+      <div class="uk-h4 pr-session-header-heading-group" v-if="session.groups">
+        <router-link :to="'/groups/'+session.groups[0].id">{{session.groups[0].title}}</router-link>
       </div>
-      <h1 class="uk-h2 pr-session-header-heading">{{session.schedule.date|moment().locale('fr').format("dddd D")|capitalize}} — {{session.schedule.date|moment().locale('fr').format("HH:mm")}}</h1>
+      <h1 class="uk-h2 pr-session-header-heading" v-if="session.schedule">{{session.schedule.date|moment().locale('fr').format("dddd D")|capitalize}} — {{session.schedule.date|moment().locale('fr').format("HH:mm")}}</h1>
     </section><!-- end pr-session-header -->
 
     <section v-if="session.type == 'session'" class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session-blocks">
 
       <div v-for="(b, index) in session.blocks" class="pr-block">
         <div class="pr-block-informations">
-          <span class="pr-block-heading">{{b.heading}} <router-link  :to="'/live?section=sessions&pageId='+session.id+'&blockIndex='+index"><i class="far fa-play-circle"></i></router-link ></span>
+          <span class="pr-block-heading">{{b.heading}} <router-link v-if="!b.text" :to="'/live?section=sessions&pageId='+session.id+'&blockIndex='+index"><i class="far fa-play-circle"></i></router-link ></span>
             <span v-if="b.time" class="pr-block-time">{{b.time}}'</span>&nbsp;<span v-if="b.rest" class="pr-block-rest">[{{b.rest}}']<span v-if="b.note" class="pr-block-note">{{b.note}}</span></span>
         </div>
         <div v-if="b.text"><vue-markdown>{{b.text}}</vue-markdown></div>
@@ -130,6 +130,11 @@ export default {
 <style>
 .pr-block {
   margin-bottom: 1em;
+}
+.pr-block p,
+.pr-block ul {
+  margin-bottom: .1rem;
+  margin-top: .1rem;
 }
 .pr-block-informations {
   border-bottom: 1px solid #999;
