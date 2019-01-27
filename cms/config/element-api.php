@@ -233,7 +233,15 @@ return [
 				'criteria' => ['id' => $entryId],
 				'one' => true,
 				'transformer' => function(Entry $entry) {
-					$group = \craft\elements\Entry::find()->section('groups')->relatedTo($entry)->one();
+					$groupsA = \craft\elements\Entry::find()->section('groups')->relatedTo($entry)->all();
+					foreach ($groupsA as $g) {
+						$groups[] = [
+							'title' => $g->title,
+							'id' => $g->id,
+							'url' => $g->url,
+							'slug' => $g->slug,
+						];
+					}
 					$relatedProgramsA = \craft\elements\Entry::find()->section('programs')->relatedTo($entry)->all();
 					$relatedPrograms = [];
 					foreach ($relatedProgramsA as $programm) {
@@ -245,7 +253,7 @@ return [
 							'category' => $programm->programCategory->first(),
 						];
 					}
-					$relatedSessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($group)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->limit(9)->all();
+					$relatedSessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($groupsA)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->limit(9)->all();
 					$relatedSessions = [];
 					foreach ($relatedSessionsA as $session) {
 						$relatedSessions[] = [
@@ -256,19 +264,16 @@ return [
 							'schedule' => $session->schedule,
 						];
 					}
-					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->one();
+					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($groupsA)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->one();
+					$scheduleString = !empty($next['schedule']) ? new DateTime($next['schedule']->format(DATE_ATOM)) : null;
 					return [
+						'debug' => $groupsA[0]['id'],
 						'title' => $entry->title,
 						'id' => $entry->id,
 						'url' => $entry->url,
 						'slug' => $entry->slug,
 						'athleteBio' => $entry->athleteBio,
-						'group'  => !empty($group) ? [
-							'title' => $group['title'],
-							'id' => $group['id'],
-							'uri' => $group['uri'],
-							'slug' => $group['slug'],
-						] : null,
+						'groups'  => !empty($groups) ? $groups : null,
 						'programs' => $relatedPrograms,
 						'sessions' => $relatedSessions,
 						'nextSession' => !empty($next) ? [
@@ -333,7 +338,7 @@ return [
 				'criteria' => ['id' => $entryId],
 				'one' => true,
 				'transformer' => function(Entry $entry) {
-					$relatedAthletesA = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule asc')->schedule('>= '. date(DATE_ATOM))->limit(5)->all();
+					$relatedAthletesA = \craft\elements\Entry::find()->relatedTo($entry)->section('athletes')->all();
 					$relatedAthletes = [];
 					foreach ($relatedAthletesA as $athlete) {
 						$relatedAthletes[] = [
@@ -344,7 +349,7 @@ return [
 							'slug' => $athlete->slug,
 						];
 					}
-					$relatedSessionsA = \craft\elements\Entry::find()->relatedTo($entry)->orderBy('schedule desc')->limit(9)->all();
+					$relatedSessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule desc')->limit(9)->all();
 					$relatedSessions = [];
 					foreach ($relatedSessionsA as $session) {
 						$relatedSessions[] = [
