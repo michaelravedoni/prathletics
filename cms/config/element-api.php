@@ -349,7 +349,7 @@ return [
 							'slug' => $athlete->slug,
 						];
 					}
-					$relatedSessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule desc')->limit(9)->all();
+					$relatedSessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->limit(9)->all();
 					$relatedSessions = [];
 					foreach ($relatedSessionsA as $session) {
 						$relatedSessions[] = [
@@ -369,7 +369,7 @@ return [
 						'groupDescription' => $entry->groupDescription,
 						'athletes' => $relatedAthletes,
 						'sessions' => $relatedSessions,
-						'nextSession' => [
+						'nextSession' => !empty($next) ? [
 							'title' => $next['title'],
 							'id' => $next['id'],
 							'uri' => $next['uri'],
@@ -377,7 +377,7 @@ return [
 							'schedule' => $next['schedule'],
 							'uri' => $next['uri'],
 							'uri' => $next['uri'],
-						],
+						] : null,
 					];
 				},
 				'pretty' => true,

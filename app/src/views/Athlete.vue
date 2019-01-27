@@ -4,6 +4,7 @@
     <section class="uk-section uk-section-xsmall">
       <h1 class="uk-h2">{{ athlete.title }}</h1>
       <vue-markdown>{{ athlete.athleteBio }}</vue-markdown>
+      <p><span v-for="g in athlete.groups"> - <router-link :to="'/groups/'+g.id">{{g.title}}</router-link></span></p>
     </section>
 
     <section class="uk-section uk-section-xsmall" v-if="athlete.programs">
@@ -18,7 +19,7 @@
       <p v-else>Pas de sessions programmées pour le moment</p>
 
       <h2 class="uk-h2">Prochaines sessions</h2>
-      <li v-if="athlete.sessions" v-for="s in athlete.sessions"><router-link :to="'/sessions/'+s.id">{{s.schedule.date|moment().locale('fr').format("dddd D")|capitalize}}-{{s.schedule.date|moment().locale('fr').format("HH:mm")}}</router-link></li>
+      <li v-if="athlete.sessions.length" v-for="s in athlete.sessions"><router-link :to="'/sessions/'+s.id">{{s.schedule.date|moment().locale('fr').format("dddd D")|capitalize}}-{{s.schedule.date|moment().locale('fr').format("HH:mm")}}</router-link></li>
       <p v-else>Pas de sessions programmées pour le moment</p>
     </section>
 

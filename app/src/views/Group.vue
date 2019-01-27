@@ -4,6 +4,7 @@
     <section class="uk-section uk-section-xsmall">
       <h1 class="uk-h2">{{ group.title }}</h1>
       <p>{{ group.groupDescription }}</p>
+      <p><span v-for="a in group.athletes"> - <router-link :to="'/athletes/'+a.id">{{a.title}}</router-link></span></p>
     </section>
 
     <section class="uk-section uk-section-xsmall">
@@ -12,7 +13,9 @@
       <p v-else>Pas de sessions programmées pour le moment</p>
 
       <h2 class="uk-h2">Prochaines sessions</h2>
-      <li v-if="group.sessions" v-for="s in group.sessions"><router-link :to="'/sessions/'+s.id">{{s.schedule.date|moment().locale('fr').format("dddd D")|capitalize}}-{{s.schedule.date|moment().locale('fr').format("HH:mm")}}</router-link></li>
+      <ul v-if="group.sessions.length">
+        <li v-for="s in group.sessions"><router-link v-if="s.schedule" :to="'/sessions/'+s.id">{{s.schedule.date|moment().locale('fr').format("dddd D")|capitalize}}-{{s.schedule.date|moment().locale('fr').format("HH:mm")}}</router-link></li>
+      </ul>
       <p v-else>Pas de sessions programmées pour le moment</p>
     </section>
 
