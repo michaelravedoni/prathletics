@@ -6,21 +6,21 @@
 <section class="uk-section uk-container">
 	
 	<h1>Documents</h1>
-	{% set exercices = craft.entries.section('documents').all() %}
+	{% set exercises = craft.entries.section('documents').all() %}
 	<table class="uk-table uk-table-justify uk-table-divider">
 		<thead>
 			<tr>
-				<th class="">Exercice</th>
+				<th class="">exercise</th>
 				<th>Types</th>
 				<th class="uk-width-large">Description</th>
 			</tr>
 		</thead>
 		<tbody>
-			{% for e in exercices %}
+			{% for e in exercises %}
 			<tr>
 				<td><a href="{{e.url}}">{{e.title}}</a></td>
-				<td>{% for t in e.exerciceType %}<span class="uk-text-meta">{{t.title}}</span>{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>
-				<td>{{e.exerciceDescription}}</td>
+				<td>{% for t in e.exerciseType %}<span class="uk-text-meta">{{t.title}}</span>{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>
+				<td>{{e.exerciseDescription}}</td>
 			</tr>
 			{% endfor %}
 		</tbody>

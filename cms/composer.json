@@ -12,7 +12,8 @@
     "ether/tags": "v1.0.1",
     "markhuot/craftql": "^1.0.0",
     "nystudio107/craft-routemap": "1.1.5",
-    "craftcms/ckeditor": "1.0.0-beta.2"
+    "craftcms/ckeditor": "1.0.0-beta.2",
+    "charliedev/element-map": "1.2.1"
   },
   "autoload": {
     "psr-4": {

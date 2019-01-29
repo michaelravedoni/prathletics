@@ -1,31 +1,142 @@
 categoryGroups:
-  cc846254-6504-4de7-9e13-7bd2d2367deb:
-    handle: category
-    name: Catégorie
+  247b8d36-22f0-4b41-b5df-26b3af7927b7:
+    fieldLayouts:
+      d77c19a7-003a-469a-ac10-c885f66fc391:
+        tabs:
+          -
+            fields:
+              2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+                required: false
+                sortOrder: 1
+            name: Categories
+            sortOrder: 1
+    handle: exerciseTypes
+    name: 'Exercise types'
     siteSettings:
       4e96ab5d-0392-4e75-8653-3c34b085005b:
-        hasUrls: '1'
-        template: categorie/_category
-        uriFormat: 'categorie/{slug}'
+        hasUrls: true
+        template: ''
+        uriFormat: 'exercise-types/{slug}'
+    structure:
+      maxLevels: null
+      uid: b3fe2c50-3257-45f3-b7d8-fce5a3c0466a
+  36f972d2-39d9-415d-8a45-84e8c6790e5d:
+    fieldLayouts:
+      a9f25ba2-8920-4c8a-bcde-8af7617438a6:
+        tabs:
+          -
+            fields:
+              2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+                required: false
+                sortOrder: 1
+            name: Categories
+            sortOrder: 1
+    handle: muscles
+    name: Muscles
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: true
+        template: ''
+        uriFormat: 'muscles/{slug}'
+    structure:
+      maxLevels: null
+      uid: cd762799-cfa8-4c68-be0e-86e85e37b64e
+  b284dd21-0a72-4e2c-9a1d-078231673e5d:
+    fieldLayouts:
+      68162d69-78fb-4ec2-a1c0-4b9da6ef7a42:
+        tabs:
+          -
+            fields:
+              2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+                required: false
+                sortOrder: 1
+            name: Categories
+            sortOrder: 1
+    handle: ages
+    name: Ages
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: true
+        template: ''
+        uriFormat: 'ages/{slug}'
+    structure:
+      maxLevels: null
+      uid: 9e5c7d3b-4aeb-4456-98c9-9590246bee0a
+  c2f4723c-79f7-4ecd-bd7a-0c2f0e81a461:
+    fieldLayouts:
+      927c0362-84b2-4eda-a531-b6c73cd87a20:
+        tabs:
+          -
+            fields:
+              2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+                required: false
+                sortOrder: 1
+            name: Categories
+            sortOrder: 1
+    handle: muscleContractionTypes
+    name: 'Muscle contraction types'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: true
+        template: ''
+        uriFormat: 'muscle-contraction-types/{slug}'
+    structure:
+      maxLevels: null
+      uid: 849a0a5d-c052-4697-9da4-5968e22f0385
+  cc846254-6504-4de7-9e13-7bd2d2367deb:
+    handle: programs
+    name: Programs
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: true
+        template: programs/_category
+        uriFormat: 'programs/{slug}'
     structure:
       maxLevels: null
       uid: f7b0f93d-c820-4611-a196-a1c48d89e207
+  d310971f-5ea7-4f3c-b6ce-65c0b1fd80de:
+    fieldLayouts:
+      f2ebc81a-80df-4c38-937a-5ba90f8cdbec:
+        tabs:
+          -
+            fields:
+              2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+                required: false
+                sortOrder: 2
+              e98eb415-814f-47c8-ad05-0b2ffdafc220:
+                required: false
+                sortOrder: 1
+            name: Categories
+            sortOrder: 1
+    handle: materials
+    name: Materials
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: true
+        template: ''
+        uriFormat: 'materials/{slug}'
+    structure:
+      maxLevels: null
+      uid: 38e7cab6-bd93-4695-872f-81e3328708ed
   ec4288e2-4500-4d5d-8e3b-c5315c73a9e5:
     fieldLayouts:
       007cc4ed-a79a-4c35-9a53-619bd6e4fc3b:
         tabs:
           -
             fields:
+              2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+                required: false
+                sortOrder: 2
               c3b8b4fa-a835-44c6-88e0-fb5c59dea236:
-                required: '0'
-                sortOrder: '1'
+                required: false
+                sortOrder: 1
             name: Contenu
-            sortOrder: '1'
+            sortOrder: 1
     handle: periods
-    name: Périodes
+    name: Periods
     siteSettings:
       4e96ab5d-0392-4e75-8653-3c34b085005b:
-        hasUrls: '1'
+        hasUrls: true
         template: periods/_category
         uriFormat: 'periods/{slug}'
     structure:
@@ -37,22 +148,25 @@ categoryGroups:
         tabs:
           -
             fields:
+              2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+                required: false
+                sortOrder: 2
               c3b8b4fa-a835-44c6-88e0-fb5c59dea236:
-                required: '0'
-                sortOrder: '1'
+                required: false
+                sortOrder: 1
             name: Contenu
-            sortOrder: '1'
+            sortOrder: 1
     handle: seasons
-    name: Saisons
+    name: Seasons
     siteSettings:
       4e96ab5d-0392-4e75-8653-3c34b085005b:
-        hasUrls: '1'
+        hasUrls: true
         template: seasons/_category
         uriFormat: 'seasons/{slug}'
     structure:
       maxLevels: null
       uid: 7a672688-a6db-46f3-b00d-96f409fc9e5d
-dateModified: 1548436209
+dateModified: 1548775163
 email:
   fromEmail: ravemiki@gmail.com
   fromName: Program
@@ -62,16 +176,20 @@ fieldGroups:
     name: Globals
   3ced2627-78ff-43fa-ade2-0a0cb7c21fab:
     name: Sessions
+  3ff32640-6ab3-458b-bf3d-23fae0364ac8:
+    name: Ressources
   526ec529-5380-43b1-8247-f48ef2841268:
-    name: Exercices
+    name: Exercises
   7bb5923c-0d0c-48f4-ab74-b473994097ef:
     name: Documents
   884240e2-c116-4a96-8393-6a882081b090:
     name: Feedback
+  a804ecd6-d673-4dfb-a851-afefc9580876:
+    name: Categories
   ca69e2b7-71de-4db4-b851-c8ee908cd95a:
     name: Athletes
   d0230d9f-115e-4ddd-b98c-9d29252c44aa:
-    name: Programmes
+    name: Programs
   e730fb1f-6842-4f95-affd-e3753369561a:
     name: Groups
   ef418ff1-1cf3-4111-98d7-6f8417671431:
@@ -96,13 +214,115 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Entries
-  2f2023b7-c437-4775-b5f1-0ee0a488f885:
-    contentColumnType: text
+  0f69d3c2-9e92-4550-b515-e646da10bd45:
+    contentColumnType: string
+    fieldGroup: 3ff32640-6ab3-458b-bf3d-23fae0364ac8
+    handle: licence
+    instructions: ''
+    name: Licence
+    searchable: true
+    settings:
+      options:
+        -
+          default: '1'
+          label: Copyright
+          value: copyright
+        -
+          default: ''
+          label: cc-zero
+          value: cc-zero
+        -
+          default: ''
+          label: cc-by
+          value: cc-by
+        -
+          default: ''
+          label: cc-by-sa
+          value: cc-by-sa
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  14eb72fa-a17d-4e3c-858d-af3eb5a8c955:
+    contentColumnType: string
     fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
-    handle: repetitionsMaximum
-    instructions: 'Nombre maximum de répétitions'
-    name: 'Répétitions maximum'
-    searchable: '1'
+    handle: muscleTarget
+    instructions: 'Muscle principal pour lequel l''exercice est destiné.'
+    name: 'Target muscle'
+    searchable: true
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      source: 'group:36f972d2-39d9-415d-8a45-84e8c6790e5d'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
+  1934a8cc-8239-44fc-97bd-44784de6992b:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: minimumAge
+    instructions: ''
+    name: 'Minimum age'
+    searchable: true
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      source: 'group:b284dd21-0a72-4e2c-9a1d-078231673e5d'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
+  1a718053-2763-456b-a407-364c4bea37cb:
+    contentColumnType: text
+    fieldGroup: 3ff32640-6ab3-458b-bf3d-23fae0364ac8
+    handle: ressourceSourceLink
+    instructions: ''
+    name: 'Ressource source link'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  25c26c04-d177-4485-9a12-582a398563e8:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciseType
+    instructions: ''
+    name: 'Exercise type'
+    searchable: true
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      source: 'group:247b8d36-22f0-4b41-b5df-26b3af7927b7'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
+  2c307ec5-6089-4d39-9339-3a5dd2b2a61b:
+    contentColumnType: text
+    fieldGroup: a804ecd6-d673-4dfb-a851-afefc9580876
+    handle: wikidataId
+    instructions: ''
+    name: 'Wikidata identifier'
+    searchable: true
     settings:
       charLimit: ''
       code: ''
@@ -164,6 +384,25 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  3d458092-dfb1-4320-8231-033ec6f4f835:
+    contentColumnType: string
+    fieldGroup: d0230d9f-115e-4ddd-b98c-9d29252c44aa
+    handle: programCategory
+    instructions: ''
+    name: 'Program category'
+    searchable: true
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      source: 'group:cc846254-6504-4de7-9e13-7bd2d2367deb'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
   534e8a35-cbdc-4383-a56e-be3d431b8279:
     contentColumnType: smallint(2)
     fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
@@ -183,10 +422,10 @@ fields:
   5df3778b-04f3-4ae6-b43e-aa0e340da018:
     contentColumnType: string
     fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
-    handle: exerciceIntensite
+    handle: exerciseIntensity
     instructions: 'Intensité de l''exercice'
-    name: Intensité
-    searchable: '1'
+    name: Intensity
+    searchable: true
     settings:
       options:
         -
@@ -196,22 +435,56 @@ fields:
         -
           default: ''
           label: '1'
-          value: BASSE
+          value: LOW
         -
           default: ''
           label: '2'
-          value: MOYENNE
+          value: MEDIUM
         -
           default: ''
           label: '3'
-          value: HAUTE
+          value: HIGH
         -
           default: ''
           label: '4'
-          value: TRESHAUTE
+          value: VERYHIGH
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  5e39c49e-53ac-4f23-9869-8fb5d36ca01b:
+    contentColumnType: text
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciseAlias
+    instructions: "Other names for that exercise\r\nMain name: [target|muscle|material] [exercise] [[variation]]"
+    name: Alias
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  6898d467-fd7d-4fb9-8aea-d400a1e63715:
+    contentColumnType: text
+    fieldGroup: 3ff32640-6ab3-458b-bf3d-23fae0364ac8
+    handle: ressourceCreator
+    instructions: ''
+    name: 'Ressource creator'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
   76df3cb9-3c9d-4dcd-aca5-6394967e5e68:
     contentColumnType: smallint(2)
     fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
@@ -264,6 +537,25 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Entries
+  9d6baa6c-75a1-4294-8331-527cd64b4da6:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciseMaterial
+    instructions: ''
+    name: Material
+    searchable: true
+    settings:
+      branchLimit: ''
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      source: 'group:d310971f-5ea7-4f3c-b6ce-65c0b1fd80de'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
   a13ee685-7a24-41b4-ab58-90b66fa74f30:
     contentColumnType: text
     fieldGroup: 10acb5a7-545e-4f3c-8a31-5ac44a10b756
@@ -281,12 +573,31 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  a770120e-3a23-4222-8b2a-d479b9b070e8:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciseEasier
+    instructions: ''
+    name: 'Easier exercise'
+    searchable: true
+    settings:
+      limit: ''
+      localizeRelations: false
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:85ec63bb-c558-477d-80d4-44715736a3ad'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   a8612d26-0a54-4d84-b23a-e82e96d1e3a8:
     contentColumnType: string
     fieldGroup: d0230d9f-115e-4ddd-b98c-9d29252c44aa
-    handle: programCategory
+    handle: programTag
     instructions: ''
-    name: 'Program category'
+    name: 'Program tag'
     searchable: true
     settings:
       limit: null
@@ -347,12 +658,12 @@ fields:
   b908d230-d0d8-4e7a-bc66-1fe9db45fb80:
     contentColumnType: string
     fieldGroup: d0230d9f-115e-4ddd-b98c-9d29252c44aa
-    handle: athlete
+    handle: programAthlete
     instructions: ''
-    name: Athlete
+    name: 'Program athlete'
     searchable: true
     settings:
-      limit: '1'
+      limit: ''
       localizeRelations: false
       selectionLabel: ''
       source: null
@@ -428,13 +739,32 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Date
+  cf74cad8-a57e-4299-96c9-80fa7846cbb4:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciseVariation
+    instructions: ''
+    name: 'Exercise variant'
+    searchable: true
+    settings:
+      limit: ''
+      localizeRelations: false
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:85ec63bb-c558-477d-80d4-44715736a3ad'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   d36a4987-7777-474e-81c3-72d7fb679d50:
     contentColumnType: string
     fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
     handle: difficulty
     instructions: ''
-    name: Difficulté
-    searchable: '1'
+    name: Difficulty
+    searchable: true
     settings:
       options:
         -
@@ -490,11 +820,11 @@ fields:
     type: craft\fields\Dropdown
   dd6b78be-6cd9-4445-a22a-3dfa97e4ce31:
     contentColumnType: text
-    fieldGroup: ef418ff1-1cf3-4111-98d7-6f8417671431
+    fieldGroup: e730fb1f-6842-4f95-affd-e3753369561a
     handle: groupDescription
     instructions: ''
     name: Description
-    searchable: '1'
+    searchable: true
     settings:
       charLimit: ''
       code: ''
@@ -508,10 +838,10 @@ fields:
   e1b477e2-9d51-4603-a667-1ccee17a558e:
     contentColumnType: text
     fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
-    handle: exerciceDescription
+    handle: exerciseDescription
     instructions: ''
     name: Description
-    searchable: '1'
+    searchable: true
     settings:
       charLimit: ''
       code: ''
@@ -586,6 +916,23 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  ea2776a4-1b66-4562-ae68-11aa4636e71c:
+    contentColumnType: text
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciseReference
+    instructions: ''
+    name: 'Exercise reference'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
   edda9181-7bea-4a15-b3a8-fc1e19b8224e:
     contentColumnType: string
     fieldGroup: ef418ff1-1cf3-4111-98d7-6f8417671431
@@ -615,14 +962,14 @@ fields:
   ee08c5e6-a524-446b-8ee1-7132e4e34738:
     contentColumnType: string
     fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
-    handle: exerciceType
+    handle: exerciseTag
     instructions: ''
-    name: 'Type d''exercice'
-    searchable: '1'
+    name: 'Exercise tag'
+    searchable: true
     settings:
       limit: null
       localizeRelations: false
-      selectionLabel: 'Ajouter un type'
+      selectionLabel: 'Ajouter un tag'
       source: 'taggroup:7471bba6-2c27-46d5-8177-5c1a1efd9191'
       sources: '*'
       targetSiteId: null
@@ -666,23 +1013,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Categories
-  f079d2a5-ca95-4845-ada0-aa44ddcad249:
-    contentColumnType: text
-    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
-    handle: repetitionsMinimum
-    instructions: 'Nombre minimum de répétitions'
-    name: 'Répétitions minimum'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\PlainText
   f541e4e4-3a06-4f46-add4-7e2015561996:
     contentColumnType: string
     fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
@@ -817,9 +1147,9 @@ matrixBlockTypes:
       2c889e37-0288-437c-826c-9aac44e30715:
         contentColumnType: string
         fieldGroup: null
-        handle: exercices
+        handle: exercises
         instructions: ''
-        name: Exercices
+        name: Exercises
         searchable: true
         settings:
           columns:
@@ -835,7 +1165,7 @@ matrixBlockTypes:
               width: ''
             22:
               width: ''
-          contentTable: '{{%stc_2_exercices}}'
+          contentTable: '{{%stc_2_exercises}}'
           fieldLayout: table
           localizeBlocks: false
           maxRows: ''
@@ -952,6 +1282,10 @@ plugins:
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
+  element-map:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   feed-me:
     enabled: '1'
     licenseKey: null
@@ -1042,6 +1376,9 @@ sections:
             tabs:
               -
                 fields:
+                  3d458092-dfb1-4320-8231-033ec6f4f835:
+                    required: false
+                    sortOrder: 3
                   a8612d26-0a54-4d84-b23a-e82e96d1e3a8:
                     required: false
                     sortOrder: 2
@@ -1050,30 +1387,30 @@ sections:
                     sortOrder: 1
                   c006ee1a-5196-434f-b072-f424df5f8dac:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   e98eb415-814f-47c8-ad05-0b2ffdafc220:
                     required: false
-                    sortOrder: 3
-                name: Contenu
+                    sortOrder: 4
+                name: Programs
                 sortOrder: 1
-        handle: programmes
+        handle: programs
         hasTitleField: false
-        name: Programmes
+        name: Programs
         sortOrder: 1
-        titleFormat: '{% if athlete|length %}{athlete.one().slug}-{% endif %}{% if programCategory|length %}{programCategory.one().slug}{% endif %}'
+        titleFormat: '{% if programAthlete|length %}{programAthlete.one().title}-{% endif %}{% if programTag|length %}{programTag.one().title}{% endif %}'
         titleLabel: ''
-    handle: programs
-    name: Programs
+    handle: programs2
+    name: Programs2
     propagateEntries: true
     siteSettings:
       4e96ab5d-0392-4e75-8653-3c34b085005b:
         enabledByDefault: true
         hasUrls: true
-        template: programs/_entry
-        uriFormat: 'programs/{slug}'
+        template: programs2/_entry
+        uriFormat: 'programs2/{slug}'
     type: channel
   85ec63bb-c558-477d-80d4-44715736a3ad:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
       eb83ef1f-1687-41f7-a975-19cd5d3198c9:
         fieldLayouts:
@@ -1081,47 +1418,62 @@ sections:
             tabs:
               -
                 fields:
-                  2f2023b7-c437-4775-b5f1-0ee0a488f885:
-                    required: '0'
-                    sortOrder: '8'
+                  14eb72fa-a17d-4e3c-858d-af3eb5a8c955:
+                    required: false
+                    sortOrder: 11
+                  1934a8cc-8239-44fc-97bd-44784de6992b:
+                    required: false
+                    sortOrder: 7
+                  25c26c04-d177-4485-9a12-582a398563e8:
+                    required: false
+                    sortOrder: 2
                   5df3778b-04f3-4ae6-b43e-aa0e340da018:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 13
+                  5e39c49e-53ac-4f23-9869-8fb5d36ca01b:
+                    required: false
+                    sortOrder: 1
+                  9d6baa6c-75a1-4294-8331-527cd64b4da6:
+                    required: false
+                    sortOrder: 8
+                  a770120e-3a23-4222-8b2a-d479b9b070e8:
+                    required: false
+                    sortOrder: 9
+                  cf74cad8-a57e-4299-96c9-80fa7846cbb4:
+                    required: false
+                    sortOrder: 10
                   d36a4987-7777-474e-81c3-72d7fb679d50:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 12
                   e1b477e2-9d51-4603-a667-1ccee17a558e:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 3
                   edda9181-7bea-4a15-b3a8-fc1e19b8224e:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 5
                   ee08c5e6-a524-446b-8ee1-7132e4e34738:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 6
                   ee924309-4095-4333-93e2-97c77da9c73d:
-                    required: '0'
-                    sortOrder: '2'
-                  f079d2a5-ca95-4845-ada0-aa44ddcad249:
-                    required: '0'
-                    sortOrder: '7'
+                    required: false
+                    sortOrder: 4
                 name: Contenu
-                sortOrder: '1'
-        handle: exercices
-        hasTitleField: '1'
+                sortOrder: 1
+        handle: exercises
+        hasTitleField: true
         name: Exercices
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Titre
-    handle: exercices
+    handle: exercises
     name: Exercices
-    propagateEntries: '1'
+    propagateEntries: true
     siteSettings:
       4e96ab5d-0392-4e75-8653-3c34b085005b:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: exercices/_entry
-        uriFormat: 'exercices/{slug}'
+        enabledByDefault: true
+        hasUrls: true
+        template: exercises/_entry
+        uriFormat: 'exercises/{slug}'
     type: channel
   a02b1764-9552-4b36-9a02-d282fecd5c26:
     enableVersioning: '1'
@@ -1184,7 +1536,7 @@ sections:
         uriFormat: 'block/{slug}'
     type: channel
   dd43b99d-4c6f-43c4-a045-44e80ef9a01c:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
       454d787f-48c0-4db0-bdcc-82a01073fcc7:
         fieldLayouts:
@@ -1192,40 +1544,43 @@ sections:
             tabs:
               -
                 fields:
-                  5df3778b-04f3-4ae6-b43e-aa0e340da018:
-                    required: '0'
-                    sortOrder: '4'
+                  3d458092-dfb1-4320-8231-033ec6f4f835:
+                    required: false
+                    sortOrder: 3
+                  a8612d26-0a54-4d84-b23a-e82e96d1e3a8:
+                    required: false
+                    sortOrder: 2
+                  b908d230-d0d8-4e7a-bc66-1fe9db45fb80:
+                    required: false
+                    sortOrder: 1
                   c006ee1a-5196-434f-b072-f424df5f8dac:
-                    required: '0'
-                    sortOrder: '5'
-                  d36a4987-7777-474e-81c3-72d7fb679d50:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 6
                   e98eb415-814f-47c8-ad05-0b2ffdafc220:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 5
                   ef5f6e4a-345a-44c8-bbfd-d383f989ab09:
-                    required: '0'
-                    sortOrder: '2'
-                name: Contenu
-                sortOrder: '1'
-        handle: drills
-        hasTitleField: '1'
-        name: Drills
-        sortOrder: '1'
-        titleFormat: null
+                    required: false
+                    sortOrder: 4
+                name: Programs
+                sortOrder: 1
+        handle: programs
+        hasTitleField: true
+        name: Programs
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Titre
-    handle: drills
-    name: Drills
-    propagateEntries: '1'
+    handle: programs
+    name: Programs
+    propagateEntries: true
     siteSettings:
       4e96ab5d-0392-4e75-8653-3c34b085005b:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: drills/_entry
-        uriFormat: 'drills/{slug}'
+        enabledByDefault: true
+        hasUrls: true
+        template: programs/_entry
+        uriFormat: 'programs/{slug}'
     structure:
-      maxLevels: null
+      maxLevels: ''
       uid: 464101ed-80dd-4e38-85df-ce3d7256efce
     type: structure
   ddbfa1ed-e85e-4d08-a969-6c4064ccb3b1:
@@ -1570,9 +1925,9 @@ superTableBlockTypes:
       835c8d29-9b87-4ecc-82ff-714ffb3f26c4:
         contentColumnType: text
         fieldGroup: null
-        handle: exercice
+        handle: exercise
         instructions: ''
-        name: Exercice
+        name: Exercise
         searchable: true
         settings:
           charLimit: ''
@@ -1603,9 +1958,9 @@ superTableBlockTypes:
       f7cb8863-1c72-41be-a9ca-12e7525b47a5:
         contentColumnType: string
         fieldGroup: null
-        handle: exerciceRelation
+        handle: exerciseRelation
         instructions: ''
-        name: Exercice
+        name: Exercise
         searchable: true
         settings:
           limit: ''
@@ -1643,8 +1998,8 @@ system:
   timeZone: Europe/Rome
 tagGroups:
   7471bba6-2c27-46d5-8177-5c1a1efd9191:
-    handle: exercices
-    name: Exercices
+    handle: exercises
+    name: Exercises
   775cb83f-1c2f-4c3a-8066-20147433e0cb:
     handle: injuries
     name: Injuries
@@ -1665,8 +2020,24 @@ volumes:
     type: craft\volumes\Local
     url: '@web/contenu/doc/'
   3c9b8217-f52a-4a04-8007-23f979d5dc65:
+    fieldLayouts:
+      beb40022-76b1-4080-b819-ddba4165cb52:
+        tabs:
+          -
+            fields:
+              0f69d3c2-9e92-4550-b515-e646da10bd45:
+                required: false
+                sortOrder: 1
+              1a718053-2763-456b-a407-364c4bea37cb:
+                required: false
+                sortOrder: 3
+              6898d467-fd7d-4fb9-8aea-d400a1e63715:
+                required: false
+                sortOrder: 2
+            name: Contenu
+            sortOrder: 1
     handle: exercices
-    hasUrls: '1'
+    hasUrls: true
     name: Exercices
     settings:
       path: '@contenuBasePath/exercices/'

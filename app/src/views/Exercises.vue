@@ -1,9 +1,9 @@
 <template>
-  <div class="pr-groups">
+  <div class="pr-exercises">
     <section class="uk-section uk-container uk-container-small uk-width-xlarge">
-      <h1>Groupes</h1>
+      <h1>Exercises</h1>
       <ul>
-        <li v-for="a in groups"><router-link :to="'/groups/'+a.id">{{ a.title|capitalize }}</router-link></li>
+        <li v-for="a in exercises"><router-link :to="'/exercises/'+a.id">{{ a.title|capitalize }}</router-link></li>
       </ul>
     </section>
   </div>
@@ -14,11 +14,11 @@
 // import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
-  name: 'home',
+  name: 'exercises',
   components: {},
   data() {
     return {
-      groups: [],
+      exercises: [],
       apiUrl: process.env.VUE_APP_CRAFT_API_URL,
       backendUrl: process.env.VUE_APP_CRAFT_BACKEND_URL,
       trainerName: process.env.VUE_APP_TRAINER_NAME,
@@ -33,28 +33,28 @@ export default {
     getData() {
       // When online, fetch data from api
       if (navigator.onLine) {
-        if (localStorage.getItem('groups') !== null) {
-          this.groups = JSON.parse(localStorage.getItem('groups'));
-          console.log('groups fetched from localStorage (online)');
+        if (localStorage.getItem('exercises') !== null) {
+          this.exercises = JSON.parse(localStorage.getItem('exercises'));
+          console.log('exercises fetched from localStorage (online)');
         }
         this.fetchData();
       } else {
         // When offline, fetch data from cache
-        this.groups = JSON.parse(localStorage.getItem('groups'));
-        console.log('groups fetched from localStorage (offline)');
+        this.exercises = JSON.parse(localStorage.getItem('exercises'));
+        console.log('exercises fetched from localStorage (offline)');
         this.$Progress.finish();
       }
     },
     fetchData() {
-      this.$http.get(`${this.apiUrl}groups.json`)
+      this.$http.get(`${this.apiUrl}exercises.json`)
         .then((response) => {
-          this.groups = response.body.data;
-          console.log('groups fetched from API');
-          localStorage.setItem('groups', JSON.stringify(response.body.data));
+          this.exercises = response.body.data;
+          console.log('exercises fetched from API');
+          localStorage.setItem('exercises', JSON.stringify(response.body.data));
           this.$Progress.finish();
-          console.log('groups sended to localStorage');
+          console.log('exercises sended to localStorage');
         }, (response) => {
-          console.log('Error while fetching groups from api');
+          console.log('Error while fetching exercises from api');
           this.$Progress.fail();
         });
     },

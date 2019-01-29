@@ -32,26 +32,26 @@
 		{% if row.rest %}<span class="live-block-rest">[{{ row.rest }}']</span>{% endif %}
 	</div>
 	{% endfor %}
-		<ion-slides class="live-block-exercices">
-		{% for row in block.exercices.all() %}
+		<ion-slides class="live-block-exercises">
+		{% for row in block.exercises.all() %}
 		<ion-slide style="height:auto;">
-			<ion-card class="live-block-exercice">
-				{% set exerciceRelation = row.exerciceRelation.one() %}
-				{% if exerciceRelation|length %}
-					{% set image = exerciceRelation.illustration.one() %}
+			<ion-card class="live-block-exercise">
+				{% set exerciseRelation = row.exerciseRelation.one() %}
+				{% if exerciseRelation|length %}
+					{% set image = exerciseRelation.illustration.one() %}
 					{% if image %}
-				<img src="{{ image.getUrl }}" alt="{{ image.title }}" class="live-block-exercice-image" style="width:250px;">
+				<img src="{{ image.getUrl }}" alt="{{ image.title }}" class="live-block-exercise-image" style="width:250px;">
 					{% endif %}
 					{% endif %}
 				<ion-card-header>
-					<ion-card-subtitle class="live-block-exercice-duration">{% if row.series %}{{ row.series * coefficient }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series and row.repetitions %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</ion-card-subtitle>
-					<span class="live-block-exercice-note">{% if row.note %}{{ row.note }}{% endif %}</span>
-					<ion-card-title>{% if exerciceRelation|length %}{{ exerciceRelation.title }}{% endif %}{{ row.exercice }}</ion-card-title>
+					<ion-card-subtitle class="live-block-exercise-duration">{% if row.series %}{{ row.series * coefficient }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series and row.repetitions %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</ion-card-subtitle>
+					<span class="live-block-exercise-note">{% if row.note %}{{ row.note }}{% endif %}</span>
+					<ion-card-title>{% if exerciseRelation|length %}{{ exerciseRelation.title }}{% endif %}{{ row.exercise }}</ion-card-title>
 				</ion-card-header>
 				<ion-card-content>
-					{% if exerciceRelation|length %}
-					{{ exerciceRelation.exerciceDescription|md|parseRefs|raw }}
-					<a class="uk-text-meta uk-text-small" href="{{ exerciceRelation.url }}" target="_blank"><i class="far fa-question-circle"></i></a>
+					{% if exerciseRelation|length %}
+					{{ exerciseRelation.exerciseDescription|md|parseRefs|raw }}
+					<a class="uk-text-meta uk-text-small" href="{{ exerciseRelation.url }}" target="_blank"><i class="far fa-question-circle"></i></a>
 					{% endif %}
 				</ion-card-content>
 			</ion-card>
@@ -84,18 +84,18 @@ Affichage live non disponible: No parameters
 </script>
 
 <style media="screen">
-	.live-block-exercices {
+	.live-block-exercises {
 		min-height: 400px;
 		max-height: 90vh;
 		padding-top: 1em;
 		padding-bottom: 1em;
 	}
-	.live-block-exercice {
+	.live-block-exercise {
 		height: 100%;
 		width: 800px;
 		max-width: 800px;
 	}
-	.live-block-exercice-image {
+	.live-block-exercise-image {
 		width:250px;
 		margin: auto;
 	}

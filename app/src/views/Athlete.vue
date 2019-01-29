@@ -8,8 +8,8 @@
     </section>
 
     <section class="uk-section uk-section-xsmall" v-if="athlete.programs">
-      <h2 class="uk-h2">Programmes personnalisés</h2>
-      <div v-for="p in athlete.programs" class="uk-card uk-card-body uk-card-small uk-card-primary"><router-link :to="'/programs/'+p.id">{{p.category.title}}</span></router-link></div>
+      <h2 class="uk-h2">Programme(s)</h2>
+      <div v-for="p in athlete.programs" class="uk-card uk-card-body uk-card-small uk-card-primary"><router-link :to="'/programs/'+p.id">{{p.title}}</span></router-link></div>
     </section>
     <p v-else>Pas de programme personnalisé pour le moment</p>
 

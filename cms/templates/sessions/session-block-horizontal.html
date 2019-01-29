@@ -22,17 +22,17 @@
 		{% if row.rest %}<span class="pr-block-rest">[{{ row.rest }}']</span>{% endif %}
 	</div>
 	{% endfor %}
-	<div class="pr-block-exercices">
-		{% for row in type.exercices.all() %}
-		<div class="pr-block-exercice">
-			{% if row.exerciceRelation.one() %}
-			<span class="pr-block-exercice-heading">{{ row.exerciceRelation.one().title }} <a href="{{ row.exerciceRelation.one().url }}" target="_blank"><i class="far fa-question-circle"></i></a></span>
+	<div class="pr-block-exercises">
+		{% for row in type.exercises.all() %}
+		<div class="pr-block-exercise">
+			{% if row.exerciseRelation.one() %}
+			<span class="pr-block-exercise-heading">{{ row.exerciseRelation.one().title }} <a href="{{ row.exerciseRelation.one().url }}" target="_blank"><i class="far fa-question-circle"></i></a></span>
 			{% endif %}
-			{% if row.exercice %}
-			<span class="pr-block-exercice-heading">{{ row.exercice }}</span>
+			{% if row.exercise %}
+			<span class="pr-block-exercise-heading">{{ row.exercise }}</span>
 			{% endif %}
-			<span class="pr-block-exercice-duration">{% if row.series %}{{ row.series }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</span>
-			<span class="pr-block-exercice-note">{% if row.note %}{{ row.note }}{% endif %}</span>
+			<span class="pr-block-exercise-duration">{% if row.series %}{{ row.series }}x{% endif %}{% if row.repetitions %}{{ row.repetitions }}{% endif %}{% if not row.series %}x{% endif %} {% if row.rest %}[{{ row.rest }}]{% endif %}</span>
+			<span class="pr-block-exercise-note">{% if row.note %}{{ row.note }}{% endif %}</span>
 		</div>
 		{% endfor %}
 	</div>

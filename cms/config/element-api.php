@@ -101,9 +101,9 @@ return [
 								break;
 								case 'block':
 								$informations = $block->informations->first();
-								$exercicesA = $block->exercices->all();
-								$exercices = [];
-								foreach ($exercicesA as $ex) {
+								$exercisesA = $block->exercises->all();
+								$exercises = [];
+								foreach ($exercisesA as $ex) {
 									$relatedE = \craft\elements\Entry::find()->relatedTo($ex)->one();
 									$illustration = \craft\elements\Asset::find()->relatedTo($relatedE)->one();
 									$relatedEProps = $relatedEProps = [
@@ -112,23 +112,21 @@ return [
 										'url' => $relatedE['url'],
 										'uri' => $relatedE['uri'],
 										'slug' => $relatedE['slug'],
-										'exerciceDescription' => $relatedE['exerciceDescription'],
+										'exerciseDescription' => $relatedE['exerciseDescription'],
 										'note' => $relatedE['note'],
 										'difficulty' => $relatedE['difficulty'],
-										'exerciceIntensite' => $relatedE['exerciceIntensite'],
-										'repetitionsMinimum' => $relatedE['repetitionsMinimum'],
-										'repetitionsMaximum' => $relatedE['repetitionsMaximum'],
+										'exerciseIntensity' => $relatedE['exerciseIntensity'],
 										'illustration' => $illustration,
 									];
 									$duration = ($ex->series ? $ex->series.'x': null).($ex->repetitions ? $ex->repetitions: null).($ex->series == null && $ex->repetitions ? 'x': null).($ex->rest ? ' ['.$ex->rest.']': null);
-									$exercices[] = [
-										'exercice' => $ex->exercice,
+									$exercises[] = [
+										'exercise' => $ex->exercise,
 										'series' => $ex->series,
 										'repetitions' => $ex->repetitions,
 										'rest' => $ex->rest,
 										'duration' => $duration,
 										'note' => $ex->note,
-										'exerciceRelation' => !empty($relatedE) ? $relatedEProps : null
+										'exerciseRelation' => !empty($relatedE) ? $relatedEProps : null
 									];
 								}
 								$blockMatrix[] = [
@@ -136,16 +134,16 @@ return [
 									'note' => $informations->note,
 									'time' => $informations->time,
 									'rest' => $informations->rest,
-									'exercices' => $exercices
+									'exercises' => $exercises
 								];
 								break;
 								case 'blockType':
 								$blockType = $block->blockType->first();
 								foreach ($blockType->getFieldValue('block')->all() as $b) {
 									$informations = $b->informations->first();
-									$exercicesA = $b->exercices->all();
-									$exercices = [];
-									foreach ($exercicesA as $ex) {
+									$exercisesA = $b->exercises->all();
+									$exercises = [];
+									foreach ($exercisesA as $ex) {
 										$relatedE = \craft\elements\Entry::find()->relatedTo($ex)->one();
 										$illustration = \craft\elements\Asset::find()->relatedTo($relatedE)->one();
 										$relatedEProps = $relatedEProps = [
@@ -154,23 +152,21 @@ return [
 											'url' => $relatedE['url'],
 											'uri' => $relatedE['uri'],
 											'slug' => $relatedE['slug'],
-											'exerciceDescription' => $relatedE['exerciceDescription'],
+											'exerciseDescription' => $relatedE['exerciseDescription'],
 											'note' => $relatedE['note'],
 											'difficulty' => $relatedE['difficulty'],
-											'exerciceIntensite' => $relatedE['exerciceIntensite'],
-											'repetitionsMinimum' => $relatedE['repetitionsMinimum'],
-											'repetitionsMaximum' => $relatedE['repetitionsMaximum'],
+											'exerciseIntensity' => $relatedE['exerciseIntensity'],
 											'illustration' => $illustration,
 										];
 										$duration = ($ex->series ? $ex->series.'x': null).($ex->repetitions ? $ex->repetitions: null).($ex->series == null && $ex->repetitions ? 'x': null).($ex->rest ? ' ['.$ex->rest.']': null);
-										$exercices[] = [
-											'exercice' => $ex->exercice,
+										$exercises[] = [
+											'exercise' => $ex->exercise,
 											'series' => $ex->series,
 											'repetitions' => $ex->repetitions,
 											'rest' => $ex->rest,
 											'duration' => $duration,
 											'note' => $ex->note,
-											'exerciceRelation' => !empty($relatedE) ? $relatedEProps : null
+											'exerciseRelation' => !empty($relatedE) ? $relatedEProps : null
 										];
 									}
 									$blockMatrix[] = [
@@ -178,7 +174,7 @@ return [
 										'note' => $informations->note,
 										'time' => $informations->time,
 										'rest' => $informations->rest,
-										'exercices' => $exercices
+										'exercises' => $exercises
 									];
 								}
 								break;
@@ -383,175 +379,36 @@ return [
 				'pretty' => true,
 			];
 		},
-		'drills.json' => function() {
-			\Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
-			return [
-				'elementType' => Entry::class,
-				'criteria' => ['section' => 'drills'],
-				'transformer' => function(Entry $entry) {
-					$categoryA = \craft\elements\Category::find()->relatedTo($entry)->all();
-					$category = [];
-					foreach ($categoryA as $cat) {
-						$category = [
-							'id' => $cat->id,
-							'title' => $cat->title,
-							'slug' => $cat->slug,
-						];
-					}
-					return [
-						'title' => $entry->title,
-						'id' => $entry->id,
-						'url' => $entry->url,
-						'slug' => $entry->slug,
-						'category' => $category,
-					];
-				},
-				'pretty' => true,
-			];
-		},
-		'drills/<entryId:\d+>.json' => function($entryId) {
-			\Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
-			return [
-				'elementType' => Entry::class,
-				'criteria' => ['id' => $entryId],
-				'one' => true,
-				'transformer' => function(Entry $entry) {
-					$categoryA = \craft\elements\Category::find()->relatedTo($entry)->all();
-					$category = [];
-					foreach ($categoryA as $cat) {
-						$category = [
-							'id' => $cat->id,
-							'title' => $cat->title,
-							'slug' => $cat->slug,
-						];
-					}
-					$blockMatrix = [];
-					if ($entry->block) {
-						foreach ($entry->getFieldValue('block')->all() as $block) {
-							switch ($block->type->handle) {
-								case 'free':
-								$informations = $block->informations->first();
-								$blockMatrix[] = [
-									'heading' => $informations->heading,
-									'note' => $informations->note,
-									'time' => $informations->time,
-									'rest' => $informations->rest,
-									'text' => $block->text,
-								];
-								break;
-								case 'block':
-								$informations = $block->informations->first();
-								$exercicesA = $block->exercices->all();
-								$exercices = [];
-								foreach ($exercicesA as $ex) {
-									$relatedE = \craft\elements\Entry::find()->relatedTo($ex)->one();
-									$illustration = \craft\elements\Asset::find()->relatedTo($relatedE)->one();
-									$relatedEProps = $relatedEProps = [
-										'title' => $relatedE['title'],
-										'id' => $relatedE['id'],
-										'url' => $relatedE['url'],
-										'uri' => $relatedE['uri'],
-										'slug' => $relatedE['slug'],
-										'exerciceDescription' => $relatedE['exerciceDescription'],
-										'note' => $relatedE['note'],
-										'difficulty' => $relatedE['difficulty'],
-										'exerciceIntensite' => $relatedE['exerciceIntensite'],
-										'repetitionsMinimum' => $relatedE['repetitionsMinimum'],
-										'repetitionsMaximum' => $relatedE['repetitionsMaximum'],
-										'illustration' => $illustration,
-									];
-									$duration = ($ex->series ? $ex->series.'x': null).($ex->repetitions ? $ex->repetitions: null).($ex->series == null && $ex->repetitions ? 'x': null).($ex->rest ? ' ['.$ex->rest.']': null);
-									$exercices[] = [
-										'exercice' => $ex->exercice,
-										'series' => $ex->series,
-										'repetitions' => $ex->repetitions,
-										'rest' => $ex->rest,
-										'duration' => $duration,
-										'note' => $ex->note,
-										'exerciceRelation' => !empty($relatedE) ? $relatedEProps : null
-									];
-								}
-								$blockMatrix[] = [
-									'heading' => $informations->heading,
-									'note' => $informations->note,
-									'time' => $informations->time,
-									'rest' => $informations->rest,
-									'exercices' => $exercices
-								];
-								break;
-								case 'blockType':
-								$blockType = $block->blockType->first();
-								foreach ($blockType->getFieldValue('block')->all() as $b) {
-									$informations = $b->informations->first();
-									$exercicesA = $b->exercices->all();
-									$exercices = [];
-									foreach ($exercicesA as $ex) {
-										$relatedE = \craft\elements\Entry::find()->relatedTo($ex)->one();
-										$illustration = \craft\elements\Asset::find()->relatedTo($relatedE)->one();
-										$relatedEProps = $relatedEProps = [
-											'title' => $relatedE['title'],
-											'id' => $relatedE['id'],
-											'url' => $relatedE['url'],
-											'uri' => $relatedE['uri'],
-											'slug' => $relatedE['slug'],
-											'exerciceDescription' => $relatedE['exerciceDescription'],
-											'note' => $relatedE['note'],
-											'difficulty' => $relatedE['difficulty'],
-											'exerciceIntensite' => $relatedE['exerciceIntensite'],
-											'repetitionsMinimum' => $relatedE['repetitionsMinimum'],
-											'repetitionsMaximum' => $relatedE['repetitionsMaximum'],
-											'illustration' => $illustration,
-										];
-										$duration = ($ex->series ? $ex->series.'x': null).($ex->repetitions ? $ex->repetitions: null).($ex->series == null && $ex->repetitions ? 'x': null).($ex->rest ? ' ['.$ex->rest.']': null);
-										$exercices[] = [
-											'exercice' => $ex->exercice,
-											'series' => $ex->series,
-											'repetitions' => $ex->repetitions,
-											'rest' => $ex->rest,
-											'duration' => $duration,
-											'note' => $ex->note,
-											'exerciceRelation' => !empty($relatedE) ? $relatedEProps : null
-										];
-									}
-									$blockMatrix[] = [
-										'heading' => $informations->heading,
-										'note' => $informations->note,
-										'time' => $informations->time,
-										'rest' => $informations->rest,
-										'exercices' => $exercices
-									];
-								}
-								break;
-							}
-						}
-					}
-					return [
-						'title' => $entry->title,
-						'id' => $entry->id,
-						'url' => $entry->url,
-						'slug' => $entry->slug,
-						'description' => $entry->description,
-						'schedule' => $entry->schedule,
-						'category' => $category,
-						'blocks'  => $entry->block ? $blockMatrix : null,
-					];
-				},
-				'pretty' => true,
-			];
-		},
 		'programs.json' => function() {
 			\Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 			return [
 				'elementType' => Entry::class,
 				'criteria' => ['section' => 'programs'],
 				'transformer' => function(Entry $entry) {
-					$category = \craft\elements\Tag::find()->relatedTo($entry)->all();
+					$tagsA = \craft\elements\Tag::find()->relatedTo($entry)->all();
+					$tags = [];
+					foreach ($tagsA as $t) {
+						$tags[] = [
+							'title' => $t->title,
+							'id' => $t->id,
+							'slug' => $t->slug,
+						];
+					}
+					$categoriesA = \craft\elements\Category::find()->relatedTo($entry)->all();
+					foreach ($categoriesA as $cat) {
+						$categories[] = [
+							'id' => $cat->id,
+							'title' => $cat->title,
+							'slug' => $cat->slug,
+						];
+					}
 					return [
 						'title' => $entry->title,
 						'id' => $entry->id,
 						'url' => $entry->url,
 						'slug' => $entry->slug,
-						'category' => $category,
+						'categories' => !empty($categories) ? $categories : null,
+						'tags' => !empty($tags) ? $tags : null,
 					];
 				},
 				'pretty' => true,
@@ -564,7 +421,24 @@ return [
 				'criteria' => ['id' => $entryId],
 				'one' => true,
 				'transformer' => function(Entry $entry) {
-					$category = \craft\elements\Tag::find()->relatedTo($entry)->all();
+					$tagsA = \craft\elements\Tag::find()->relatedTo($entry)->all();
+					$tags = [];
+					foreach ($tagsA as $t) {
+						$tags[] = [
+							'title' => $t->title,
+							'id' => $t->id,
+							'slug' => $t->slug,
+						];
+					}
+					$categoriesA = \craft\elements\Category::find()->relatedTo($entry)->all();
+					$categories = [];
+					foreach ($categoriesA as $cat) {
+						$categories[] = [
+							'id' => $cat->id,
+							'title' => $cat->title,
+							'slug' => $cat->slug,
+						];
+					}
 					$blockMatrix = [];
 					if ($entry->block) {
 						foreach ($entry->getFieldValue('block')->all() as $block) {
@@ -581,9 +455,9 @@ return [
 								break;
 								case 'block':
 								$informations = $block->informations->first();
-								$exercicesA = $block->exercices->all();
-								$exercices = [];
-								foreach ($exercicesA as $ex) {
+								$exercisesA = $block->exercises->all();
+								$exercises = [];
+								foreach ($exercisesA as $ex) {
 									$relatedE = \craft\elements\Entry::find()->relatedTo($ex)->one();
 									$illustration = \craft\elements\Asset::find()->relatedTo($relatedE)->one();
 									$relatedEProps = $relatedEProps = [
@@ -592,23 +466,21 @@ return [
 										'url' => $relatedE['url'],
 										'uri' => $relatedE['uri'],
 										'slug' => $relatedE['slug'],
-										'exerciceDescription' => $relatedE['exerciceDescription'],
+										'exerciseDescription' => $relatedE['exerciseDescription'],
 										'note' => $relatedE['note'],
 										'difficulty' => $relatedE['difficulty'],
-										'exerciceIntensite' => $relatedE['exerciceIntensite'],
-										'repetitionsMinimum' => $relatedE['repetitionsMinimum'],
-										'repetitionsMaximum' => $relatedE['repetitionsMaximum'],
+										'exerciseIntensity' => $relatedE['exerciseIntensity'],
 										'illustration' => $illustration,
 									];
 									$duration = ($ex->series ? $ex->series.'x': null).($ex->repetitions ? $ex->repetitions: null).($ex->series == null && $ex->repetitions ? 'x': null).($ex->rest ? ' ['.$ex->rest.']': null);
-									$exercices[] = [
-										'exercice' => $ex->exercice,
+									$exercises[] = [
+										'exercise' => $ex->exercise,
 										'series' => $ex->series,
 										'repetitions' => $ex->repetitions,
 										'rest' => $ex->rest,
 										'duration' => $duration,
 										'note' => $ex->note,
-										'exerciceRelation' => !empty($relatedE) ? $relatedEProps : null
+										'exerciseRelation' => !empty($relatedE) ? $relatedEProps : null
 									];
 								}
 								$blockMatrix[] = [
@@ -616,16 +488,16 @@ return [
 									'note' => $informations->note,
 									'time' => $informations->time,
 									'rest' => $informations->rest,
-									'exercices' => $exercices
+									'exercises' => $exercises
 								];
 								break;
 								case 'blockType':
 								$blockType = $block->blockType->first();
 								foreach ($blockType->getFieldValue('block')->all() as $b) {
 									$informations = $b->informations->first();
-									$exercicesA = $b->exercices->all();
-									$exercices = [];
-									foreach ($exercicesA as $ex) {
+									$exercisesA = $b->exercises->all();
+									$exercises = [];
+									foreach ($exercisesA as $ex) {
 										$relatedE = \craft\elements\Entry::find()->relatedTo($ex)->one();
 										$illustration = \craft\elements\Asset::find()->relatedTo($relatedE)->one();
 										$relatedEProps = $relatedEProps = [
@@ -634,23 +506,21 @@ return [
 											'url' => $relatedE['url'],
 											'uri' => $relatedE['uri'],
 											'slug' => $relatedE['slug'],
-											'exerciceDescription' => $relatedE['exerciceDescription'],
+											'exerciseDescription' => $relatedE['exerciseDescription'],
 											'note' => $relatedE['note'],
 											'difficulty' => $relatedE['difficulty'],
-											'exerciceIntensite' => $relatedE['exerciceIntensite'],
-											'repetitionsMinimum' => $relatedE['repetitionsMinimum'],
-											'repetitionsMaximum' => $relatedE['repetitionsMaximum'],
+											'exerciseIntensity' => $relatedE['exerciseIntensity'],
 											'illustration' => $illustration,
 										];
 										$duration = ($ex->series ? $ex->series.'x': null).($ex->repetitions ? $ex->repetitions: null).($ex->series == null && $ex->repetitions ? 'x': null).($ex->rest ? ' ['.$ex->rest.']': null);
-										$exercices[] = [
-											'exercice' => $ex->exercice,
+										$exercises[] = [
+											'exercise' => $ex->exercise,
 											'series' => $ex->series,
 											'repetitions' => $ex->repetitions,
 											'rest' => $ex->rest,
 											'duration' => $duration,
 											'note' => $ex->note,
-											'exerciceRelation' => !empty($relatedE) ? $relatedEProps : null
+											'exerciseRelation' => !empty($relatedE) ? $relatedEProps : null
 										];
 									}
 									$blockMatrix[] = [
@@ -658,7 +528,7 @@ return [
 										'note' => $informations->note,
 										'time' => $informations->time,
 										'rest' => $informations->rest,
-										'exercices' => $exercices
+										'exercises' => $exercises
 									];
 								}
 								break;
@@ -670,31 +540,43 @@ return [
 						'id' => $entry->id,
 						'url' => $entry->url,
 						'slug' => $entry->slug,
-						'description' => $entry->description,
+						'description' => !empty($entry->description) ? $entry->description : null,
 						'blocks'  => $entry->block ? $blockMatrix : null,
-						'category' => $category,
+						'categories' => !empty($categories) ? $categories : null,
+						'tags' => !empty($tags) ? $tags : null,
 					];
 				},
 				'pretty' => true,
 			];
 		},
-		'exercices.json' => function() {
+		'exercises.json' => function() {
 			\Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 			return [
 				'elementType' => Entry::class,
-				'criteria' => ['section' => 'exercices'],
+				'criteria' => ['section' => 'exercises', 'orderBy' => 'title'],
+				'paginate' => false,
 				'transformer' => function(Entry $entry) {
+					$exerciseTagA = \craft\elements\Tag::find()->relatedTo($entry)->all();
+					foreach ($exerciseTagA as $t) {
+						$tags[] = [
+							'title' => $t->title,
+							'id' => $t->id,
+							'slug' => $t->slug,
+						];
+					}
 					return [
 						'title' => $entry->title,
+						'alias' => $entry->exerciseAlias,
 						'id' => $entry->id,
 						'url' => $entry->url,
 						'slug' => $entry->slug,
+						'tags' => !empty($tags) ? $tags : null,
 					];
 				},
 				'pretty' => true,
 			];
 		},
-		'exercices/<entryId:\d+>.json' => function($entryId) {
+		'exercises/<entryId:\d+>.json' => function($entryId) {
 			\Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 			return [
 				'elementType' => Entry::class,
@@ -702,20 +584,83 @@ return [
 				'one' => true,
 				'transformer' => function(Entry $entry) {
 					$illustration = \craft\elements\Asset::find()->relatedTo($entry)->one();
-					$type = \craft\elements\Tag::find()->relatedTo($entry)->one();
+					$typeA = $entry->exerciseType->all();
+					foreach ($typeA as $e) {
+						$type[] = [
+							'title' => $e->title,
+							'id' => $e->id,
+							'slug' => $e->slug,
+						];
+					}
+					$easierA = $entry->exerciseEasier->all();
+					foreach ($easierA as $e) {
+						$easier[] = [
+							'title' => $e->title,
+							'id' => $e->id,
+							'slug' => $e->slug,
+						];
+					}
+					$harderA = \craft\elements\Entry::find()->relatedTo(array('targetElement' => $entry, 'field' => 'exerciseEasier'))->all();
+					foreach ($harderA as $e) {
+						$harder[] = [
+							'title' => $e->title,
+							'id' => $e->id,
+							'slug' => $e->slug,
+						];
+					}
+					$variationA = \craft\elements\Entry::find()->relatedTo(array('element' => $entry, 'field' => 'exerciseVariation'))->all();
+					foreach ($variationA as $e) {
+						$variation[] = [
+							'title' => $e->title,
+							'id' => $e->id,
+							'slug' => $e->slug,
+						];
+					}
+					$muscleTargetA = $entry->muscleTarget->all();
+					foreach ($muscleTargetA as $e) {
+						$muscleTarget[] = [
+							'title' => $e->title,
+							'id' => $e->id,
+							'slug' => $e->slug,
+						];
+					}
+					$materialA = \craft\elements\Category::find()->relatedTo($entry->minimumAge->all())->all();
+					foreach ($materialA as $e) {
+						$material[] = [
+							'title' => $e->title,
+							'id' => $e->id,
+							'slug' => $e->slug,
+						];
+					}
+					$minimumAge = $entry->minimumAge->one();
+					$tagA = \craft\elements\Tag::find()->relatedTo($entry)->all();
+					foreach ($tagA as $t) {
+						$tags[] = [
+							'title' => $t->title,
+							'id' => $t->id,
+							'slug' => $t->slug,
+						];
+					}
 					return [
 						'title' => $entry->title,
+						'alias' => $entry->exerciseAlias,
 						'id' => $entry->id,
 						'url' => $entry->url,
 						'slug' => $entry->slug,
-						'exerciceDescription' => $entry->exerciceDescription,
+						'type' => !empty($type) ? $type : null,
+						'description' => $entry->exerciseDescription,
 						'note' => $entry->note,
-						'exerciceType' => $type,
-						'difficulty' => $entry->difficulty,
-						'exerciceIntensite' => $entry->exerciceIntensite,
-						'repetitionsMinimum' => $entry->repetitionsMinimum,
-						'repetitionsMaximum' => $entry->repetitionsMaximum,
+						'tags' => !empty($tags) ? $tags : null,
+						'difficulty' => !empty($entry->difficulty->value != null) ? $entry->difficulty : null,
+						'intensity' => !empty($entry->exerciseIntensity->value != null) ? $entry->exerciseIntensity : null,
 						'illustration' => $illustration,
+						'easier' => !empty($easier) ? $easier : null,
+						'harder' => !empty($harder) ? $harder : null,
+						'variation' => !empty($variation) ? $variation : null,
+						'material' => !empty($material) ? $material : null,
+						'muscleTarget' => !empty($muscleTarget) ? $muscleTarget : null,
+						'minimumAge' => $minimumAge,
+						'reference' => $entry->exerciseReference,
 					];
 				},
 				'pretty' => true,

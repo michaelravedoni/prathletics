@@ -9,7 +9,7 @@
     <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-programs-header">
       <span class="pr-no-screen pr-header-qr uk-float-right" style="width:80px;"><qr-code :text="currentUrl"error-level="H"></qr-code></span>
       <h1 class="uk-h2 pr-programs-header-heading">{{ program.title }}</h1>
-      <vue-markdown>{{ program.description }}</vue-markdown>
+      <div><vue-markdown>{{ program.description }}</vue-markdown></div>
     </section><!-- end pr-programs-header -->
 
     <section class="uk-section uk-section-xsmall uk-container uk-container-small pr-programs-blocks">
@@ -22,19 +22,19 @@
             <span v-if="b.rest" class="pr-block-rest">[{{b.rest}}]<span v-if="b.note" class="pr-block-note">{{b.note}}</span></span>
           </div>
           <div v-if="b.text"><vue-markdown>{{b.text}}</vue-markdown></div>
-          <div v-if="b.exercices" class="pr-block-exercices"></div>
-          <div v-for="e in b.exercices" class="pr-block-exercice">
+          <div v-if="b.exercises" class="pr-block-exercises"></div>
+          <div v-for="e in b.exercises" class="pr-block-exercise">
 
-            <span v-if="e.exerciceRelation" class="pr-block-exercice-link"><router-link class="uk-text-meta uk-text-small" :to="'/exercices/'+e.exerciceRelation.id" target="_blank"><i class="far fa-question-circle"></i></router-link></span>
-            <span v-if="e.exerciceRelation" class="pr-block-exercice-heading">{{ e.exerciceRelation.title }}</span>
+            <span v-if="e.exerciseRelation" class="pr-block-exercise-link"><router-link class="uk-text-meta uk-text-small" :to="'/exercises/'+e.exerciseRelation.id" target="_blank"><i class="far fa-question-circle"></i></router-link></span>
+            <span v-if="e.exerciseRelation" class="pr-block-exercise-heading">{{ e.exerciseRelation.title }}</span>
 
-            <span v-if="e.exercice" class="pr-block-exercice-link"></span>
-            <span v-if="e.exercice" class="pr-block-exercice-heading">{{ e.exercice }}</span>
+            <span v-if="e.exercise" class="pr-block-exercise-link"></span>
+            <span v-if="e.exercise" class="pr-block-exercise-heading">{{ e.exercise }}</span>
 
-            <span class="pr-block-exercice-duration" v-if="e.duration">
+            <span class="pr-block-exercise-duration" v-if="e.duration">
               {{e.duration}}
             </span>
-            <span v-if="e.note" class="pr-block-exercice-note">{{e.note}}</span>
+            <span v-if="e.note" class="pr-block-exercise-note">{{e.note}}</span>
           </div>
         </div>
       </section>

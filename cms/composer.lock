@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "900b0788a8af885e0bccc129c2911956",
+    "content-hash": "9378219c3a1babc7ad9b197929439f72",
     "packages": [
         {
             "name": "cakephp/core",
@@ -150,6 +150,59 @@
                 "markdown-extra"
             ],
             "time": "2017-07-16T21:13:23+00:00"
+        },
+        {
+            "name": "charliedev/element-map",
+            "version": "1.2.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/charliedevelopment/craft3-element-map/zipball/6304e9162dc481d330a4ad3f8c0fdd8a25850349",
+                "reference": "6304e9162dc481d330a4ad3f8c0fdd8a25850349",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Element Map",
+                "handle": "element-map",
+                "changelogUrl": "https://raw.githubusercontent.com/charliedevelopment/craft3-element-map/master/CHANGELOG.md",
+                "downloadUrl": "https://github.com/charliedevelopment/craft3-element-map/archive/master.zip",
+                "schemaVersion": "1.0.0",
+                "hasCpSettings": false,
+                "hasCpSection": false,
+                "class": "charliedev\\elementmap\\ElementMap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "charliedev\\elementmap\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Charlie Development",
+                    "email": "support@charliedev.com",
+                    "homepage": "http://charliedev.com/"
+                }
+            ],
+            "description": "Simple visualization panel that lists related elements in their associated editors.",
+            "keywords": [
+                "cms",
+                "craft",
+                "craftcms",
+                "element",
+                "widget"
+            ],
+            "support": {
+                "issues": "https://github.com/charliedevelopment/craft3-element-map/issues?state=open",
+                "source": "https://github.com/charliedevelopment/craft3-element-map",
+                "email": "support@charliedev.com"
+            },
+            "time": "2018-09-27T16:02:27+00:00"
         },
         {
             "name": "composer/ca-bundle",

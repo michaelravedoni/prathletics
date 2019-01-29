@@ -25,22 +25,22 @@
             <span v-if="b.time" class="pr-block-time">{{b.time}}'</span>&nbsp;<span v-if="b.rest" class="pr-block-rest">[{{b.rest}}']<span v-if="b.note" class="pr-block-note">{{b.note}}</span></span>
         </div>
         <div v-if="b.text"><vue-markdown>{{b.text}}</vue-markdown></div>
-        <div v-if="b.exercices" class="pr-block-exercices"></div>
-        <div v-for="e in b.exercices" class="pr-block-exercice">
+        <div v-if="b.exercises" class="pr-block-exercises"></div>
+        <div v-for="e in b.exercises" class="pr-block-exercise">
 
-          <span v-if="e.exerciceRelation" class="pr-block-exercice-link"><router-link class="uk-text-meta uk-text-small" :to="'/exercices/'+e.exerciceRelation.id" target="_blank"><i class="far fa-question-circle"></i></router-link></span>
-          <span v-if="e.exerciceRelation" class="pr-block-exercice-heading">{{ e.exerciceRelation.title }}</span>
+          <span v-if="e.exerciseRelation" class="pr-block-exercise-link"><router-link class="uk-text-meta uk-text-small" :to="'/exercises/'+e.exerciseRelation.id" target="_blank"><i class="far fa-question-circle"></i></router-link></span>
+          <span v-if="e.exerciseRelation" class="pr-block-exercise-heading">{{ e.exerciseRelation.title }}</span>
 
-          <span v-if="e.exercice" class="pr-block-exercice-link"></span>
-          <span v-if="e.exercice" class="pr-block-exercice-heading">{{ e.exercice }}</span>
+          <span v-if="e.exercise" class="pr-block-exercise-link"></span>
+          <span v-if="e.exercise" class="pr-block-exercise-heading">{{ e.exercise }}</span>
 
-          <span class="pr-block-exercice-duration">
+          <span class="pr-block-exercise-duration">
             <span v-if="e.series">{{ e.series }}x</span><span v-if="e.repetitions">{{ e.repetitions }}</span>
             <span v-if="e.series == null && e.repetitions">x</span>
             &nbsp;
             <span v-if="e.rest">[{{ e.rest }}]</span>
           </span>
-          <span class="pr-block-exercice-note uk-text-right">{{e.note}}</span>
+          <span class="pr-block-exercise-note uk-text-right">{{e.note}}</span>
         </div>
       </div>
     </section><!-- end pr-session-blocks (type:session) -->
@@ -151,27 +151,27 @@ export default {
 .pr-block-rest {
   font-weight: normal;
 }
-.pr-block-exercices {
+.pr-block-exercises {
   width: 100%;
 }
-.pr-block-exercice {
+.pr-block-exercise {
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid #eee;
   border-collapse: collapse;
 }
-.pr-block-exercice-link {
+.pr-block-exercise-link {
   flex: 0 1 auto;
   width: 20px;
 }
-.pr-block-exercice-heading {
+.pr-block-exercise-heading {
   flex: 3 1 0;
 }
-.pr-block-exercice-duration {
+.pr-block-exercise-duration {
   flex: 1 1 0;
   margin-left: 1em;
 }
-.pr-block-exercice-note {
+.pr-block-exercise-note {
   font-size: 85%;
   flex: 1 1 0;
 }
@@ -200,25 +200,25 @@ export default {
   margin-bottom: 0;
 }
 @media screen and (max-width: 640px) {
-  .pr-block-exercices {
+  .pr-block-exercises {
     display: block;
   }
-  .pr-block-exercice {
+  .pr-block-exercise {
     display: block;
   }
-  .pr-block-exercice-link {
+  .pr-block-exercise-link {
     display: unset;
   }
-  .pr-block-exercice-heading {
+  .pr-block-exercise-heading {
     display: unset;
   }
-  .pr-block-exercice-duration {
+  .pr-block-exercise-duration {
     font-size: 85%;
     font-weight: bold;
     display: flex;
     flex-flow: row-reverse;
   }
-  .pr-block-exercice-note {
+  .pr-block-exercise-note {
     display: flex;
     flex-flow: row-reverse;
   }

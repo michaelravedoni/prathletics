@@ -56,8 +56,8 @@
 							<li {% if craft.app.request.segments|first == 'sessions' %}class="uk-active"{% endif %}><a href="{{ url('sessions') }}">Entraînements</a></li>
 							<li {% if craft.app.request.segments|first == 'groups' %}class="uk-active"{% endif %}><a href="{{ url('groups') }}">Groupes</a></li>
 							<li {% if craft.app.request.segments|first == 'athletes' %}class="uk-active"{% endif %}><a href="{{ url('athletes') }}">Athlètes</a></li>
-							<li {% if craft.app.request.segments|first == 'exercices' %}class="uk-active"{% endif %}><a href="{{ url('exercices') }}">Exercices</a></li>
-							<li {% if craft.app.request.segments|first == 'drills' %}class="uk-active"{% endif %}><a href="{{ url('drills') }}">Pr. & Drills</a></li>
+							<li {% if craft.app.request.segments|first == 'exercises' %}class="uk-active"{% endif %}><a href="{{ url('exercises') }}">Exercices</a></li>
+							<li {% if craft.app.request.segments|first == 'programs' %}class="uk-active"{% endif %}><a href="{{ url('programs') }}">Programmes</a></li>
 						</ul>
 						<a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon uk-toggle href="#off-menu"></a>
 					</div>
@@ -73,8 +73,8 @@
 					<li {% if craft.app.request.segments|first == 'sessions' %}class="uk-active"{% endif %}><a href="{{ url('sessions') }}">Sessions</a></li>
 					<li {% if craft.app.request.segments|first == 'groups' %}class="uk-active"{% endif %}><a href="{{ url('groups') }}">Groupes</a></li>
 					<li {% if craft.app.request.segments|first == 'athletes' %}class="uk-active"{% endif %}><a href="{{ url('athletes') }}">Athlètes</a></li>
-					<li {% if craft.app.request.segments|first == 'exercices' %}class="uk-active"{% endif %}><a href="{{ url('exercices') }}">Exercices</a></li>
-					<li {% if craft.app.request.segments|first == 'drills' %}class="uk-active"{% endif %}><a href="{{ url('drills') }}">Drills</a></li>
+					<li {% if craft.app.request.segments|first == 'exercises' %}class="uk-active"{% endif %}><a href="{{ url('exercises') }}">Exercices</a></li>
+					<li {% if craft.app.request.segments|first == 'programs' %}class="uk-active"{% endif %}><a href="{{ url('programs') }}">Programmes</a></li>
 					<li {% if craft.app.request.segments|first == 'documents' %}class="uk-active"{% endif %}><a href="{{ url('documents') }}">Documents</a></li>
 				</ul>
 				<div>
@@ -133,27 +133,27 @@
 	.pr-block-rest {
 		font-weight: normal;
 	}
-	.pr-block-exercices {
+	.pr-block-exercises {
 		width: 100%;
 	}
-	.pr-block-exercice {
+	.pr-block-exercise {
 		display: flex;
 		flex-wrap: wrap;
 		border-bottom: 1px solid #eee;
 		border-collapse: collapse;
 	}
-	.pr-block-exercice-link {
+	.pr-block-exercise-link {
 		flex: 0 1 auto;
 		width: 20px;
 	}
-	.pr-block-exercice-heading {
+	.pr-block-exercise-heading {
 		flex: 3 1 0;
 	}
-	.pr-block-exercice-duration {
+	.pr-block-exercise-duration {
 		flex: 1 1 0;
 		margin-left: 1em;
 	}
-	.pr-block-exercice-note {
+	.pr-block-exercise-note {
 		font-size: 85%;
 		flex: 1 1 0;
 	}
@@ -163,25 +163,25 @@
 	}
 
 	@media screen and (max-width: 640px) {
-		.pr-block-exercices {
+		.pr-block-exercises {
 			display: block;
 		}
-		.pr-block-exercice {
+		.pr-block-exercise {
 			display: block;
 		}
-		.pr-block-exercice-link {
+		.pr-block-exercise-link {
 			display: unset;
 		}
-		.pr-block-exercice-heading {
+		.pr-block-exercise-heading {
 			display: unset;
 		}
-		.pr-block-exercice-duration {
+		.pr-block-exercise-duration {
 			font-size: 85%;
 			font-weight: bold;
 			display: flex;
 			flex-flow: row-reverse;
 		}
-		.pr-block-exercice-note {
+		.pr-block-exercise-note {
 			display: flex;
 			flex-flow: row-reverse;
 		}
@@ -202,17 +202,17 @@
 		a {
 			text-decoration: none;
 		}
-		.pr-drills-blocks {
+		.pr-programs-blocks {
 			font-size: 80%;
 			padding-top: 0;
 		}
-		.pr-drills-header, .pr-drills-meta {
+		.pr-programs-header, .pr-programs-meta {
 			padding-top: 0;
 			padding-bottom: .2em;
 			font-size: 75%;
 			width: auto;
 		}
-		.pr-drills-header-heading {
+		.pr-programs-header-heading {
 			margin-top: .2em;
 			margin-bottom: 0;
 		}
@@ -228,7 +228,7 @@
 			content: " - ";
 		}
 		.pr-meta,
-		.pr-drills-meta {
+		.pr-programs-meta {
 			border-bottom: 1px solid;
 		}
 		.pr-meta-title {

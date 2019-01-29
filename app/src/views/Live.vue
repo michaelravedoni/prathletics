@@ -32,21 +32,22 @@
           </li>
         </ul>
       </div>
-      <hooper class="live-block-exercices" uk-height-viewport="expand: true">
-        <slide v-for="e in liveBlock.exercices" class="live-block-exercice">
+      <hooper class="live-block-exercises" uk-height-viewport="expand: true">
+        <slide v-for="e in liveBlock.exercises" class="live-block-exercise">
           <div class="uk-card uk-card-default uk-width-large">
-            <div v-if="e.exerciceRelation" class="uk-card-media-top uk-text-center">
-              <img v-if="e.exerciceRelation.illustration" :src="e.exerciceRelation.illustration.url" :alt="e.exerciceRelation.illustration.title" class="live-block-exercice-image">
+            <div v-if="e.exerciseRelation" class="uk-card-media-top uk-text-center">
+              <img v-if="e.exerciseRelation.illustration" :src="e.exerciseRelation.illustration.url" :alt="e.exerciseRelation.illustration.title" class="live-block-exercise-image">
             </div>
             <div class="uk-padding">
-              <div class="live-block-exercice-duration">{{e.duration}}</div>
-              <div v-if="e.note" class="live-block-exercice-note">{{e.note}}</div>
-              <h3 class="uk-card-title live-block-exercice-heading">
-                <span v-if="e.exercice" class="live-block-exercice-heading">{{ e.exercice }}</span>
-                <span v-if="e.exerciceRelation" class="live-block-exercice-heading">{{ e.exerciceRelation.title }}</span>
+              <div class="live-block-exercise-duration">{{e.duration}}</div>
+              <div v-if="e.note" class="live-block-exercise-note">{{e.note}}</div>
+              <h3 class="uk-card-title live-block-exercise-heading">
+                <span v-if="e.exercise" class="live-block-exercise-heading">{{ e.exercise }}</span>
+                <span v-if="e.exerciseRelation" class="live-block-exercise-heading">{{ e.exerciseRelation.title }}</span>
               </h3>
-              <div class="live-block-exercice-description" v-if="(e.exerciceRelation && e.exerciceRelation.exerciceDescription)"><vue-markdown>{{ e.exerciceRelation.exerciceDescription }}</vue-markdown></div>
-              <span v-if="e.exerciceRelation" class="live-block-exercice-link"><router-link class="uk-text-meta uk-text-small" :to="'/exercices/'+e.exerciceRelation.id" target="_blank"><i class="far fa-question-circle"></i></router-link></span>
+              <div class="live-block-exercise-description" v-if="(e.exerciseRelation && e.exerciseRelation.exerciseDescription)"><vue-markdown>{{ e.exerciseRelation.exerciseDescription }}</vue-markdown></div>
+              <div class="live-block-exercise-note" v-if="(e.exerciseRelation && e.exerciseRelation.note)"><vue-markdown>{{ e.exerciseRelation.note }}</vue-markdown></div>
+              <span v-if="e.exerciseRelation" class="live-block-exercise-link"><router-link class="uk-text-meta uk-text-small" :to="'/exercises/'+e.exerciseRelation.id" target="_blank"><i class="far fa-question-circle"></i></router-link></span>
             </div>
           </div>
         </slide>
@@ -238,31 +239,31 @@ export default {
 
 
 <style media="screen">
-.live-block-exercices {
+.live-block-exercises {
 
 }
-.live-block-exercice {
+.live-block-exercise {
   height: 100%;
   width: 800px;
   max-width: 800px;
 }
-.live-block-exercice-image {
+.live-block-exercise-image {
   max-height: 250px;
   max-width: 100%;
 }
-.live-block-exercice-heading {
+.live-block-exercise-heading {
   font-size: 1.5rem;
   margin-top: 0;
   margin-bottom: 0;
 }
-.live-block-exercice-duration,
-.live-block-exercice-description {
+.live-block-exercise-duration,
+.live-block-exercise-description {
   font-size: 1rem;
 }
-.live-block-exercice-note {
+.live-block-exercise-note {
   font-size: .85rem;
 }
-.live-block-exercice-description p {
+.live-block-exercise-description p {
   margin-bottom: 0;
 }
 .live-block-time,
@@ -339,19 +340,19 @@ export default {
   .hooper-slide {
     /*align-items: start;*/
   }
-  .live-block-exercice-heading {
+  .live-block-exercise-heading {
     font-size: 1rem;
     margin-top: 0;
     margin-bottom: 0;
   }
-  .live-block-exercice-duration,
-  .live-block-exercice-description {
+  .live-block-exercise-duration,
+  .live-block-exercise-description {
     font-size: .85rem;
   }
-  .live-block-exercice-note {
+  .live-block-exercise-note {
     font-size: .65rem;
   }
-  .live-block-exercice-image {
+  .live-block-exercise-image {
     max-height: 150px;
     max-width: 100%;
   }

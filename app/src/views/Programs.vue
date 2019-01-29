@@ -1,11 +1,11 @@
 <template>
   <div class="pr-programs">
     <section class="uk-section uk-container uk-container-small uk-width-xlarge">
-      <h1>Programes personnalisés</h1>
-      <div v-for="category in programs">
-        <h2>{{category.title}}</h2>
+      <h1>Programes</h1>
+      <div v-for="c in programs">
+        <h2>{{c.title}}</h2>
         <ul>
-          <li v-for="a in category.programs"><router-link :to="'/programs/'+a.id">{{ a.title|capitalize }}</router-link></li>
+          <li v-for="a in c.programs"><router-link :to="'/programs/'+a.id">{{ a.title|capitalize }}</router-link></li>
         </ul>
       </div>
     </section>
@@ -49,7 +49,7 @@ export default {
     fetchData() {
       this.$http.get(`${this.apiUrl}programs.json`)
         .then((response) => {
-          const groupedprograms = _.chain(response.body.data).groupBy('category[0].title').toPairs().map(currentData => _.zipObject(['title', 'programs'], currentData))
+          const groupedprograms = _.chain(response.body.data).groupBy('categories[0].title').toPairs().map(currentData => _.zipObject(['title', 'programs'], currentData))
             .value();
           this.programs = groupedprograms;
           console.log('programs fetched from API');
