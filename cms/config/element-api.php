@@ -73,6 +73,32 @@ return [
 							'cadreLabel' => $a->label,
 						];
 					}
+					$planA = $entry->sessionPlan->first();
+					$plan = [
+						'title' => $planA->title,
+						'longTitle' => $planA->titleLong,
+						'id' => $planA->id,
+						'url' => $planA->url,
+						'uri' => $planA->uri,
+						'slug' => $planA->slug,
+					];
+					$sessionDate = new DateTime($entry->schedule->format('c'));
+					$week = (int)$sessionDate->format("W");
+					$planPeriods = $planA->plan;
+					foreach ($planPeriods as $p) {
+						$periodA = $p->period->first();
+						if ((int)$week >= (int)$p->weekStart && (int)$week <= (int)$p->weekEnd) {
+							$period = [
+								'title' => $periodA->title,
+								'longTitle' => $periodA->titleLong,
+								'label' => $p->periodLabel,
+								'id' => $periodA->id,
+								'url' => $periodA->url,
+								'uri' => $periodA->uri,
+								'slug' => $periodA->slug,
+							];
+						}
+					}
 					$childrensA = $entry->getChildren()->all();
 					$childrens = [];
 					foreach ($childrensA as $c) {
@@ -137,6 +163,40 @@ return [
 									'exercises' => $exercises
 								];
 								break;
+								case 'athletes':
+								$informations = $block->informations->first();
+								$programsA = $block->programs->all();
+								$programs = [];
+								foreach ($programsA as $p) {
+									$athletesA = $p->athletes->all();
+									$athletesP = [];
+									foreach ($athletesA as $a) {
+										$athletesP[] = [
+											'title' => $a['title'],
+											'id' => $a['id'],
+											'url' => $a['url'],
+											'uri' => $a['uri'],
+											'slug' => $a['slug'],
+										];
+									}
+									$program = $p->program->first();
+									$programs[] = [
+										'title' => $program['title'],
+										'id' => $program['id'],
+										'url' => $program['url'],
+										'uri' => $program['uri'],
+										'slug' => $program['slug'],
+										'athletes' => $athletesP,
+									];
+								}
+								$blockMatrix[] = [
+									'heading' => "Programmes personnalisés",
+									'text' => $informations->text,
+									'time' => $informations->time,
+									'rest' => $informations->rest,
+									'programs' => $programs,
+								];
+								break;
 								case 'blockType':
 								$blockType = $block->blockType->first();
 								foreach ($blockType->getFieldValue('block')->all() as $b) {
@@ -193,6 +253,10 @@ return [
 						'blocks'  => $entry->block ? $blockMatrix : null,
 						'ancestors' => $ancestors,
 						'childrens' => $childrens,
+						'plan' => $plan,
+						'period' => $period,
+						'week' => $week,
+						'label' => $entry->sessionLabel,
 					];
 				},
 				'pretty' => true,
@@ -249,7 +313,7 @@ return [
 							'category' => $programm->programCategory->first(),
 						];
 					}
-					$relatedSessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($groupsA)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->limit(9)->all();
+					$relatedSessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($groupsA)->orderBy('schedule asc')->schedule('>= '. date(DATE_ATOM))->limit(9)->all();
 					$relatedSessions = [];
 					foreach ($relatedSessionsA as $session) {
 						$relatedSessions[] = [
@@ -260,7 +324,7 @@ return [
 							'schedule' => $session->schedule,
 						];
 					}
-					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($groupsA)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->one();
+					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($groupsA)->orderBy('schedule asc')->schedule('>= '. date('Y-m-d'))->one();
 					$scheduleString = !empty($next['schedule']) ? new DateTime($next['schedule']->format(DATE_ATOM)) : null;
 					return [
 						'debug' => $groupsA[0]['id'],
@@ -304,8 +368,10 @@ return [
 							'schedule' => $session->schedule,
 						];
 					}
-					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule asc')->schedule('>= '. date(DATE_ATOM))->one();
+					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule asc')->schedule('>= '. date('Y-m-d'))->one();
 					$scheduleString = !empty($next['schedule']) ? new DateTime($next['schedule']->format(DATE_ATOM)) : null;
+					$scheduleBeforeNow = !empty($next['schedule'] and strtotime($next['schedule']->format(DATE_ATOM)) < strtotime('now')) ? true
+					 : false;
 					return [
 						'title' => $entry->title,
 						'id' => $entry->id,
@@ -319,8 +385,9 @@ return [
 							'uri' => $next['uri'],
 							'slug' => $next['slug'],
 							'schedule' => $next['schedule'],
-							'fromNow' => date_diff($scheduleString,new DateTime())->format('P%yY%mM%dDT%hH%mM%sS'),
+							'fromNow' => date_diff($scheduleString, new DateTime())->format('P%yY%mM%dDT%hH%mM%sS'),
 							'fromNowString' => $scheduleString->diff(new DateTime())->format("%d jours %hh et %im"),
+							'beforeNow' => $scheduleBeforeNow,
 						] : null,
 					];
 				},
@@ -356,7 +423,7 @@ return [
 							'schedule' => $session->schedule,
 						];
 					}
-					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule desc')->schedule('>= '. date(DATE_ATOM))->one();
+					$next = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->orderBy('schedule asc')->schedule('>= '. date('Y-m-d'))->one();
 					return [
 						'title' => $entry->title,
 						'id' => $entry->id,

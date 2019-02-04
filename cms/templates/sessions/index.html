@@ -4,7 +4,7 @@
 {% block content %}
 
 <section class="uk-section uk-container uk-container-small uk-width-xlarge">
-	
+
 	<h1>Sessions</h1>
 	{% set entries = craft.entries.section('sessions').all() %}
 	<nav class="">
@@ -13,11 +13,11 @@
             <li>
                 <a href="{{ page.url }}" uk-tooltip="{% if page.type == 'session' %}Session{% else %}{{ page.typeCadre|capitalize }}{% endif %}">
 					{% if page.typeCadre == 'season' %}{{page.season.one().titleLong}}
-					{% elseif page.typeCadre == 'period' %}{{page.period.one().titleLong}}
+					{% elseif page.period and page.typeCadre == 'period' %}{{page.period.one().titleLong}}
 					{% else %}{{ page.label|ucfirst|replace('-', ' ') }}{% endif %}
 					{% if page.type == 'session' %}{{page.schedule|date('l')|ucfirst}}-{{page.schedule|time('short')}}{% endif %}
 				</a>
-                
+
                 {% ifchildren %}
 				<ul>
 					{% children %}
@@ -27,7 +27,7 @@
 			{% endnav %}
 		</ul>
 	</nav>
-	
+
 </section>
 
 <section class="uk-section uk-section-small uk-container uk-container-small uk-width-xlarge">

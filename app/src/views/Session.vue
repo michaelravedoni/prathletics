@@ -7,14 +7,19 @@
     </section><!-- end pr-session-meta -->
 
     <section class="uk-container uk-container-small uk-width-xlarge pr-session-header">
-      <div class="pr-crumbs" v-if="session.ancestors">
+      <div class="pr-crumbs">
+        <span v-if="session.plan">{{session.plan.longTitle}}</span><i class="fas fa-angle-right"></i>
+        <span v-if="session.period">{{session.period.longTitle}}</span> <i class="fas fa-angle-right"></i>
+        <span v-if="session.week">Semaine {{session.week}}</span>
+      </div>
+      <div class="pr-crumbs-old" v-if="session.ancestors">
         <span v-for="a in session.ancestors">{{a.typeCadreLabel.titleLong}} {{a.cadreLabel.replace(/-/g, ' ')|capitalize}}</span>
       </div>
       <span class="pr-no-screen pr-header-qr uk-float-right" style="width:50px;"><qr-code :text="currentUrl"error-level="H"></qr-code></span>
       <div class="uk-h4 pr-session-header-heading-group" v-if="session.groups">
         <router-link :to="'/groups/'+session.groups[0].id">{{session.groups[0].title}}</router-link>
       </div>
-      <h1 class="uk-h2 pr-session-header-heading" v-if="session.schedule">{{session.schedule.date|moment().locale('fr').format("dddd D")|capitalize}} — {{session.schedule.date|moment().locale('fr').format("HH:mm")}}</h1>
+      <h1 class="uk-h2 pr-session-header-heading" v-if="session.schedule">{{session.schedule.date|moment().locale('fr').format("dddd D MMMM")|capitalize}} — {{session.schedule.date|moment().locale('fr').format("HH:mm")}}</h1>
     </section><!-- end pr-session-header -->
 
     <section v-if="session.type == 'session'" class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session-blocks">
@@ -42,6 +47,11 @@
           </span>
           <span class="pr-block-exercise-note uk-text-right">{{e.note}}</span>
         </div>
+        <div class="pr-block-programs">
+      		<div class="pr-block-programs-program" v-for="p in b.programs">
+      			<span v-for="a in p.athletes"> - <router-link :to="{ name: 'athlete', params: {id: a.id} }">{{a.title}}</router-link></span><i class="fas fa-long-arrow-alt-right uk-margin-small-left"></i> <a :href="p.url" class="uk-margin-small-left">{{p.title}}</a>
+      		</div>
+      	</div>
       </div>
     </section><!-- end pr-session-blocks (type:session) -->
 
@@ -178,11 +188,21 @@ export default {
 .pr-crumbs-space {
   display: block;
 }
-.pr-crumbs span::after {
+.pr-crumbs-old span::after {
   content: " - ";
 }
-.pr-crumbs span:last-child::after {
+.pr-crumbs-old span:last-child::after {
   display: none;
+}
+.pr-crumbs span {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+.pr-crumbs span:last-child {
+  margin-right: 0;
+}
+.pr-crumbs span:first-child {
+  margin-left: 0;
 }
 .pr-session-header-heading {
   margin-top: 0;

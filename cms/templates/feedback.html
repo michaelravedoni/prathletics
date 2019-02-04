@@ -1,0 +1,98 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+{% macro errorList(errors) %}
+    {% if errors %}
+        <ul class="errors">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+{% from _self import errorList %}
+
+<div class="uk-section uk-container uk-container-small">
+
+    <form method="post" action="" accept-charset="UTF-8">
+        {{ csrfInput() }}
+        <!--<input type="hidden" name="action" value="guest-entries/save">
+        <input type="hidden" name="sectionUid" value="28e5a8b7-46cc-4cec-b3b4-c6e8b4bf7753">-->
+        <input type="hidden" name="action" value="entries/save-entry">
+        <input type="hidden" name="sectionId" value="9">
+        <input type="hidden" name="enabled" value="1">
+
+        <div class="uk-section uk-section-xsmall">
+            <div class="uk-form-label" for="feedbackAthlete">1. Athlète</div>
+            <div class="uk-form-controls">
+                {% set athletes = craft.entries.section('athletes') %}
+                {% set selectedAthletes = [] %}
+                {% for a in athletes %}
+                {% set selectedAthletes = selectedAthletes|merge([a.id]) %}
+                {% endfor %}
+                <select class="uk-select" id="feedbackAthlete" name="fields[feedbackAthlete][]">
+                    <option value="">--Sélectionner votre nom--</option>
+                    {% for a in athletes %}
+                    <option value="{{a.id}}" >{{a.title}}</option>
+                    {% endfor %}
+                </select>
+                {% if entry is defined %}
+                {{ errorList(entry.getErrors('feedbackAthlete')) }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="uk-section uk-section-xsmall">
+            <div class="uk-form-label" for="feelGlobal">2. Ressenti général</div>
+            <div>Entre 1 et 10, ressenti global du jour (fatigue, douleur, humeur…)</div>
+            <div class="uk-form-controls">
+                <input id="feelGlobal" name="fields[feelGlobal]" class="uk-range" type="range" value="0" min="0" max="10" step="1">
+                {% if entry is defined %}
+                {{ errorList(entry.getErrors('feelGlobal')) }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="uk-section uk-section-xsmall">
+            <div class="uk-form-label" for="feelSpecificStatic">3. Ressenti spécifique au repos</div>
+            <div>Entre 1 et 10, ressenti de la douleur de la zone blessée au repos (marche, debout, assis, dans le lit)</div>
+            <div class="uk-form-controls">
+                <input id="feelSpecificStatic" name="fields[feelSpecificStatic]" class="uk-range" type="range" value="0" min="0" max="10" step="1">
+                {% if entry is defined %}
+                {{ errorList(entry.getErrors('feelSpecificStatic')) }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="uk-section uk-section-xsmall">
+            <div class="uk-form-label" for="feelSpecificStatic">4. Ressenti spécifique en mouvement</div>
+            <div>Entre 1 et 10, ressenti de la douleur de la zone blessée en mouvement spécifique (exercices, mouvements spécifiques, marche/course, etc.)</div>
+            <div class="uk-form-controls">
+                <input id="feelSpecificStatic" name="fields[feelSpecificStatic]" class="uk-range" type="range" value="0" min="0" max="10" step="1">
+                {% if entry is defined %}
+                {{ errorList(entry.getErrors('feelSpecificStatic')) }}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="uk-section uk-section-xsmall">
+            <div class="uk-form-label" for="feedbackComment">4. Commentaire</div>
+            <div>Tout ce qui vous passe par la tête: changements notables, inpressions, fatigue, raz-le-bol, etc.</div>
+            <div class="uk-form-controls">
+                <textarea id="feedbackComment" name="fields[feedbackComment]" class="uk-textarea" rows="5" >
+                    {%- if entry is defined %}{{ entry.feedbackComment }}{% endif -%}
+                </textarea>
+                {% if entry is defined %}
+                {{ errorList(entry.getErrors('feedbackComment')) }}
+                {% endif %}
+            </div>
+        </div>
+
+        <input type="submit" value="Envoyer" class="uk-button uk-button-primary uk-width-1-1 uk-width-large@m">
+    </form>
+
+</div>
+
+{% endblock %}

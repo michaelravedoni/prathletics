@@ -50,4 +50,24 @@
 	{% include 'sessions/session-block.html' %}
 {% endif %}
 
+{% if type.type == 'athletes' %}
+<div class="pr-block">
+	{% for row in type.informations.all() %}
+	<div class="pr-block-informations">
+		<span class="pr-block-heading">Programmes spécifiques</span>
+		{% if row.time %}<span class="pr-block-time">{{ row.time }}'</span>{% endif %}
+		{% if row.rest %}<span class="pr-block-rest">[{{ row.rest }}']</span>{% endif %}
+	</div>
+	{% if row.text %}<div class="pr-block-text">{{ row.text|md }}</div>{% endif %}
+	{% endfor %}
+	{% for row in type.programs.all() %}
+	<div class="pr-block-programs">
+		<div class="pr-block-programs-program">
+			{% for a in row.athletes %} - <a href="{{a.url}}">{{a.title}}</a>{% endfor %} <i class="fas fa-long-arrow-alt-right"></i> <a href="{{row.program.one().url}}">{{row.program.one().title}}</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+
 {% endfor %}

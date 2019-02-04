@@ -1,0 +1,24 @@
+title;slug;alias;exerciseType;exerciseFamily;exerciseDescription;note;exerciseTag;minimumAge;exerciseMaterial;exerciseVariation;exerciseEasier;muscleTarget;difficulty;exerciseIntensity;exerciseReference;illustrationId;illustrationFile;illustrationLicence;illustrationCreator;illustrationSource;illustrationType
+{% for e in craft.entries.section('exercises').all() %}
+{%- set typeA = e.exerciseType.first() -%}
+{%- if typeA|length -%}{%- set type = typeA.slug -%}{%- else -%}{%- set type = "" -%}{%- endif -%}
+{%- set familyA = e.exerciseFamily.first() -%}
+{%- if familyA|length -%}{%- set family = familyA.slug -%}{%- else -%}{%- set family = "" -%}{%- endif -%}
+{%- set ageA = e.minimumAge.first() -%}
+{%- if ageA|length -%}{%- set age = ageA.slug -%}{%- else -%}{%- set age = "" -%}{%- endif -%}
+{%- set materials = e.exerciseMaterial.all() -%}
+{%- set muscleA = e.muscleTarget.first() -%}
+{%- if muscleA|length -%}{%- set muscle = muscleA.slug -%}{%- else -%}{%- set muscle = "" -%}{%- endif -%}
+{%- set tags = e.exerciseTag.all() -%}
+{%- set variations = e.exerciseVariation.all() -%}
+{%- set easiers = e.exerciseEasier.all() -%}
+{%- set i = e.illustration.first() -%}
+{%- set illustrationId = "" -%}
+{%- set illustrationFile = "" -%}
+{%- set illustrationLicence = "" -%}
+{%- set illustrationCreator = "" -%}
+{%- set illustrationSource = "" -%}
+{%- set illustrationType = "" -%}
+{%- if i|length -%}{%- set illustrationId = i.id -%}{%- set illustrationFile = i.filename -%}{%- set illustrationLicence = i.licence.value -%}{%- set illustrationCreator = i.ressourceCreator -%}{%- set illustrationSource = i.ressourceSourceLink -%}{%- set illustrationType = i.ressourceType -%}{%- endif -%}
+"{{ e.title }}";"{{ e.slug }}";"{{ e.exerciseAlias }}";"{{ type }}";"{{ family }}";"{{ e.exerciseDescription }}";"{{ e.note }}";"{%- for t in tags -%}{{ t }}{% if not loop.last %}-|-{% endif %}{%- endfor -%}";"{{ age }}";"{%- for m in materials -%}{{ m.slug }}{% if not loop.last %}-|-{% endif %}{%- endfor -%}";"{%- for v in variations -%}{{ v.id }}{% if not loop.last %}-|-{% endif %}{%- endfor -%}";"{%- for e in easiers -%}{{ e.id }}{% if not loop.last %}-|-{% endif %}{%- endfor -%}";"{{ muscle }}";"{{ e.difficulty.label }}";"{{ e.exerciseIntensity.label }}";"{{ e.exerciseReference }}";"{{ illustrationId }}";"{{ illustrationFile }}";"{{ illustrationLicence }}";"{{ illustrationCreator }}";"{{ illustrationSource }}";"";
+{% endfor %}

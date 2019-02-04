@@ -1,0 +1,18 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-container uk-container-small uk-width-xlarge">
+
+	<h1>Plans</h1>
+	{% set plans = craft.entries.section('plans').all() %}
+	<ul>
+		{% for plan in plans %}
+		<li><a href="{{ plan.url }}">{{ plan.titleLong }} ({{ plan.title }})</a></li>
+		{% endfor %}
+	</ul>
+
+</section>
+
+{% endblock %}

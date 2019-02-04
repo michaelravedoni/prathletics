@@ -13,6 +13,7 @@ import Programs from './views/Programs.vue';
 import Program from './views/Program.vue';
 import Live from './views/Live.vue';
 import Qr from './views/Qr.vue';
+import Feedback from './views/Feedback.vue';
 
 Vue.use(Router);
 
@@ -31,6 +32,7 @@ export default new Router({
     { path: '/programs/:id', name: 'program', component: Program },
     { path: '/live', name: 'live', component: Live, meta: { bodyClass: 'live' } },
     { path: '/qr', name: 'qr', component: Qr },
+    { path: '/feedback', name: 'feedback', component: Feedback, meta: { bodyClass: 'feedback' } },
     {
       path: '/about',
       name: 'about',

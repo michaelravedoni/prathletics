@@ -1,0 +1,48 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+<section class="uk-section uk-section-xsmall uk-container">
+
+	<section class="uk-section uk-section-xsmall">
+		<h1 class="uk-h2">{{ entry.title }}</h1>
+	</section>
+
+	<section class="uk-section uk-section-xsmall">
+		<table class="pr-plan-table">
+			<thead>
+			<tr>
+			{% for row in entry.plan %}
+				<th class="tg-baqh" colspan="{{row.weekEnd - row.weekStart + 1}}">{{row.period.first().title}}<br>({{row.periodLabel}})</th>
+			{% endfor %}
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+			{% for row in entry.plan %}
+				{% for w in row.weekStart..row.weekEnd %}
+				{% set sessions = craft.entries().section('sessions').relatedTo(entry).sessionWeek('= '~ w).all() %}
+				<td class="tg-0lax">{{w}}<br>{% for s in sessions %}<a href="{{s.url}}">{{s.schedule|date('D')}}</a><br>{% endfor %}</td>
+				{% endfor %}
+			{% endfor %}
+			</tr>
+			</tbody>
+		</table>
+	</section>
+
+</section>
+
+<style>
+	.pr-plan-table {border-collapse:collapse;border-spacing:0;}
+	.pr-plan-table td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+	.pr-plan-table th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+	.pr-plan-table .tg-0lax{
+		text-align: center;
+    vertical-align: top;
+    width: 15px;
+	}
+	.pr-plan-table .tg-baqh{text-align:center;vertical-align:top}
+</style>
+
+{% endblock %}

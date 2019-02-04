@@ -62,6 +62,30 @@ categoryGroups:
     structure:
       maxLevels: null
       uid: 9e5c7d3b-4aeb-4456-98c9-9590246bee0a
+  b6e03fc4-fd7a-4706-aae4-cce5d5174ae2:
+    fieldLayouts:
+      eeed55db-fa3f-4785-87ee-16cf9c8b80a6:
+        tabs:
+          -
+            fields:
+              c3b8b4fa-a835-44c6-88e0-fb5c59dea236:
+                required: false
+                sortOrder: 1
+              e98eb415-814f-47c8-ad05-0b2ffdafc220:
+                required: false
+                sortOrder: 2
+            name: Common
+            sortOrder: 1
+    handle: exerciseFamilies
+    name: 'Exercise families'
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        hasUrls: true
+        template: ''
+        uriFormat: 'exercise-families/{slug}'
+    structure:
+      maxLevels: null
+      uid: b048b657-89eb-41c6-a3a4-0ab26e748c15
   c2f4723c-79f7-4ecd-bd7a-0c2f0e81a461:
     fieldLayouts:
       927c0362-84b2-4eda-a531-b6c73cd87a20:
@@ -166,7 +190,7 @@ categoryGroups:
     structure:
       maxLevels: null
       uid: 7a672688-a6db-46f3-b00d-96f409fc9e5d
-dateModified: 1548775163
+dateModified: 1549288814
 email:
   fromEmail: ravemiki@gmail.com
   fromName: Program
@@ -194,6 +218,8 @@ fieldGroups:
     name: Groups
   ef418ff1-1cf3-4111-98d7-6f8417671431:
     name: Common
+  fdf039f0-8db5-435d-a0cf-86bdafc80b3d:
+    name: Plans
 fields:
   0c7cac97-f7d1-488e-bf1b-4c0458fa05d7:
     contentColumnType: string
@@ -403,6 +429,39 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Categories
+  4365c8a3-66f8-4805-8770-b3ba11b4c3a1:
+    contentColumnType: text
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: sessionWeek
+    instructions: ''
+    name: 'Session week'
+    searchable: false
+    settings:
+      fieldFormat: '{{ object.schedule|date(''W'') }}'
+      outputTextarea: ''
+      showField: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: barrelstrength\sproutfields\fields\Predefined
+  4d8b9c12-79c9-4ddd-80e7-1a4833e10cdd:
+    contentColumnType: string
+    fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
+    handle: exerciseFamily
+    instructions: ''
+    name: 'Exercise family'
+    searchable: true
+    settings:
+      branchLimit: 1
+      limit: null
+      localizeRelations: false
+      selectionLabel: null
+      source: 'group:b6e03fc4-fd7a-4706-aae4-cce5d5174ae2'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: elivz\singlecat\fields\SingleCatField
   534e8a35-cbdc-4383-a56e-be3d431b8279:
     contentColumnType: smallint(2)
     fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
@@ -419,6 +478,38 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Number
+  54ca846c-88c8-4025-83fb-8af8f4c42d66:
+    contentColumnType: string
+    fieldGroup: 3ff32640-6ab3-458b-bf3d-23fae0364ac8
+    handle: ressourceType
+    instructions: ''
+    name: 'Ressource type'
+    searchable: true
+    settings:
+      options:
+        -
+          default: '1'
+          label: Illustration
+          value: illustration
+        -
+          default: ''
+          label: Animation
+          value: animation
+        -
+          default: ''
+          label: Photography
+          value: photography
+        -
+          default: ''
+          label: 'Illustration start'
+          value: illustrationStart
+        -
+          default: ''
+          label: 'Illustration end'
+          value: illustrationEnd
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
   5df3778b-04f3-4ae6-b43e-aa0e340da018:
     contentColumnType: string
     fieldGroup: 526ec529-5380-43b1-8247-f48ef2841268
@@ -485,6 +576,23 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  6c41b634-8fe9-474b-bf2f-4e19062b2768:
+    contentColumnType: text
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: sessionLabel
+    instructions: ''
+    name: 'Session label'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
   76df3cb9-3c9d-4dcd-aca5-6394967e5e68:
     contentColumnType: smallint(2)
     fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
@@ -501,6 +609,25 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Number
+  8f8eab45-93c4-47de-b98a-37b786da7101:
+    contentColumnType: string
+    fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
+    handle: feedbackAthlete
+    instructions: ''
+    name: 'Feedback athlete'
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:164708d5-007a-4f8b-afdc-fb6439769d4c'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   9362358b-02c2-48e4-a234-4e6792238502:
     contentColumnType: text
     fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
@@ -693,6 +820,25 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Entries
+  befd13bd-0399-473f-a42d-b4468d773945:
+    contentColumnType: string
+    fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
+    handle: sessionPlan
+    instructions: ''
+    name: 'Session plan'
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: 'Add plan'
+      source: null
+      sources:
+        - 'section:d3b5c62b-b1f6-4592-9540-1b63acc9f39a'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   c006ee1a-5196-434f-b072-f424df5f8dac:
     contentColumnType: string
     fieldGroup: 3ced2627-78ff-43fa-ade2-0a0cb7c21fab
@@ -852,6 +998,33 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  e2d66c30-07a7-46bd-a9e8-396a95c57f26:
+    contentColumnType: string
+    fieldGroup: fdf039f0-8db5-435d-a0cf-86bdafc80b3d
+    handle: plan
+    instructions: ''
+    name: Plan
+    searchable: true
+    settings:
+      columns:
+        69:
+          width: 10%
+        70:
+          width: 30%
+        71:
+          width: 10%
+        72:
+          width: ''
+      contentTable: '{{%stc_plan}}'
+      fieldLayout: table
+      localizeBlocks: false
+      maxRows: '52'
+      minRows: ''
+      selectionLabel: 'Add week'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
   e4727068-eadc-49a3-b3ad-8805e260c87b:
     contentColumnType: smallint(2)
     fieldGroup: 884240e2-c116-4a96-8393-6a882081b090
@@ -1128,6 +1301,73 @@ matrixBlockTypes:
     handle: free
     name: 'Block libre'
     sortOrder: 2
+  78b3f453-9e72-48f0-8654-0f85944b6e0e:
+    field: c006ee1a-5196-434f-b072-f424df5f8dac
+    fieldLayouts:
+      860ad088-600f-44ed-a476-354f9b1306ea:
+        tabs:
+          -
+            fields:
+              4d3fe749-9ba7-4f2d-8737-7fc81b33f914:
+                required: false
+                sortOrder: 2
+              dc4b6aa3-fcbc-4b9b-8e50-523d3d717200:
+                required: false
+                sortOrder: 1
+            name: Content
+            sortOrder: 1
+    fields:
+      4d3fe749-9ba7-4f2d-8737-7fc81b33f914:
+        contentColumnType: string
+        fieldGroup: null
+        handle: programs
+        instructions: ''
+        name: Programs
+        searchable: true
+        settings:
+          columns:
+            78:
+              width: ''
+            79:
+              width: ''
+          contentTable: '{{%stc_4_programs}}'
+          fieldLayout: table
+          localizeBlocks: false
+          maxRows: ''
+          minRows: ''
+          selectionLabel: 'Add specific program'
+          staticField: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: verbb\supertable\fields\SuperTableField
+      dc4b6aa3-fcbc-4b9b-8e50-523d3d717200:
+        contentColumnType: string
+        fieldGroup: null
+        handle: informations
+        instructions: ''
+        name: Informations
+        searchable: true
+        settings:
+          columns:
+            80:
+              width: ''
+            81:
+              width: 10%
+            82:
+              width: 10%
+          contentTable: '{{%stc_4_informations}}'
+          fieldLayout: table
+          localizeBlocks: false
+          maxRows: ''
+          minRows: ''
+          selectionLabel: ''
+          staticField: '1'
+        translationKeyFormat: null
+        translationMethod: site
+        type: verbb\supertable\fields\SuperTableField
+    handle: athletes
+    name: Athletes
+    sortOrder: 4
   adda2526-2991-452e-a305-32fb10279611:
     field: c006ee1a-5196-434f-b072-f424df5f8dac
     fieldLayouts:
@@ -1236,7 +1476,6 @@ matrixBlockTypes:
           sources:
             - 'section:c177c53b-3fe4-4647-9118-c2910caf5cda'
             - 'section:dd43b99d-4c6f-43c4-a045-44e80ef9a01c'
-            - 'section:5ccfe3de-4791-4b33-845e-6e114fe82084'
           targetSiteId: null
           viewMode: null
         translationKeyFormat: null
@@ -1272,6 +1511,10 @@ plugins:
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
+  craftql:
+    edition: standard
+    enabled: false
+    schemaVersion: 1.1.0
   dumper:
     enabled: '1'
     licenseKey: null
@@ -1289,8 +1532,15 @@ plugins:
   feed-me:
     enabled: '1'
     licenseKey: null
-    schemaVersion: 1.0.1
+    schemaVersion: 1.0.2
     settings: null
+  guest-entries:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.1.0
+    settings:
+      enableCsrfProtection: '1'
+      entryVariable: entry
   matrixtoolbar:
     enabled: '1'
     licenseKey: null
@@ -1301,10 +1551,18 @@ plugins:
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
+  single-cat:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.0
+  sprout-fields:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.2.0
   super-table:
     enabled: '1'
     licenseKey: null
-    schemaVersion: 2.0.7
+    schemaVersion: 2.0.8
     settings: null
   tag-manager:
     enabled: '1'
@@ -1351,11 +1609,33 @@ sections:
     enableVersioning: '1'
     entryTypes:
       14ca5d87-a20b-4c05-8f4e-659be352f249:
+        fieldLayouts:
+          cf1f06b0-9c9a-4cf4-a49b-6eea656e294a:
+            tabs:
+              -
+                fields:
+                  534e8a35-cbdc-4383-a56e-be3d431b8279:
+                    required: false
+                    sortOrder: 2
+                  76df3cb9-3c9d-4dcd-aca5-6394967e5e68:
+                    required: false
+                    sortOrder: 3
+                  8f8eab45-93c4-47de-b98a-37b786da7101:
+                    required: false
+                    sortOrder: 1
+                  9362358b-02c2-48e4-a234-4e6792238502:
+                    required: false
+                    sortOrder: 5
+                  e4727068-eadc-49a3-b3ad-8805e260c87b:
+                    required: false
+                    sortOrder: 4
+                name: Feedback
+                sortOrder: 1
         handle: feedback
-        hasTitleField: '1'
+        hasTitleField: false
         name: Feedback
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: '{% if object.postDate %}{postDate|date(''W'')}/{postDate|date(''Y-m-d'')}{% else %}{now|date(''W'')}/{now|date(''Y-m-d'')}{% endif %}{% if feedbackAthlete %}-{feedbackAthlete.one().slug}{% endif %}'
         titleLabel: Titre
     handle: feedback
     name: Feedback
@@ -1366,48 +1646,6 @@ sections:
         hasUrls: '1'
         template: feedback/_entry
         uriFormat: 'feedback/{slug}'
-    type: channel
-  5ccfe3de-4791-4b33-845e-6e114fe82084:
-    enableVersioning: true
-    entryTypes:
-      45050106-0a86-4a84-87b5-f830b790fa26:
-        fieldLayouts:
-          a61b7ab5-e11e-4ac0-8f70-9b05263c81ab:
-            tabs:
-              -
-                fields:
-                  3d458092-dfb1-4320-8231-033ec6f4f835:
-                    required: false
-                    sortOrder: 3
-                  a8612d26-0a54-4d84-b23a-e82e96d1e3a8:
-                    required: false
-                    sortOrder: 2
-                  b908d230-d0d8-4e7a-bc66-1fe9db45fb80:
-                    required: false
-                    sortOrder: 1
-                  c006ee1a-5196-434f-b072-f424df5f8dac:
-                    required: false
-                    sortOrder: 5
-                  e98eb415-814f-47c8-ad05-0b2ffdafc220:
-                    required: false
-                    sortOrder: 4
-                name: Programs
-                sortOrder: 1
-        handle: programs
-        hasTitleField: false
-        name: Programs
-        sortOrder: 1
-        titleFormat: '{% if programAthlete|length %}{programAthlete.one().title}-{% endif %}{% if programTag|length %}{programTag.one().title}{% endif %}'
-        titleLabel: ''
-    handle: programs2
-    name: Programs2
-    propagateEntries: true
-    siteSettings:
-      4e96ab5d-0392-4e75-8653-3c34b085005b:
-        enabledByDefault: true
-        hasUrls: true
-        template: programs2/_entry
-        uriFormat: 'programs2/{slug}'
     type: channel
   85ec63bb-c558-477d-80d4-44715736a3ad:
     enableVersioning: true
@@ -1420,43 +1658,49 @@ sections:
                 fields:
                   14eb72fa-a17d-4e3c-858d-af3eb5a8c955:
                     required: false
-                    sortOrder: 11
+                    sortOrder: 12
                   1934a8cc-8239-44fc-97bd-44784de6992b:
                     required: false
-                    sortOrder: 7
+                    sortOrder: 8
                   25c26c04-d177-4485-9a12-582a398563e8:
                     required: false
                     sortOrder: 2
+                  4d8b9c12-79c9-4ddd-80e7-1a4833e10cdd:
+                    required: false
+                    sortOrder: 3
                   5df3778b-04f3-4ae6-b43e-aa0e340da018:
                     required: false
-                    sortOrder: 13
+                    sortOrder: 14
                   5e39c49e-53ac-4f23-9869-8fb5d36ca01b:
                     required: false
                     sortOrder: 1
                   9d6baa6c-75a1-4294-8331-527cd64b4da6:
                     required: false
-                    sortOrder: 8
+                    sortOrder: 9
                   a770120e-3a23-4222-8b2a-d479b9b070e8:
                     required: false
-                    sortOrder: 9
+                    sortOrder: 10
                   cf74cad8-a57e-4299-96c9-80fa7846cbb4:
                     required: false
-                    sortOrder: 10
+                    sortOrder: 11
                   d36a4987-7777-474e-81c3-72d7fb679d50:
                     required: false
-                    sortOrder: 12
+                    sortOrder: 13
                   e1b477e2-9d51-4603-a667-1ccee17a558e:
                     required: false
-                    sortOrder: 3
+                    sortOrder: 4
+                  ea2776a4-1b66-4562-ae68-11aa4636e71c:
+                    required: false
+                    sortOrder: 15
                   edda9181-7bea-4a15-b3a8-fc1e19b8224e:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 6
                   ee08c5e6-a524-446b-8ee1-7132e4e34738:
                     required: false
-                    sortOrder: 6
+                    sortOrder: 7
                   ee924309-4095-4333-93e2-97c77da9c73d:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                 name: Contenu
                 sortOrder: 1
         handle: exercises
@@ -1534,6 +1778,39 @@ sections:
         hasUrls: '1'
         template: block/_entry
         uriFormat: 'block/{slug}'
+    type: channel
+  d3b5c62b-b1f6-4592-9540-1b63acc9f39a:
+    enableVersioning: true
+    entryTypes:
+      56d60307-8d7f-48cb-9728-08ddd59e4846:
+        fieldLayouts:
+          d1931659-1712-4afc-af63-a21ba8aea5ef:
+            tabs:
+              -
+                fields:
+                  c3b8b4fa-a835-44c6-88e0-fb5c59dea236:
+                    required: false
+                    sortOrder: 1
+                  e2d66c30-07a7-46bd-a9e8-396a95c57f26:
+                    required: false
+                    sortOrder: 2
+                name: Plans
+                sortOrder: 1
+        handle: plans
+        hasTitleField: true
+        name: Plans
+        sortOrder: 1
+        titleFormat: ''
+        titleLabel: Titre
+    handle: plans
+    name: Plans
+    propagateEntries: true
+    siteSettings:
+      4e96ab5d-0392-4e75-8653-3c34b085005b:
+        enabledByDefault: true
+        hasUrls: true
+        template: plans/_entry
+        uriFormat: 'plans/{slug}'
     type: channel
   dd43b99d-4c6f-43c4-a045-44e80ef9a01c:
     enableVersioning: true
@@ -1624,23 +1901,32 @@ sections:
             tabs:
               -
                 fields:
+                  4365c8a3-66f8-4805-8770-b3ba11b4c3a1:
+                    required: false
+                    sortOrder: 6
+                  6c41b634-8fe9-474b-bf2f-4e19062b2768:
+                    required: false
+                    sortOrder: 1
                   bc5e7114-d4ae-4ed3-bd59-d98de61ad98c:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 3
+                  befd13bd-0399-473f-a42d-b4468d773945:
+                    required: false
+                    sortOrder: 2
                   c006ee1a-5196-434f-b072-f424df5f8dac:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 5
                   c4762b05-814b-4de5-a578-dcc351308119:
-                    required: '1'
-                    sortOrder: '2'
+                    required: true
+                    sortOrder: 4
                 name: Sessions
-                sortOrder: '1'
+                sortOrder: 1
         handle: session
-        hasTitleField: '0'
+        hasTitleField: false
         name: Session
-        sortOrder: '1'
-        titleFormat: '{% if group|length %}{group.one().slug}-{% endif %}{% if object.parent %}{object.parent.slug}-{% endif %}{schedule|date(''l'')}-{schedule|time(''short'')}'
-        titleLabel: null
+        sortOrder: 1
+        titleFormat: '{% if sessionPlan|length %}{sessionPlan.one().title}-{% endif %}{% if group|length %}{group.one().title}-{% endif %}{schedule|date(''W'')}-{schedule|date(''l'')}-{schedule|time(''short'')}{% if sessionLabel|length %}-{sessionLabel}{% endif %}'
+        titleLabel: ''
     handle: sessions
     name: Sessions
     propagateEntries: '1'
@@ -1704,6 +1990,131 @@ sites:
     siteGroup: a9f93c5e-d5a7-42d9-9262-d19fdf450700
     sortOrder: '1'
 superTableBlockTypes:
+  14c0fa86-e0aa-4724-9142-f8311a998362:
+    field: 4d3fe749-9ba7-4f2d-8737-7fc81b33f914
+    fieldLayouts:
+      857309de-e77d-496c-9333-8f3789161ece:
+        tabs:
+          -
+            fields:
+              18d5712b-8f75-46c3-b01a-1e017de895b4:
+                required: false
+                sortOrder: 1
+              a437d37f-5020-4f0e-861e-899ca32b790f:
+                required: false
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
+    fields:
+      18d5712b-8f75-46c3-b01a-1e017de895b4:
+        contentColumnType: string
+        fieldGroup: null
+        handle: athletes
+        instructions: ''
+        name: Athletes
+        searchable: true
+        settings:
+          limit: ''
+          localizeRelations: false
+          selectionLabel: 'Add athlete'
+          source: null
+          sources:
+            - 'section:164708d5-007a-4f8b-afdc-fb6439769d4c'
+          targetSiteId: null
+          viewMode: null
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Entries
+      a437d37f-5020-4f0e-861e-899ca32b790f:
+        contentColumnType: string
+        fieldGroup: null
+        handle: program
+        instructions: ''
+        name: Program
+        searchable: true
+        settings:
+          limit: '1'
+          localizeRelations: false
+          selectionLabel: 'Add program or block'
+          source: null
+          sources:
+            - 'section:c177c53b-3fe4-4647-9118-c2910caf5cda'
+            - 'section:dd43b99d-4c6f-43c4-a045-44e80ef9a01c'
+          targetSiteId: null
+          viewMode: null
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Entries
+  3b11f2a9-0777-4f1c-ad13-9db253db4a25:
+    field: dc4b6aa3-fcbc-4b9b-8e50-523d3d717200
+    fieldLayouts:
+      f5f16d69-5fbc-4774-82bc-e29117a15975:
+        tabs:
+          -
+            fields:
+              30ce04b7-1f22-4548-994e-8e1d6c46b873:
+                required: false
+                sortOrder: 1
+              8be3fd27-95b4-4a75-b72b-70a65f6dc1a3:
+                required: false
+                sortOrder: 2
+              a4bf416b-cb4c-4197-9e2d-2f449b0e05bd:
+                required: false
+                sortOrder: 3
+            name: Content
+            sortOrder: 1
+    fields:
+      30ce04b7-1f22-4548-994e-8e1d6c46b873:
+        contentColumnType: text
+        fieldGroup: null
+        handle: text
+        instructions: ''
+        name: Text
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '1'
+          multiline: '1'
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      8be3fd27-95b4-4a75-b72b-70a65f6dc1a3:
+        contentColumnType: text
+        fieldGroup: null
+        handle: time
+        instructions: ''
+        name: Time
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      a4bf416b-cb4c-4197-9e2d-2f449b0e05bd:
+        contentColumnType: text
+        fieldGroup: null
+        handle: rest
+        instructions: ''
+        name: Rest
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
   5be5dd65-77fe-44ed-aef0-cfa535ca3e8d:
     field: 201f34fa-c8db-4417-bf13-b3ee07e962bc
     fieldLayouts:
@@ -1860,6 +2271,96 @@ superTableBlockTypes:
         translationKeyFormat: null
         translationMethod: none
         type: craft\fields\PlainText
+  e264021c-fdda-43fe-ba56-f132ee6d6363:
+    field: e2d66c30-07a7-46bd-a9e8-396a95c57f26
+    fieldLayouts:
+      41827e2c-276d-4f14-86ff-aec0826ec06b:
+        tabs:
+          -
+            fields:
+              466e28df-7676-47ce-857c-b7bd420dd1d3:
+                required: '0'
+                sortOrder: 3
+              6765d0f3-5db6-4a68-9781-90ae52fe8c92:
+                required: '0'
+                sortOrder: 4
+              a47bb5ce-d893-45b6-afcd-8ab24880ced3:
+                required: '0'
+                sortOrder: 2
+              a84fc6ef-d3c9-47a8-b1bf-3ec3c7e86264:
+                required: '1'
+                sortOrder: 1
+            name: Content
+            sortOrder: 1
+    fields:
+      466e28df-7676-47ce-857c-b7bd420dd1d3:
+        contentColumnType: smallint(2)
+        fieldGroup: null
+        handle: weekStart
+        instructions: 'Week number between 1 and 52'
+        name: 'First week'
+        searchable: '1'
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: '52'
+          min: '1'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+      6765d0f3-5db6-4a68-9781-90ae52fe8c92:
+        contentColumnType: smallint(2)
+        fieldGroup: null
+        handle: weekEnd
+        instructions: 'Week number between 1 and 52'
+        name: 'Last week'
+        searchable: '1'
+        settings:
+          decimals: 0
+          defaultValue: null
+          max: '52'
+          min: '1'
+          size: null
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+      a47bb5ce-d893-45b6-afcd-8ab24880ced3:
+        contentColumnType: text
+        fieldGroup: null
+        handle: periodLabel
+        instructions: ''
+        name: 'Period label'
+        searchable: '1'
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      a84fc6ef-d3c9-47a8-b1bf-3ec3c7e86264:
+        contentColumnType: string
+        fieldGroup: null
+        handle: period
+        instructions: ''
+        name: Period
+        searchable: '1'
+        settings:
+          branchLimit: 1
+          limit: null
+          localizeRelations: false
+          selectionLabel: null
+          source: 'group:ec4288e2-4500-4d5d-8e3b-c5315c73a9e5'
+          sources: '*'
+          targetSiteId: null
+          viewMode: null
+        translationKeyFormat: null
+        translationMethod: site
+        type: elivz\singlecat\fields\SingleCatField
   f2d57595-1186-4c7c-9267-1f6ccc781ae1:
     field: 2c889e37-0288-437c-826c-9aac44e30715
     fieldLayouts:
@@ -1994,7 +2495,7 @@ system:
   edition: solo
   live: true
   name: Prathletics
-  schemaVersion: 3.1.22
+  schemaVersion: 3.1.23
   timeZone: Europe/Rome
 tagGroups:
   7471bba6-2c27-46d5-8177-5c1a1efd9191:
@@ -2027,13 +2528,16 @@ volumes:
             fields:
               0f69d3c2-9e92-4550-b515-e646da10bd45:
                 required: false
-                sortOrder: 1
+                sortOrder: 2
               1a718053-2763-456b-a407-364c4bea37cb:
                 required: false
-                sortOrder: 3
+                sortOrder: 4
+              54ca846c-88c8-4025-83fb-8af8f4c42d66:
+                required: false
+                sortOrder: 1
               6898d467-fd7d-4fb9-8aea-d400a1e63715:
                 required: false
-                sortOrder: 2
+                sortOrder: 3
             name: Contenu
             sortOrder: 1
     handle: exercices

@@ -15,7 +15,9 @@
               <div v-if="g.nextSession" class="uk-card uk-card-small uk-card-body uk-card-secondary">
                 <div>Prochain entraînement</div>
                 <div class="uk-h4 uk-margin-remove">
-                  <router-link :to="'/sessions/'+g.nextSession.id">Dans {{g.nextSession.fromNow|duration().locale('fr').humanize()}}</router-link>
+                  <router-link :to="'/sessions/'+g.nextSession.id">
+                    <span v-if="g.nextSession.beforeNow == false">{{g.nextSession.fromNow|duration(1).locale('fr').humanize(true)|capitalize}}</span>
+                    <span v-if="g.nextSession.beforeNow == true">Commencé il y a {{g.nextSession.fromNow|duration().locale('fr').humanize()}}</span></router-link>
                 </div>
                 <div class="uk-text-meta">{{g.nextSession.schedule.date|moment().locale('fr').format("dddd D")|capitalize}} à {{g.nextSession.schedule.date|moment().locale('fr').format("HH:mm")}}</div>
               </div>
@@ -38,7 +40,7 @@
       </div>
     </section>
     <section class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-text-center uk-height-small">
-      <div class="uk-h1"><router-link to="/drills">Programmes et drills</router-link></div>
+      <div class="uk-h1"><router-link to="/programs">Programmes</router-link></div>
     </section>
     <section class="uk-section uk-section-default uk-flex uk-flex-center uk-flex-middle uk-text-center uk-height-small">
       <div class="uk-h1"><a :href="backendUrl">Backend</a></div>
@@ -58,6 +60,7 @@ export default {
       groups: [],
       apiUrl: process.env.VUE_APP_CRAFT_API_URL,
       backendUrl: process.env.VUE_APP_CRAFT_BACKEND_URL,
+      now: this.$time(Date.now()),
     };
   },
   created() {
