@@ -190,7 +190,7 @@ categoryGroups:
     structure:
       maxLevels: null
       uid: 7a672688-a6db-46f3-b00d-96f409fc9e5d
-dateModified: 1549288814
+dateModified: 1549538313
 email:
   fromEmail: ravemiki@gmail.com
   fromName: Program
@@ -1541,6 +1541,17 @@ plugins:
     settings:
       enableCsrfProtection: '1'
       entryVariable: entry
+      sections:
+        28e5a8b7-46cc-4cec-b3b4-c6e8b4bf7753:
+          allowGuestSubmissions: '1'
+          authorUid: f82ddb1b-8281-4c2c-ae95-9d18bf9c35c1
+          enabledByDefault: '1'
+          runValidation: ''
+          sectionUid: 28e5a8b7-46cc-4cec-b3b4-c6e8b4bf7753
+  kint:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   matrixtoolbar:
     enabled: '1'
     licenseKey: null

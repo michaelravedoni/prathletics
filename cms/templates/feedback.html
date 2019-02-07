@@ -18,11 +18,12 @@
 
     <form method="post" action="" accept-charset="UTF-8">
         {{ csrfInput() }}
-        <!--<input type="hidden" name="action" value="guest-entries/save">
-        <input type="hidden" name="sectionUid" value="28e5a8b7-46cc-4cec-b3b4-c6e8b4bf7753">-->
-        <input type="hidden" name="action" value="entries/save-entry">
+        <input type="hidden" name="action" value="guest-entries/save">
+        <input type="hidden" name="sectionUid" value="28e5a8b7-46cc-4cec-b3b4-c6e8b4bf7753">
+        {{ redirectInput('success') }}
+        <!--<input type="hidden" name="action" value="entries/save-entry">
         <input type="hidden" name="sectionId" value="9">
-        <input type="hidden" name="enabled" value="1">
+        <input type="hidden" name="enabled" value="1">-->
 
         <div class="uk-section uk-section-xsmall">
             <div class="uk-form-label" for="feedbackAthlete">1. Athlète</div>
