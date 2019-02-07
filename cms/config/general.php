@@ -46,8 +46,8 @@ return [
 
     // Staging environment settings
     'staging' => [
-		'devMode' => true,
-		'allowAdminChanges' => false,
+      'devMode' => true,
+      'allowAdminChanges' => false,
     ],
 
     // Production environment settings

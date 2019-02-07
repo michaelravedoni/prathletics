@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "05fa389850ab32c10e105acaffbe204a",
+    "content-hash": "2e0068b9910c56704afbc7876d1ea89e",
     "packages": [
         {
             "name": "barrelstrength/sprout-base",
@@ -809,11 +809,11 @@
         },
         {
             "name": "craftcms/guest-entries",
-            "version": "2.2.2",
+            "version": "2.2.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/guest-entries/zipball/122c1e3a2de04af748b1107d5ccb9b5eb1bf9a1e",
-                "reference": "122c1e3a2de04af748b1107d5ccb9b5eb1bf9a1e",
+                "url": "https://api.github.com/repos/craftcms/guest-entries/zipball/81bf5d388591d8b957d47dcf0ff0dc2d941d8820",
+                "reference": "81bf5d388591d8b957d47dcf0ff0dc2d941d8820",
                 "shasum": ""
             },
             "require": {
@@ -855,7 +855,7 @@
                 "docs": "https://github.com/craftcms/guest-entries",
                 "rss": "https://github.com/craftcms/guest-entries/commits/v2.atom"
             },
-            "time": "2019-02-04T06:29:20+00:00"
+            "time": "2019-02-06T17:26:35+00:00"
         },
         {
             "name": "craftcms/oauth2-craftid",
@@ -1747,6 +1747,128 @@
             "time": "2019-01-14T23:55:14+00:00"
         },
         {
+            "name": "kint-php/kint",
+            "version": "3.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/3228e1162ed4dfdfbaffa8d81e30d38ffdb66054",
+                "reference": "3228e1162ed4dfdfbaffa8d81e30d38ffdb66054",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.6"
+            },
+            "suggest": {
+                "ext-ctype": "Simple data type tests",
+                "ext-iconv": "Provides fallback detection for ambiguous legacy string encodings such as the Windows and ISO 8859 code pages",
+                "ext-mbstring": "Provides string encoding detection",
+                "kint-php/kint-js": "Provides a simplified dump to console.log()",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates",
+                "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
+                "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
+                "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rokas Šleinius",
+                    "homepage": "https://github.com/raveren"
+                },
+                {
+                    "name": "Jonathan Vollebregt",
+                    "homepage": "https://github.com/jnvsor"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/kint-php/kint/graphs/contributors"
+                }
+            ],
+            "description": "Kint - debugging tool for PHP developers",
+            "homepage": "https://kint-php.github.io/kint/",
+            "keywords": [
+                "debug",
+                "kint",
+                "php"
+            ],
+            "time": "2018-11-30T09:54:22+00:00"
+        },
+        {
+            "name": "kint-php/kint-js",
+            "version": "2.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint-js/zipball/d2455136a19f87aed682bb803790a0f71ad4be41",
+                "reference": "d2455136a19f87aed682bb803790a0f71ad4be41",
+                "shasum": ""
+            },
+            "require": {
+                "kint-php/kint": "^3.0@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\Renderer\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "email": "jnvsor@gmail.com"
+                }
+            ],
+            "description": "Renderer plugin for Kint that dumps to console.log()",
+            "time": "2018-08-22T17:36:46+00:00"
+        },
+        {
+            "name": "kint-php/kint-twig",
+            "version": "2.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint-twig/zipball/9ff42f0fe6e2ed8abdc664259edee5ed52d6502b",
+                "reference": "9ff42f0fe6e2ed8abdc664259edee5ed52d6502b",
+                "shasum": ""
+            },
+            "require": {
+                "kint-php/kint": "^3.0@dev",
+                "php": ">= 5.3.9",
+                "twig/twig": "^1.34 || ^2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kint\\Twig\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "email": "jnvsor@gmail.com"
+                }
+            ],
+            "description": "Twig extension for Kint integration",
+            "time": "2018-09-29T07:24:13+00:00"
+        },
+        {
             "name": "larapack/dd",
             "version": "1.1",
             "dist": {
@@ -2146,6 +2268,58 @@
                 "shell"
             ],
             "time": "2018-07-07T07:35:36+00:00"
+        },
+        {
+            "name": "mildlygeeky/craft-kint",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mildlygeeky/craft-kint/zipball/ddb46ef0be05fac57d577090bbe3e49b265f26ba",
+                "reference": "ddb46ef0be05fac57d577090bbe3e49b265f26ba",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1",
+                "kint-php/kint": "^3.1",
+                "kint-php/kint-js": "^2.0",
+                "kint-php/kint-twig": "^2.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Kint",
+                "handle": "kint",
+                "hasCpSettings": true,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/mildlygeeky/craft-kint/master/CHANGELOG.md",
+                "class": "mildlygeeky\\kint\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "mildlygeeky\\kint\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mildly Geeky, Inc.",
+                    "homepage": "https://mildlygeeky.com"
+                }
+            ],
+            "description": "Adds Kint, an in-app PHP debugger, to Craft CMS 3.x for use in Twig and PHP.",
+            "keywords": [
+                "cms",
+                "craft",
+                "craft-plugin",
+                "craftcms",
+                "kint"
+            ],
+            "support": {
+                "docs": "https://github.com/mildlygeeky/craft-kint/blob/master/README.md",
+                "issues": "https://github.com/mildlygeeky/craft-kint/issues"
+            },
+            "time": "2019-02-05T18:59:14+00:00"
         },
         {
             "name": "mmikkel/cp-field-inspect",
@@ -3734,6 +3908,42 @@
                 "templating"
             ],
             "time": "2019-01-14T15:00:48+00:00"
+        },
+        {
+            "name": "unionco/syncdb",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unionco/syncdb.git",
+                "reference": "f5a526f1b7aa4e88707b598cb6debb5af8353ae7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/unionco/syncdb/zipball/f5a526f1b7aa4e88707b598cb6debb5af8353ae7",
+                "reference": "f5a526f1b7aa4e88707b598cb6debb5af8353ae7",
+                "shasum": ""
+            },
+            "require": {
+                "vlucas/phpdotenv": "^2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "unionco\\syncdb\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abry Rath",
+                    "email": "unionco@gmail.com"
+                }
+            ],
+            "description": "Library to assist with syncing databases across different environments",
+            "time": "2019-01-10T15:35:20+00:00"
         },
         {
             "name": "venveo/craft-bulkedit",
