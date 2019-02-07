@@ -1,6 +1,6 @@
 ### Project ###
-cms/web/contenu/doc
-cms/web/contenu/exercices
+cms/web/content/doc
+cms/web/content/exercises
 
 ### Environement ###
 env.json

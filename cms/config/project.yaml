@@ -190,7 +190,7 @@ categoryGroups:
     structure:
       maxLevels: null
       uid: 7a672688-a6db-46f3-b00d-96f409fc9e5d
-dateModified: 1549538313
+dateModified: 1549540153
 email:
   fromEmail: ravemiki@gmail.com
   fromName: Program
@@ -2524,13 +2524,13 @@ users:
 volumes:
   2dd93a18-f5e8-4ef3-aca5-942393f5b0e3:
     handle: documents
-    hasUrls: '1'
+    hasUrls: true
     name: Documents
     settings:
       path: '@contenuBasePath/doc/'
     sortOrder: '2'
     type: craft\volumes\Local
-    url: '@web/contenu/doc/'
+    url: '@web/content/doc/'
   3c9b8217-f52a-4a04-8007-23f979d5dc65:
     fieldLayouts:
       beb40022-76b1-4080-b819-ddba4165cb52:
@@ -2555,7 +2555,7 @@ volumes:
     hasUrls: true
     name: Exercices
     settings:
-      path: '@contenuBasePath/exercices/'
+      path: '@contenuBasePath/exercises/'
     sortOrder: '1'
     type: craft\volumes\Local
-    url: '@web/contenu/exercices/'
+    url: '@web/content/exercises/'
