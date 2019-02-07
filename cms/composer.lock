@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e0068b9910c56704afbc7876d1ea89e",
+    "content-hash": "b3a89f1248d744de463cf56d83fd32dd",
     "packages": [
         {
             "name": "barrelstrength/sprout-base",
@@ -3999,11 +3999,11 @@
         },
         {
             "name": "verbb/feed-me",
-            "version": "3.1.2",
+            "version": "3.1.4",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/feed-me/zipball/1fd9a95b7367bb758ace5b41bc28f49c4a565fb7",
-                "reference": "1fd9a95b7367bb758ace5b41bc28f49c4a565fb7",
+                "url": "https://api.github.com/repos/verbb/feed-me/zipball/237b083face1366d1b58622a47512c78ad392429",
+                "reference": "237b083face1366d1b58622a47512c78ad392429",
                 "shasum": ""
             },
             "require": {
@@ -4054,7 +4054,7 @@
                 "docs": "https://github.com/verbb/feed-me",
                 "rss": "https://github.com/verbb/feed-me/commits/v2.atom"
             },
-            "time": "2019-02-01T21:49:36+00:00"
+            "time": "2019-02-06T11:08:15+00:00"
         },
         {
             "name": "verbb/super-table",
