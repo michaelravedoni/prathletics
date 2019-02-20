@@ -43,7 +43,7 @@
       <div class="uk-h1"><router-link to="/programs">Programmes</router-link></div>
     </section>
     <section class="uk-section uk-section-default uk-flex uk-flex-center uk-flex-middle uk-text-center uk-height-small">
-      <div class="uk-h1"><a :href="backendUrl">Backend</a></div>
+      <div class="uk-h1"><a :href="backendUrl+'feedback'" target="_blank">Feedback</a></div>
     </section>
   </div>
 </template>

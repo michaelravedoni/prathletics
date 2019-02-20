@@ -68,6 +68,7 @@ export default {
   data() {
     return {
       trainerName: process.env.VUE_APP_TRAINER_NAME,
+      backendUrl: process.env.VUE_APP_CRAFT_BACKEND_URL,
     };
   },
 };

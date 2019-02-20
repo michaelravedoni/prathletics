@@ -49,7 +49,7 @@
         </div>
         <div class="pr-block-programs">
       		<div class="pr-block-programs-program" v-for="p in b.programs">
-      			<span v-for="a in p.athletes"> - <router-link :to="{ name: 'athlete', params: {id: a.id} }">{{a.title}}</router-link></span><i class="fas fa-long-arrow-alt-right uk-margin-small-left"></i> <a :href="p.url" class="uk-margin-small-left">{{p.title}}</a>
+      			<span v-for="a in p.athletes"> - <router-link :to="{ name: 'athlete', params: {id: a.id} }">{{a.title}}</router-link></span><i class="fas fa-long-arrow-alt-right uk-margin-small-left"></i> <router-link :to="'/programs/'+p.id" class="uk-margin-small-left">{{p.title}}</router-link>
       		</div>
       	</div>
       </div>
