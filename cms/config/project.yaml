@@ -190,7 +190,7 @@ categoryGroups:
     structure:
       maxLevels: null
       uid: 7a672688-a6db-46f3-b00d-96f409fc9e5d
-dateModified: 1550318117
+dateModified: 1550657095
 email:
   fromEmail: ravemiki@gmail.com
   fromName: Program
@@ -1872,7 +1872,7 @@ sections:
       uid: 464101ed-80dd-4e38-85df-ce3d7256efce
     type: structure
   ddbfa1ed-e85e-4d08-a969-6c4064ccb3b1:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
       00a76084-c996-403b-a0e4-cd540f33478e:
         fieldLayouts:
@@ -1940,15 +1940,15 @@ sections:
         titleLabel: ''
     handle: sessions
     name: Sessions
-    propagateEntries: '1'
+    propagateEntries: true
     siteSettings:
       4e96ab5d-0392-4e75-8653-3c34b085005b:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: sessions/_entry
         uriFormat: 'sessions/{slug}'
     structure:
-      maxLevels: null
+      maxLevels: ''
       uid: 7f94ee63-c5fb-47ec-a181-3efe0db4cec9
     type: structure
   fdf3d7ef-5a17-44e1-8509-8e65f8a4469f:
