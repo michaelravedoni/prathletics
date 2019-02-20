@@ -190,7 +190,7 @@ categoryGroups:
     structure:
       maxLevels: null
       uid: 7a672688-a6db-46f3-b00d-96f409fc9e5d
-dateModified: 1549540153
+dateModified: 1550318117
 email:
   fromEmail: ravemiki@gmail.com
   fromName: Program
@@ -2506,7 +2506,7 @@ system:
   edition: solo
   live: true
   name: Prathletics
-  schemaVersion: 3.1.23
+  schemaVersion: 3.1.25
   timeZone: Europe/Rome
 tagGroups:
   7471bba6-2c27-46d5-8177-5c1a1efd9191:
