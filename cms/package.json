@@ -11,7 +11,9 @@
   "main": "/web",
   "scripts": {
     "stage": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp ./ {FTP_HOST_STAGING} --exclude-from 'rsync-ignore.txt' --delete'",
-    "stage-dry": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp ./ {FTP_HOST_STAGING} --exclude-from 'rsync-ignore.txt' --dry-run --delete'"
+    "stage-dry": "cat env.json | run-run -- 'rsync -e ssh -avzuhcp ./ {FTP_HOST_STAGING} --exclude-from 'rsync-ignore.txt' --dry-run --delete'",
+    "backup-db": "/Applications/MAMP/Library/bin/mysqldump -h localhost -u root -proot --add-drop-table --comments --create-options --dump-date --no-autocommit --routines --set-charset --triggers --single-transaction --no-data --result-file=storage/backups/backup-database.sql prathletics && /Applications/MAMP/Library/bin/mysqldump -h localhost -u root -proot --add-drop-table --comments --create-options --dump-date --no-autocommit --routines --set-charset --triggers --no-create-info --ignore-table=prathletics.assetindexdata --ignore-table=prathletics.assettransformindex --ignore-table=prathletics.cache --ignore-table=prathletics.sessions --ignore-table=prathletics.templatecaches --ignore-table=prathletics.templatecachecriteria --ignore-table=prathletics.templatecacheelements prathletics >> storage/backups/backup-database.sql",
+    "push-db": "npm run backup-db && npm run stage && scripts/push_db.sh"
   },
   "devDependencies": {
     "run-run": "^1.1.0"
