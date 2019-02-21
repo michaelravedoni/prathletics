@@ -13,7 +13,7 @@
 		{% for group, sessionsPlan in sessions|group('group.one()') %}
 		<h3>{{group}}</h3>
 			{% for s in sessions if s.sessionPlan.one().title == plan and s.group.one().title == group %}
-				<a href="{{ s.url }}">Semaine {{s.schedule|date('W')}}-{{s.schedule|date('l')|ucfirst}}-{{s.schedule|time('short')}}</a>
+				<a href="{{ s.url }}">Semaine {{s.schedule|date('W')}}-{{s.schedule|date('l')|ucfirst}}-{{s.schedule|time('short')}}</a><br>
 			{% endfor %}
 		{% endfor %}
 	{% endfor %}
