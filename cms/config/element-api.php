@@ -733,6 +733,71 @@ return [
 				'pretty' => true,
 			];
 		},
+		'plans.json' => function() {
+			\Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+			return [
+				'elementType' => Entry::class,
+				'criteria' => ['section' => 'plans'],
+				'transformer' => function(Entry $entry) {
+					return [
+						'title' => $entry->title,
+						'titleLong' => $entry->titleLong,
+						'id' => $entry->id,
+						'url' => $entry->url,
+						'slug' => $entry->slug,
+					];
+				},
+				'pretty' => true,
+			];
+		},
+		'plans/<entryId:\d+>.json' => function($entryId) {
+			\Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+			return [
+				'elementType' => Entry::class,
+				'criteria' => ['id' => $entryId],
+				'one' => true,
+				'transformer' => function(Entry $entry) {
+					$planA = $entry->plan->all();
+					foreach ($planA as $p) {
+						$weeks = [];
+						foreach (range($p->weekStart, $p->weekEnd) as $w) {
+							$sessionsA = \craft\elements\Entry::find()->section('sessions')->relatedTo($entry)->sessionWeek('= '.$w)->orderBy('schedule asc')->all();
+							$sessions = [];
+							foreach ($sessionsA as $s) {
+								$sessions[] = [
+									'title' => $s->title,
+									'id' => $s->id,
+									'url' => $s->url,
+									'slug' => $s->slug,
+									'schedule' => $s->schedule,
+								];
+							}
+							$weeks[] = [
+								'weekNumber' => $w,
+								'sessions' => !empty($sessions) ? $sessions : null,
+							];
+						}
+						$plan[] = [
+							'period' => $p->period->first()->title,
+							'periodLabel' => $p->periodLabel,
+							'weekStart' => $p->weekStart,
+							'weekEnd' => $p->weekEnd,
+							'weekRange' => $p->weekEnd - $p->weekStart + 1,
+							'weeks' => $weeks,
+						];
+					}
+					return [
+						'title' => $entry->title,
+						'titleLong' => $entry->titleLong,
+						'id' => $entry->id,
+						'url' => $entry->url,
+						'slug' => $entry->slug,
+						'plan' => $plan,
+					];
+				},
+				'pretty' => true,
+			];
+		},
 
 	]
 ];
