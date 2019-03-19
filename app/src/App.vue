@@ -17,6 +17,7 @@
 								<li><router-link to="/groups">Groupes</router-link></li>
 								<li><router-link to="/athletes">Athlètes</router-link></li>
 								<li><router-link to="/programs">Programmes</router-link></li>
+								<li><router-link to="/plans">Plans</router-link></li>
 							</ul>
 							<a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon uk-toggle href="#off-menu"></a>
 						</div>
@@ -32,6 +33,7 @@
 						<li><router-link to="/groups">Groupes</router-link></li>
 						<li><router-link to="/athletes">Athlètes</router-link></li>
 						<li><router-link to="/programs">Programmes</router-link></li>
+						<li><router-link to="/plans">Plans</router-link></li>
 						<!--<li><router-link to="/sessions">Sessions</router-link></li>
 						<li><router-link to="/documents">Documents</router-link></li>-->
 					</ul>

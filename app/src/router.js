@@ -11,6 +11,8 @@ import Exercises from './views/Exercises.vue';
 import Exercise from './views/Exercise.vue';
 import Programs from './views/Programs.vue';
 import Program from './views/Program.vue';
+import Plans from './views/Plans.vue';
+import Plan from './views/Plan.vue';
 import Live from './views/Live.vue';
 import Qr from './views/Qr.vue';
 import Feedback from './views/Feedback.vue';
@@ -30,6 +32,8 @@ export default new Router({
     { path: '/exercises/:id', name: 'exercise', component: Exercise },
     { path: '/programs', name: 'programs', component: Programs },
     { path: '/programs/:id', name: 'program', component: Program },
+    { path: '/plans', name: 'plans', component: Plans },
+    { path: '/plans/:id', name: 'plan', component: Plan },
     { path: '/live', name: 'live', component: Live, meta: { bodyClass: 'live' } },
     { path: '/qr', name: 'qr', component: Qr },
     { path: '/feedback', name: 'feedback', component: Feedback, meta: { bodyClass: 'feedback' } },
