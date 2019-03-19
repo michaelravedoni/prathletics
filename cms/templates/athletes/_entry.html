@@ -37,32 +37,6 @@
 		{% else %}
 		<p>Pas de sessions programmées pour le moment</p>
 		{% endfor %}
-
-		{% if nextSession != '' %}
-		<h2>Situation</h2>
-		{% set parents = nextSession.getAncestors() %}
-		{% set parents = parents|merge(nextSession.getSiblings()) %}
-		<nav class="">
-			<ul>
-				{% nav page in parents %}
-				<li>
-					<a href="{{ page.url }}" uk-tooltip="{% if page.type == 'session' %}Session{% else %}{{ page.typeCadre|capitalize }}{% endif %}">
-						{% if page.typeCadre == 'season' %}{{page.season.one().titleLong}}
-						{% elseif page.typeCadre == 'period' %}{{page.period.one().titleLong}}
-						{% else %}{{ page.label|ucfirst|replace('-', ' ') }}{% endif %}
-						{% if page.type == 'session' %}{{page.schedule|date('l')|ucfirst}}-{{page.schedule|time('short')}}{% endif %}
-					</a>
-
-					{% ifchildren %}
-					<ul>
-						{% children %}
-					</ul>
-					{% endifchildren %}
-				</li>
-				{% endnav %}
-			</ul>
-		</nav>
-		{% endif %}
 	</section>
 
 </section>

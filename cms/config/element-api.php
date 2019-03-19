@@ -54,9 +54,9 @@ return [
 							'athletes' => $athletes,
 						];
 					}
-					$ancestorsA = $entry->getAncestors()->all();
-					$ancestors = [];
-					foreach ($ancestorsA as $a) {
+					//$ancestorsA = $entry->getAncestors()->all();
+					//$ancestors = [];
+					/*foreach ($ancestorsA as $a) {
 						$relatedSeason = \craft\elements\Category::find()->relatedTo($a)->one();
 						$ancestors[] = [
 							'title' => $a->title,
@@ -72,7 +72,7 @@ return [
 							],
 							'cadreLabel' => $a->label,
 						];
-					}
+					}*/
 					$planA = $entry->sessionPlan->first();
 					$plan = [
 						'title' => $planA->title,
@@ -99,8 +99,8 @@ return [
 							];
 						}
 					}
-					$childrensA = $entry->getChildren()->all();
-					$childrens = [];
+					//$childrensA = $entry->getChildren()->all();
+					/*$childrens = [];
 					foreach ($childrensA as $c) {
 						$childrens[] = [
 							'title' => $c->title,
@@ -110,7 +110,7 @@ return [
 							'slug' => $c->slug,
 							'typeCadre' => $c->typeCadre,
 						];
-					}
+					}*/
 					$blockMatrix = [];
 					if ($entry->block) {
 						foreach ($entry->getFieldValue('block')->all() as $block) {
@@ -251,8 +251,8 @@ return [
 						'athletes' => $athletes,
 						'schedule' => $entry->schedule,
 						'blocks'  => $entry->block ? $blockMatrix : null,
-						'ancestors' => $ancestors,
-						'childrens' => $childrens,
+						//'ancestors' => $ancestors,
+						//'childrens' => $childrens,
 						'plan' => $plan,
 						'period' => $period,
 						'week' => $week,
