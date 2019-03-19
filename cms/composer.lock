@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c6320a1fe334332283de5cf02e999d0",
+    "content-hash": "b04b52ce300c445eb887a22f4ad0a980",
     "packages": [
         {
             "name": "barrelstrength/sprout-base",
@@ -50,11 +50,11 @@
         },
         {
             "name": "barrelstrength/sprout-base-fields",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barrelstrength/craft-sprout-base-fields/zipball/fa539eea8ea37817dc8ded110e4fe8e69f8ed76e",
-                "reference": "fa539eea8ea37817dc8ded110e4fe8e69f8ed76e",
+                "url": "https://api.github.com/repos/barrelstrength/craft-sprout-base-fields/zipball/94fd01110b5c5508a5dca20d722514cc577941c0",
+                "reference": "94fd01110b5c5508a5dca20d722514cc577941c0",
                 "shasum": ""
             },
             "require": {
@@ -83,7 +83,7 @@
                 "docs": "https://github.com/barrelstrength/sprout-base",
                 "rss": "https://github.com/barrelstrength/sprout-base/commits/v2.atom"
             },
-            "time": "2019-02-13T23:42:47+00:00"
+            "time": "2019-02-26T23:30:16+00:00"
         },
         {
             "name": "barrelstrength/sprout-base-import",
@@ -124,18 +124,18 @@
         },
         {
             "name": "barrelstrength/sprout-fields",
-            "version": "3.2.3",
+            "version": "3.2.4",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barrelstrength/craft-sprout-fields/zipball/4d7c78e56b40fb21b522c29362bafd85235f3b07",
-                "reference": "4d7c78e56b40fb21b522c29362bafd85235f3b07",
+                "url": "https://api.github.com/repos/barrelstrength/craft-sprout-fields/zipball/0b8692817e8f8a0f5e042b346475a74f04e669ea",
+                "reference": "0b8692817e8f8a0f5e042b346475a74f04e669ea",
                 "shasum": ""
             },
             "require": {
                 "barrelstrength/sprout-base": "^4.0.6",
-                "barrelstrength/sprout-base-fields": "^1.0.0",
+                "barrelstrength/sprout-base-fields": "^1.0.1",
                 "barrelstrength/sprout-base-import": "^1.0.0",
-                "craftcms/cms": "^3.1.0"
+                "craftcms/cms": "^3.1.15"
             },
             "type": "craft-plugin",
             "extra": {
@@ -177,7 +177,7 @@
                 "docs": "https://sprout.barrelstrengthdesign.com/craft-plugins/fields/docs",
                 "rss": "https://github.com/barrelstrength/sprout-fields/commits/v2.atom"
             },
-            "time": "2019-02-14T13:19:15+00:00"
+            "time": "2019-02-26T23:33:56+00:00"
         },
         {
             "name": "cakephp/core",
@@ -751,11 +751,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.1.12",
+            "version": "3.1.15",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/8089a0741d2dbbdf6b8d142b60b8ed3814ffe211",
-                "reference": "8089a0741d2dbbdf6b8d142b60b8ed3814ffe211",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/81e712ccf8f1a9b0a65426c70769229f20dc6b26",
+                "reference": "81e712ccf8f1a9b0a65426c70769229f20dc6b26",
                 "shasum": ""
             },
             "require": {
@@ -786,7 +786,7 @@
                 "true/punycode": "^2.1.0",
                 "twig/twig": "^2.5.0",
                 "yii2tech/ar-softdelete": "^1.0.2",
-                "yiisoft/yii2": "~2.0.15.1",
+                "yiisoft/yii2": "~2.0.16.0",
                 "yiisoft/yii2-debug": "^2.0.10",
                 "yiisoft/yii2-queue": "2.1.0",
                 "yiisoft/yii2-swiftmailer": "^2.1.0",
@@ -798,7 +798,7 @@
             "provide": {
                 "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
                 "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
-                "bower-asset/jquery": "3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+                "bower-asset/jquery": "3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1"
             },
@@ -831,7 +831,7 @@
                 "docs": "https://github.com/craftcms/docs",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2019-02-15T19:35:25+00:00"
+            "time": "2019-02-26T20:13:43+00:00"
         },
         {
             "name": "craftcms/element-api",
@@ -886,11 +886,11 @@
         },
         {
             "name": "craftcms/guest-entries",
-            "version": "2.2.2.1",
+            "version": "2.2.3",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/guest-entries/zipball/81bf5d388591d8b957d47dcf0ff0dc2d941d8820",
-                "reference": "81bf5d388591d8b957d47dcf0ff0dc2d941d8820",
+                "url": "https://api.github.com/repos/craftcms/guest-entries/zipball/ce936b76a98065257b8eff16563f604bb184247f",
+                "reference": "ce936b76a98065257b8eff16563f604bb184247f",
                 "shasum": ""
             },
             "require": {
@@ -932,7 +932,7 @@
                 "docs": "https://github.com/craftcms/guest-entries",
                 "rss": "https://github.com/craftcms/guest-entries/commits/v2.atom"
             },
-            "time": "2019-02-06T17:26:35+00:00"
+            "time": "2019-02-24T14:46:39+00:00"
         },
         {
             "name": "craftcms/oauth2-craftid",
@@ -1296,11 +1296,11 @@
         },
         {
             "name": "elivz/craft-single-cat",
-            "version": "1.1.0",
+            "version": "1.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elivz/craft-single-cat/zipball/a4513f1d05374897b13068e9e3b1e80889c43cb5",
-                "reference": "a4513f1d05374897b13068e9e3b1e80889c43cb5",
+                "url": "https://api.github.com/repos/elivz/craft-single-cat/zipball/e18c661fce0c913d00ef225545e525da59173f65",
+                "reference": "e18c661fce0c913d00ef225545e525da59173f65",
                 "shasum": ""
             },
             "require": {
@@ -1340,7 +1340,7 @@
                 "docs": "https://github.com/elivz/craft-single-cat/blob/master/README.md",
                 "issues": "https://github.com/elivz/craft-single-cat/issues"
             },
-            "time": "2019-01-27T02:35:38+00:00"
+            "time": "2019-02-17T18:19:43+00:00"
         },
         {
             "name": "elvanto/litemoji",
@@ -4076,11 +4076,11 @@
         },
         {
             "name": "verbb/feed-me",
-            "version": "3.1.7",
+            "version": "3.1.10",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/feed-me/zipball/32ab1736151c10992c7fe45772325b775e288974",
-                "reference": "32ab1736151c10992c7fe45772325b775e288974",
+                "url": "https://api.github.com/repos/verbb/feed-me/zipball/b0c8b6bb89debfbb32305e4e27a7fa2ad7c4bd90",
+                "reference": "b0c8b6bb89debfbb32305e4e27a7fa2ad7c4bd90",
                 "shasum": ""
             },
             "require": {
@@ -4131,19 +4131,19 @@
                 "docs": "https://github.com/verbb/feed-me",
                 "rss": "https://github.com/verbb/feed-me/commits/v2.atom"
             },
-            "time": "2019-02-16T01:18:30+00:00"
+            "time": "2019-02-25T22:20:57+00:00"
         },
         {
             "name": "verbb/super-table",
-            "version": "2.1.7",
+            "version": "2.1.13.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/b03a289a943d2fbcb7570816f1a9a720d3edb6e4",
-                "reference": "b03a289a943d2fbcb7570816f1a9a720d3edb6e4",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/f526a69ed7b21d4aa7430a6527cb4950f7d84bfa",
+                "reference": "f526a69ed7b21d4aa7430a6527cb4950f7d84bfa",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.1.2"
+                "craftcms/cms": "^3.1.13"
             },
             "type": "craft-plugin",
             "extra": {
@@ -4183,7 +4183,7 @@
                 "docs": "https://github.com/verbb/super-table",
                 "rss": "https://github.com/verbb/super-table/commits/v2.atom"
             },
-            "time": "2019-02-10T11:12:07+00:00"
+            "time": "2019-02-27T07:23:16+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4325,19 +4325,19 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.15.1",
+            "version": "2.0.16",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ed3a9e1c4abe206e1c3ce48a6b3624119b79850d",
-                "reference": "ed3a9e1c4abe206e1c3ce48a6b3624119b79850d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/789de9783d41e6ca10fffc3644a43a764f79b399",
+                "reference": "789de9783d41e6ca10fffc3644a43a764f79b399",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
-                "bower-asset/jquery": "3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+                "bower-asset/jquery": "3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1",
-                "cebe/markdown": "~1.0.0 | ~1.1.0",
+                "cebe/markdown": "~1.0.0 | ~1.1.0 | ~1.2.0",
                 "ext-ctype": "*",
                 "ext-mbstring": "*",
                 "ezyang/htmlpurifier": "~4.6",
@@ -4359,7 +4359,6 @@
                     "yii\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -4416,7 +4415,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-03-21T18:36:53+00:00"
+            "time": "2019-01-30T23:54:16+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",

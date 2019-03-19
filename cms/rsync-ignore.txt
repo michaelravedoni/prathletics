@@ -6,6 +6,5 @@ web.config
 /web/imager/*
 /web/cache
 /web/cpressources/*
-rsync-ignore.txt
 .user.ini
 /scripts/.env.sh

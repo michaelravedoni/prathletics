@@ -33,11 +33,11 @@ case "$GLOBAL_DB_DRIVER" in
     ( 'mysql' )
         source "${DIR}/common/common_mysql.sh"
         if [[ "${REMOTE_DB_USING_SSH}" == "yes" ]] ; then
-            ssh $REMOTE_SSH_LOGIN -p $REMOTE_SSH_PORT "$REMOTE_MYSQLDUMP_CMD --verbose -u $REMOTE_DB_USER -p${REMOTE_DB_PASSWORD} -h $REMOTE_DB_HOST $REMOTE_DB_NAME < ${REMOTE_ROOT_PATH}${REMOTE_BACKUPS_PATH}backup-database.sql"
+            ssh $REMOTE_SSH_LOGIN -p $REMOTE_SSH_PORT "${REMOTE_MYSQLDUMP_CMD} -u ${REMOTE_DB_USER} -p${REMOTE_DB_PASSWORD} -h ${REMOTE_DB_HOST} ${REMOTE_DB_NAME} < '${REMOTE_ROOT_PATH}${REMOTE_BACKUPS_PATH}backup-database.sql'"
         else
-            echo "error"
+            echo "no ssh config"
         fi
-        echo "Push db done !"
+        echo "Cool ! ${REMOTE_DB_NAME} replaced !"
         ;;
     ( * )
         echo "Environment variable GLOBAL_DB_DRIVER was neither 'mysql' nor 'pgsql'. Aborting."
