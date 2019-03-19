@@ -22,7 +22,7 @@
       <h1 class="uk-h2 pr-session-header-heading" v-if="session.schedule">{{session.schedule.date|moment().locale('fr').format("dddd D MMMM")|capitalize}} — {{session.schedule.date|moment().locale('fr').format("HH:mm")}}</h1>
     </section><!-- end pr-session-header -->
 
-    <section v-if="session.type == 'session'" class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session-blocks">
+    <section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session-blocks">
 
       <div v-for="(b, index) in session.blocks" class="pr-block">
         <div class="pr-block-informations">

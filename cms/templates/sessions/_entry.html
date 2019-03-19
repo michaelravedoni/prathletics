@@ -36,7 +36,7 @@
 	</section><!-- end header -->
 
 
-	{% if entry.type == 'session' %}
+
 	<section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-session">
 
 		<div class="uk-h4 uk-margin-remove pr-session-group"><a href="{{entry.group.one().url}}">{{entry.group.one().title}}</a></div>
@@ -58,7 +58,6 @@
 		{% endif %}
 
 	</section><!-- end session -->
-	{% endif %}
 
 	{% if entry.type == 'cadre' %}
 	<section class="pr-cadre">
