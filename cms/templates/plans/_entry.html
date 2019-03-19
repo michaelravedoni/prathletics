@@ -23,7 +23,7 @@
 			{% for row in entry.plan %}
 				{% for w in row.weekStart..row.weekEnd %}
 				{% set sessions = craft.entries().section('sessions').relatedTo(entry).sessionWeek('= '~ w).orderBy('schedule asc').all() %}
-				<td class="tg-0lax">{{w}}<br>{% for s in sessions %}<a href="{{s.url}}">{{s.schedule|date('D')}}</a><br>{% endfor %}</td>
+				<td class="tg-0lax"><a href="{{url('weeks')}}?week={{w}}&planId={{entry.id}}">{{w}}</a><br>{% for s in sessions %}<a href="{{s.url}}">{{s.schedule|date('D')}}</a><br>{% endfor %}</td>
 				{% endfor %}
 			{% endfor %}
 			</tr>

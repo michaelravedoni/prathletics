@@ -1,0 +1,57 @@
+
+{% extends "_layout" %}
+
+{% block content %}
+
+{# Get URL params #}
+{% set planId = craft.request.getParam('planId') %}
+{% set weekNumber = craft.request.getParam('week') %}
+
+{% set plan = craft.entries().section('plans').id(planId).one() %}
+{% set entry = plan %}
+
+<section class="uk-section uk-section-small uk-container uk-container-small pr-week-header">
+	<span class="pr-no-print" onclick="window.print()"><i class="fas fa-print"></i></span>
+	<div class="pr-meta">
+		<span class="pr-meta-copyright"><i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i> {{site.siteTrainer}}</span>
+		<span class="pr-meta-title">{{entry.label|ucfirst|replace('-', ' ')}}</span>
+		<span class="pr-meta-printed uk-float-right">Imprimé le {{ now|date('d.m.Y') }}</span>
+	</div>
+	<div class="pr-crumbs">
+		{% set period = '' %}
+		{% for p in plan.plan %}
+			{% set periodA = p.period.first() %}
+			{% if (weekNumber >= p.weekStart) and (weekNumber <= p.weekEnd) %}
+				{% set period = periodA %}
+			{% endif %}
+		{% endfor %}
+		{% if plan %}<span>{{plan.titleLong}}</span> <i class="fas fa-angle-right"></i>{% endif %}
+		{% if period %}<span>{{period.titleLong}}</span> <i class="fas fa-angle-right"></i>{% endif %}
+		{% if weekNumber %}<span">Semaine {{weekNumber}}</span>{% endif %}
+	</div>
+	<h1 class="uk-h2">Semaine {{weekNumber}}</h1>
+</section><!-- end header -->
+
+<section class="uk-section uk-section-xsmall uk-container uk-container-small pr-week">
+	{% set sessions = craft.entries().section('sessions').relatedTo(plan).sessionWeek('= '~ weekNumber).orderBy('schedule asc').all() %}
+	{% for group, sessionsGrouped in sessions|group('group.one()') %}
+		<h2 class="uk-h3 uk-margin-remove pr-cadre-session-group">{{group}}</h2>
+		{% for s in sessionsGrouped %}
+		<h3 class="uk-h4 uk-margin-remove pr-cadre-session-heading">{{s.schedule|date('l') |ucfirst }} – {{s.schedule|time('short') }} <a href="{{s.url}}"><i class="fas fa-long-arrow-alt-right"></i></a></h3>
+		{% set session = s %}
+		{% include 'weeks/session-block-horizontal.html' %}
+		{% endfor %}
+	{% endfor %}
+</section>
+
+<style>
+@media print {
+	.pr-week,
+	.pr-week-header {
+		font-size: 85%;
+	}
+}
+
+</style>
+
+{% endblock %}

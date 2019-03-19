@@ -59,69 +59,6 @@
 
 	</section><!-- end session -->
 
-	{% if entry.type == 'cadre' %}
-	<section class="pr-cadre">
-		<section class="uk-section uk-section-xsmall uk-container uk-container-small uk-width-xlarge pr-cadre-header">
-
-			<h1 class="uk-h2">
-				<span class="pr-cadre-title">
-				{% if entry.season|length %}{{entry.season.one().titleLong}} {{ entry.label|ucfirst|replace('-', ' ') }}<br />{% endif %}
-				{% if entry.period|length %}{{entry.period.one().titleLong}} ({{entry.period.one().slug |upper}}{{ entry.label|ucfirst|replace('-', ' ') }})<br />{% endif %}
-				{% if entry.typeCadre == 'mesocycle' or entry.typeCadre == 'macrocycle' %}{{ entry.label|ucfirst|replace('-', ' ') }}{% endif %}
-				</span>
-
-				{% if entry.typeCadre == 'mesocycle' or entry.typeCadre == 'macrocycle' %}
-				<span class="uk-text-meta uk-text-small uk-margin-bottom uk-float-right pr-cadre-metrics">
-					{% set vol = entry.volume.value %}
-					{% set volT = 4-vol %}
-					{% set int = entry.volume.value %}
-					{% set intT = 4-int %}
-				<div class="pr-cadre-volume">Volume: {% for i in range(1, vol) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, volT) %}<i class="far fa-star"></i>{% endfor %}</div>
-				<div class="pr-cadre-intensity">Intensité: {% for i in range(1, int) %}<i class="fas fa-star"></i>{% endfor %}{% for i in range(1, intT) %}<i class="far fa-star"></i>{% endfor %}</div>
-				</span>
-				{% endif %}
-			</h1>
-			<div class="" uk-grid>
-				<div class="uk-width-2-3">
-					<ul class="pr-no-print">
-						{% nav page in entry.getDescendants() %}
-						<li>
-							<a href="{{ page.url }}" uk-tooltip="{% if page.type == 'session' %}Session{% else %}{{ page.typeCadre|capitalize }}{% endif %}">
-								{% if page.group|length %}{{page.group.one().title}}{% endif %}
-								{% if page.typeCadre == 'season' %}{{page.season.one().titleLong}}
-								{% elseif page.typeCadre == 'period' %}{{page.period.one().titleLong}}
-								{% else %}{{ page.label|ucfirst|replace('-', ' ') }}{% endif %}
-								{% if page.type == 'session' %}{{page.schedule|date('l')|ucfirst}}-{{page.schedule|time('short')}}{% endif %}
-							</a>
-
-							{% ifchildren %}
-							<ul>
-								{% children %}
-							</ul>
-							{% endifchildren %}
-						</li>
-						{% endnav %}
-					</ul>
-				</div>
-				<div class="uk-width-1-3">
-
-				</div>
-			</div>
-		</section>
-
-		{% if entry.typeCadre == 'mesocycle' or entry.typeCadre == 'macrocycle' %}
-		<section class="uk-section uk-section-small uk-container uk-container-expand pr-cadre-sessions">
-			{% for session in entry.getDescendants().orderBy('schedule asc') %}
-			<h2 class="uk-h3 uk-margin-remove pr-cadre-session-group">{{session.group.one().title}}</h2>
-				<h3 class="uk-h4 uk-margin-remove pr-cadre-session-heading">{{session.schedule|date('l') |ucfirst }} – {{session.schedule|time('short') }}</h3>
-				{% include 'sessions/session-block-horizontal.html' %}
-			{% endfor %}
-		</section><!-- end cycle -->
-		{% endif %}
-
-	</section><!-- end session -->
-	{% endif %}
-
 	<section class="uk-section uk-section-small uk-container uk-container-small uk-width-xlarge pr-no-print">
 		<a class="uk-button uk-button-link" href="{{siteUrl}}/admin/entries/sessions/new" target="_blank">New</a>
 	</section>
