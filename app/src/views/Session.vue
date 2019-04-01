@@ -235,8 +235,9 @@ export default {
   .pr-block-exercise-duration {
     font-size: 85%;
     font-weight: bold;
-    display: flex;
-    flex-flow: row-reverse;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
   }
   .pr-block-exercise-note {
     display: flex;
